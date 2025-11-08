@@ -1,0 +1,5 @@
+include README.md
+include LICENSE.txt
+include CITATION.cff
+include CITATION.bib
+recursive-include pyknotid *.tmpl *.pov *.py

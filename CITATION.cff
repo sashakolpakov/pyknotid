@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use pyknotid in your research, please cite it as below."
+title: "pyknotid knot identification toolkit"
+version: 0.5.4
+date-released: 2017-01-01
+url: "https://github.com/SPOCKnots/pyknotid"
+repository-code: "https://github.com/SPOCKnots/pyknotid"
+license: MIT
+authors:
+  - family-names: "Taylor"
+    given-names: "Alexander J"
+    email: "alexander.taylor@bristol.ac.uk"
+  - name: "SPOCK contributors"
+keywords:
+  - knot-theory
+  - topology
+  - mathematics
+  - knot-identification
+  - linking
+abstract: "Python modules for detecting and measuring knotting and linking. pyknotid can analyse space-curves, i.e. sets of points in three-dimensions, or can parse standard topological representations of knot diagrams."
+preferred-citation:
+  type: software
+  title: "pyknotid knot identification toolkit"
+  authors:
+    - family-names: "Taylor"
+      given-names: "Alexander J"
+    - name: "other SPOCK contributors"
+  year: 2017
+  url: "https://github.com/SPOCKnots/pyknotid"
