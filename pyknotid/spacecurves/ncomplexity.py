@@ -114,12 +114,11 @@ if NUMBA_AVAILABLE:
                 writhe_3 / pi2_squared)
 
 
-def cython_higher_order_writhe(points, contributions, order):
+def higher_order_writhe(points, contributions, order):
     """
     Calculate higher order writhe.
 
-    Now uses Numba for performance instead of Cython.
-    Maintains same interface as cython version for backward compatibility.
+    Uses Numba for performance.
     """
     if not NUMBA_AVAILABLE:
         raise ImportError("numba is required for this function. Install with: pip install numba")
@@ -134,12 +133,11 @@ def cython_higher_order_writhe(points, contributions, order):
     return result
 
 
-def cython_second_order_writhes(points, contributions):
+def second_order_writhes(points, contributions):
     """
     Calculate second order writhes.
 
-    Now uses Numba for performance instead of Cython.
-    Maintains same interface as cython version for backward compatibility.
+    Uses Numba for performance.
     """
     if not NUMBA_AVAILABLE:
         raise ImportError("numba is required for this function. Install with: pip install numba")
@@ -155,12 +153,11 @@ def cython_second_order_writhes(points, contributions):
     return result
 
 
-def cython_second_order_writhes_no_basepoint(points, contributions):
+def second_order_writhes_no_basepoint(points, contributions):
     """
     Calculate second order writhes without basepoint.
 
-    Now uses Numba for performance instead of Cython.
-    Maintains same interface as cython version for backward compatibility.
+    Uses Numba for performance.
     """
     if not NUMBA_AVAILABLE:
         raise ImportError("numba is required for this function. Install with: pip install numba")

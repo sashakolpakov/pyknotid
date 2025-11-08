@@ -20,29 +20,12 @@ def recursively_include(results, directory, patterns):
             results[directory].append(join(*filename.split(sep)[1:]))
 
 recursively_include(package_data, 'pyknotid',
-                    ['*.tmpl', '*.pov', '*.pyx', '*.pxd', '*.py',
+                    ['*.tmpl', '*.pov', '*.py',
                      ])
 
-# Switched to Numba for most performance-critical code
-# Still keeping chelpers and coctree in Cython (too complex to convert easily)
-try:
-    from Cython.Build import cythonize
-    import numpy
-except ImportError:
-    print('Cython or numpy could not be imported. Some optional Cython extensions '
-          '(chelpers, coctree) will not be built. pyknotid will use Python/Numba '
-          'routines instead.')
-    ext_modules = []
-    include_dirs = []
-else:
-    ext_modules = [
-            Extension("pyknotid.spacecurves.chelpers", ["pyknotid/spacecurves/chelpers.pyx"],
-                    libraries=["m"]),
-            Extension("pyknotid.simplify.coctree", ["pyknotid/simplify/coctree.pyx"],
-                    libraries=["m"]),
-            ]
-    ext_modules = cythonize(ext_modules)
-    include_dirs = [numpy.get_include()]
+# All performance-critical code uses Numba
+ext_modules = []
+include_dirs = []
 
 pyknotid_init_filen = join(dirname(__file__), 'pyknotid', '__init__.py')
 version = None
@@ -64,21 +47,25 @@ if version is None:
 
 if 'READTHEDOCS' in environ and environ['READTHEDOCS'] == 'True':
     print('Installing for doc only')
-    install_requires=['numpy', 'peewee', 'vispy', 'sympy', 'numba']
+    install_requires=['numpy', 'peewee', 'vispy', 'sympy']
 else:
     install_requires=['numpy', 'networkx', 'planarity',
                       'peewee', 'vispy', 'sympy', 'appdirs',
-                      'requests', 'tqdm', 'numba']
+                      'requests', 'tqdm']
 
 long_description = '''
 Pyknotid
 ========
 
 Python modules for detecting and measuring knotting and linking.
-pyknotid uses Numba for high-performance numerical computations.
 pyknotid can analyse space-curves, i.e. sets of points in
 three-dimensions, or can parse standard topological
 representations of knot diagrams.
+
+For best performance, install with: pip install pyknotid[performance]
+This adds Numba for JIT-compiled high-performance numerical computations
+(complexity calculations, invariants, crossing detection).
+pyknotid will work without Numba but will use slower pure Python fallbacks.
 
 A graphical interface to some of these tools is available online at
 `Knot ID <http://inclem.net/knotidentifier>`__.

@@ -6,9 +6,9 @@ from periodiccell import _cram_into_cell, _cut_line_at_jumps, _interpret_line
 from collections import defaultdict
 
 try:
-    from pyknotid.spacecurves import chelpers
+    from pyknotid.spacecurves import nhelpers
 except ImportError:
-    from pyknotid.spacecurves import helpers as chelpers
+    from pyknotid.spacecurves import helpers as nhelpers
 
 ROTATION_MAGIC_NUMBERS = (0.02, 1.1)
 ROTATION_MAGIC_NUMBERS = (0.53, 1.0)
@@ -294,21 +294,21 @@ class PeriodicKnot:
             vnum = core_index + i
 
             compnum = 0
-            crossings.extend(chelpers.find_crossings(
+            crossings.extend(nhelpers.find_crossings(
                 v0, dv, first_block, first_block_lengths,
                 vnum, compnum,
                 max_segment_length,
                 jump_mode))
 
             compnum = core_index + core_num
-            crossings.extend(chelpers.find_crossings(
+            crossings.extend(nhelpers.find_crossings(
                 v0, dv, second_block, second_block_lengths,
                 vnum, compnum,
                 max_segment_length,
                 jump_mode))
 
             compnum = core_index + i + 2
-            crossings.extend(chelpers.find_crossings(
+            crossings.extend(nhelpers.find_crossings(
                 v0, dv, core_points[i+2:], core_segment_lengths[i+2:],
                 vnum, compnum,
                 max_segment_length,
@@ -654,21 +654,21 @@ class CellKnot:
             vnum = core_index + i
 
             compnum = 0
-            crossings.extend(chelpers.find_crossings(
+            crossings.extend(nhelpers.find_crossings(
                 v0, dv, first_block, first_block_lengths,
                 vnum, compnum,
                 max_segment_length,
                 jump_mode))
 
             compnum = core_index + core_num
-            crossings.extend(chelpers.find_crossings(
+            crossings.extend(nhelpers.find_crossings(
                 v0, dv, second_block, second_block_lengths,
                 vnum, compnum,
                 max_segment_length,
                 jump_mode))
 
             compnum = core_index + i + 2
-            crossings.extend(chelpers.find_crossings(
+            crossings.extend(nhelpers.find_crossings(
                 v0, dv, core_points[i+2:], core_segment_lengths[i+2:],
                 vnum, compnum,
                 max_segment_length,
@@ -793,7 +793,7 @@ class CellKnot:
                 vnum = len(points) + i
                 compnum = 0
 
-            inter_crossings.extend(chelpers.find_crossings(
+            inter_crossings.extend(nhelpers.find_crossings(
                 v0, dv, s, segment_lengths,
                 vnum, compnum,
                 max_segment_length,

@@ -13,9 +13,9 @@ Pyknotid
     :target: https://pypi.org/project/pyknotid/
     :alt: PyPI version
 
-Python (and optional Cython) modules for detecting and measuring
-knotting and linking. pyknotid can analyse space-curves, i.e. sets of
-points in three-dimensions, or can parse standard topological
+Python modules for detecting and measuring knotting and linking.
+pyknotid can analyse space-curves, i.e. sets of points in
+three-dimensions, or can parse standard topological
 representations of knot diagrams.
 
 pyknotid is released under the `MIT license <LICENSE.txt>`__.
@@ -51,6 +51,14 @@ Installation
 pyknotid requires Python 3.8 or later. Install it with::
 
   $ pip install pyknotid
+
+**For best performance**, install with Numba support::
+
+  $ pip install pyknotid[performance]
+
+This enables JIT-compiled high-performance numerical computations
+(2-3x faster). Without Numba, pyknotid will work but use slower
+pure Python fallbacks.
 
 To try the latest development version, clone this repository and run::
 

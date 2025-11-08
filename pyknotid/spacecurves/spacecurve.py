@@ -27,12 +27,11 @@ from pyknotid.logger import get_logger
 logger = get_logger(__name__)
 
 try:
-    from pyknotid.spacecurves import chelpers
+    from pyknotid.spacecurves import nhelpers
 except ImportError:
-    logger.info('Cython extension not available, using Python implementation. '
+    logger.info('Numba extension not available, using Python implementation. '
                 'Performance may be reduced but results will be identical.')
-    from pyknotid.spacecurves import helpers as chelpers
-from pyknotid.spacecurves import helpers as helpers
+    from pyknotid.spacecurves import helpers as nhelpers
 from pyknotid.spacecurves.geometry import arclength, radius_of_gyration
 from pyknotid.spacecurves.smooth import smooth
 
@@ -501,10 +500,7 @@ class SpaceCurve:
         if not recalculate and self._crossings is not None:
             return self._crossings
 
-        if try_cython:
-            helpers_module = chelpers
-        else:
-            helpers_module = helpers
+        helpers_module = nhelpers
 
         self._vprint('Finding crossings')
 

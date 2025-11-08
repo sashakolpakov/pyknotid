@@ -19,10 +19,9 @@ API documentation
 import numpy as np
 
 try:
-    from pyknotid.spacecurves import chelpers
+    from pyknotid.spacecurves import nhelpers
 except ImportError:
-    from pyknotid.spacecurves import helpers as chelpers
-from pyknotid.spacecurves import helpers
+    from pyknotid.spacecurves import helpers as nhelpers
 from pyknotid.spacecurves.knot import Knot
 from pyknotid.visualise import plot_projection
 from pyknotid.utils import (vprint, get_rotation_matrix,
@@ -154,10 +153,7 @@ class Link:
             self._crossings[0] == only_with_other_lines):
             return self._crossings[1]
 
-        if try_cython:
-            helpers_module = chelpers
-        else:
-            helpers_module = helpers
+        helpers_module = nhelpers
 
         lines = self.lines
 

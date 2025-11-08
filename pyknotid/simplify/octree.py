@@ -7,8 +7,8 @@ Module for simplifying lines with an octree decomposition.
 
 import numpy as np
 try:
-    from coctree import (angle_exceeds as cangle_exceeds,
-                         line_to_segments as cline_to_segments)
+    from pyknotid.simplify.noctree import (angle_exceeds as cangle_exceeds,
+                                           line_to_segments as cline_to_segments)
 except ImportError:
     cangle_exceeds = None
     cline_to_segments = None

@@ -40,12 +40,16 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+performance = [
+    "numba>=0.55",
+]
 dev = [
     "pytest>=6.0",
     "pytest-cov>=2.12",
     "black>=21.0",
     "flake8>=3.9",
     "mypy>=0.900",
+    "numba>=0.55",
 ]
 docs = [
     "sphinx>=4.0",
