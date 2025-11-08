@@ -3,3 +3,26 @@
 *.c
 *.db
 dev/
+
+# Build and distribution
+*.egg-info/
+dist/
+build/
+__pycache__/
+
+# Documentation
+doc/_build/
+doc/_static/
+
+# Testing
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
