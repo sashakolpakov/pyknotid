@@ -1,58 +1,59 @@
 """
 Numba implementation of space curve helper functions (replacing chelpers.pyx).
+
+This module requires numba for performance. If numba is not available,
+import will fail and the pure Python 'helpers' module will be used instead.
 """
 import numpy as np
 
 try:
     import numba
     from numba.typed import List
-    NUMBA_AVAILABLE = True
 except ImportError:
-    NUMBA_AVAILABLE = False
+    raise ImportError("numba is required for nhelpers. Install with: pip install numba")
 
 
-if NUMBA_AVAILABLE:
-    @numba.jit(nopython=True)
-    def cross_product(px, py, qx, qy):
-        """Simple 2D cross product."""
-        return px * qy - py * qx
+@numba.jit(nopython=True)
+def cross_product(px, py, qx, qy):
+    """Simple 2D cross product."""
+    return px * qy - py * qx
 
-    @numba.jit(nopython=True)
-    def sign(a):
-        """Return sign of a number."""
-        if a > 0.:
-            return 1.
-        elif a < 0.:
-            return -1.
-        return 0.
+@numba.jit(nopython=True)
+def sign(a):
+    """Return sign of a number."""
+    if a > 0.:
+        return 1.
+    elif a < 0.:
+        return -1.
+    return 0.
 
-    @numba.jit(nopython=True)
-    def mag_difference(a, b):
-        """The magnitude of the vector joining a and b."""
-        return np.sqrt((b[0] - a[0])**2 + (b[1] - a[1])**2)
+@numba.jit(nopython=True)
+def mag_difference(a, b):
+    """The magnitude of the vector joining a and b."""
+    return np.sqrt((b[0] - a[0])**2 + (b[1] - a[1])**2)
 
-    @numba.jit(nopython=True)
-    def _do_vectors_intersect(px, py, dpx, dpy, qx, qy, dqx, dqy):
-        """
-        Takes four vectors p, dp and q, dq, then tests whether they cross in
-        the dp/dq region. Returns this boolean, and the (fractional) point where
-        the crossing actually occurs.
-        """
-        cross_prod = cross_product(dpx, dpy, dqx, dqy)
-        if abs(cross_prod) < 0.000001:
-            return (0, 0., 0.)
+@numba.jit(nopython=True)
+def _do_vectors_intersect(px, py, dpx, dpy, qx, qy, dqx, dqy):
+    """
+    Takes four vectors p, dp and q, dq, then tests whether they cross in
+    the dp/dq region. Returns this boolean, and the (fractional) point where
+    the crossing actually occurs.
+    """
+    cross_prod = cross_product(dpx, dpy, dqx, dqy)
+    if abs(cross_prod) < 0.000001:
+        return (0, 0., 0.)
 
-        t = cross_product(qx - px, qy - py, dqx, dqy) / cross_prod
-        if t < 1.0 and t > 0.0:
-            u = cross_product(qx - px, qy - py, dpx, dpy) / cross_prod
-            if u < 1.0 and u > 0.0:
-                return (1, t, u)
-        return (0, -1., -1.)
+    t = cross_product(qx - px, qy - py, dqx, dqy) / cross_prod
+    if t < 1.0 and t > 0.0:
+        u = cross_product(qx - px, qy - py, dpx, dpy) / cross_prod
+        if u < 1.0 and u > 0.0:
+            return (1, t, u)
+    return (0, -1., -1.)
 
-    @numba.jit(nopython=True)
-    def _find_crossings_inner(v, dv, points, segment_lengths,
-                             current_index, comparison_index,
-                             max_segment_length, jump_mode):
+@numba.jit(nopython=True)
+def _find_crossings_inner(v, dv, points, segment_lengths,
+                         current_index, comparison_index,
+                         max_segment_length, jump_mode):
         """
         Inner function for finding crossings (JIT compiled).
 
@@ -175,9 +176,6 @@ def find_crossings(v, dv, points, segment_lengths, current_index,
     list
         List of crossing data, each entry is [index1, index2, sign, direction]
     """
-    if not NUMBA_AVAILABLE:
-        raise ImportError("numba is required for this function. Install with: pip install numba")
-
     # Get crossings as array
     crossings_array = _find_crossings_inner(
         v, dv, points, segment_lengths,
