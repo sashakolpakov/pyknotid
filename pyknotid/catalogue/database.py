@@ -21,7 +21,10 @@ API documentation
 
 '''
 
-from peewee import *
+from peewee import (
+    Model, SqliteDatabase, CharField, IntegerField,
+    TextField, BooleanField
+)
 import json
 import os
 from os.path import realpath, dirname, exists, join

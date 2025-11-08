@@ -5,7 +5,7 @@ Random polygons from the quaternionic viewpoint [1]
 [1] These polygons are generated following the algorithms of (Cantarella, Deguchi and Shonkwiler. "Probability Theory of Random Polygons from the Quaternionic Viewpoint". Communications on Pure and Applied Mathematics 67 (2014).)
 '''
 
-import numpy as n
+import numpy as np
 
 def get_closed_loop(length, seed=0, normalisation=7.5):
     '''
@@ -52,22 +52,22 @@ def get_open_by_distance_line(length, distance=0., seed=0, normalisation=7.5):
 
 def open_line_segments(num, seed=0):
     if seed == 0:
-        seed = n.random.randint(1000000)
+        seed = np.random.randint(1000000)
         
-    generator = n.random.RandomState()
+    generator = np.random.RandomState()
     generator.seed(seed)
     
     # wjs is a vector uniformly distributed on the (4*num)-sphere
     # Such a vector is given by (4*num) normally distributed numbers in a
     # normalised vector
     wjs = generator.normal(size=4 * num)
-    normfac = 1./n.sqrt(n.sum(wjs*wjs))
+    normfac = 1./np.sqrt(np.sum(wjs*wjs))
     wjs *= normfac
     
     # Redistribute wjs as sets of 4-points
     points = wjs.reshape((num, 4))
     
-    edges = n.zeros((num, 3))
+    edges = np.zeros((num, 3))
     
     # Create each edge as a transformation of the 4-points
     edges[:, 0] = (points[:, 0]**2 + points[:, 1]**2 - points[:, 2]**2 -
@@ -81,21 +81,21 @@ def open_line_segments(num, seed=0):
 
 def closed_loop_segments(num, seed=0):
     if seed == 0:
-        seed = n.random.randint(1000000)
+        seed = np.random.randint(1000000)
         
-    generator = n.random.RandomState()
+    generator = np.random.RandomState()
     generator.seed(seed)
     
     uu = generator.normal(size=num) + 1j*generator.normal(size=num)
     vv = generator.normal(size=num) + 1j*generator.normal(size=num)
     
-    u = uu / n.sqrt(uu.dot(uu.conj()))
+    u = uu / np.sqrt(uu.dot(uu.conj()))
     uconj = u.conj()
     vc = vv - u.conj().dot(vv)*u
-    v = vc / n.sqrt(vc.dot(vc.conj()))
+    v = vc / np.sqrt(vc.dot(vc.conj()))
     vconj = v.conj()
 
-    edges = n.zeros((num, 3),dtype=float)
+    edges = np.zeros((num, 3),dtype=float)
     
     edges[:, 0] = (u * uconj - v * vconj).real
     edges[:, 1] = (-1j * (u * vconj - v * uconj)).real
@@ -117,43 +117,43 @@ def open_by_distance_segments(num, distance=0., seed=0):
         The random seed.
     '''
     if seed == 0:
-        seed = n.random.randint(1000000)
+        seed = np.random.randint(1000000)
 
     if distance > 1. or distance < 0.:
         raise ValueError('distance must be between 0 and 1')
 
     distance *= 2.
 
-    generator = n.random.RandomState()
+    generator = np.random.RandomState()
     generator.seed(seed)
     
     uu = generator.normal(size=num) + 1j*generator.normal(size=num)
     vv = generator.normal(size=num) + 1j*generator.normal(size=num)
     
-    u = uu / n.sqrt(uu.dot(uu.conj()))
+    u = uu / np.sqrt(uu.dot(uu.conj()))
     uconj = u.conj()
     vc = vv - u.conj().dot(vv)*u
-    v = vc / n.sqrt(vc.dot(vc.conj()))
+    v = vc / np.sqrt(vc.dot(vc.conj()))
     vconj = v.conj()
 
-    # modu = n.sqrt(n.sum(u**2 + uconj**2))
+    # modu = np.sqrt(np.sum(u**2 + uconj**2))
     # print 'modu is', modu
     # u /= modu
     # uconj /= modu
-    u *= n.sqrt(1 + distance / 2.)
-    uconj *= n.sqrt(1 + distance / 2.)
+    u *= np.sqrt(1 + distance / 2.)
+    uconj *= np.sqrt(1 + distance / 2.)
 
-    # modv = n.sqrt(n.sum(v**2 + vconj**2))
+    # modv = np.sqrt(np.sum(v**2 + vconj**2))
     # print 'modv is', modv
     # v /= modv
     # vconj /= modv
-    v *= n.sqrt(1 - distance / 2.)
-    vconj *= n.sqrt(1 - distance / 2.)
+    v *= np.sqrt(1 - distance / 2.)
+    vconj *= np.sqrt(1 - distance / 2.)
 
-    # print 'mod u', n.sqrt(n.sum(u**2 + uconj**2)), n.sqrt(1 + distance/2.)
-    # print 'mod v', n.sqrt(n.sum(v**2 + vconj**2)), n.sqrt(1 - distance/2.)
+    # print 'mod u', np.sqrt(np.sum(u**2 + uconj**2)), np.sqrt(1 + distance/2.)
+    # print 'mod v', np.sqrt(np.sum(v**2 + vconj**2)), np.sqrt(1 - distance/2.)
 
-    edges = n.zeros((num, 3),dtype=float)
+    edges = np.zeros((num, 3),dtype=float)
     
     edges[:, 0] = (u * uconj - v * vconj).real
     edges[:, 1] = (-1j * (u * vconj - v * uconj)).real
@@ -163,7 +163,7 @@ def open_by_distance_segments(num, distance=0., seed=0):
 
 def edges_to_path(edges):
     num = len(edges)
-    path = n.zeros((num + 1, 3))
+    path = np.zeros((num + 1, 3))
     for i in range(num):
         path[i+1] = path[i] + edges[i]
     return path

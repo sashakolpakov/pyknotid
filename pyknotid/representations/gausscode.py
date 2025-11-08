@@ -11,13 +11,12 @@ API documentation
 ~~~~~~~~~~~~~~~~~
 '''
 
-from __future__ import print_function
-import numpy as n
+import numpy as np
 import re
 import sys
 
 
-class GaussCode(object):
+class GaussCode:
     '''Class for containing and manipulating Gauss codes.
 
     By default you must pass an extended Gauss code that includes the
@@ -57,7 +56,7 @@ class GaussCode(object):
             raise NotImplementedError(
                 'planar diagram -> gauss code not implemented')
         else:
-            if isinstance(crossings, n.ndarray):
+            if isinstance(crossings, np.ndarray):
                 crossings = [crossings]
             self._init_from_raw_crossings_array(crossings)
 
@@ -108,7 +107,7 @@ class GaussCode(object):
 
     def contains_virtual(self):
         for row in self._gauss_code:
-            if n.any(row[:, 0] < 0):
+            if np.any(row[:, 0] < 0):
                 return True
         return False
 
@@ -120,8 +119,8 @@ class GaussCode(object):
         new_rows = []
 
         for row in gc._gauss_code:
-            keep = n.ones(len(row), dtype=n.bool)
-            virtual_cs = n.argwhere(row[:, 0] < 0)
+            keep = np.ones(len(row), dtype=np.bool)
+            virtual_cs = np.argwhere(row[:, 0] < 0)
             indices = virtual_cs.flatten()
             for index in indices:
                 keep[index] = False
@@ -161,7 +160,7 @@ class GaussCode(object):
                 else:
                     index = assigned_indices.pop(ident)
                 line_gauss_code.append([index, over, clockwise])
-            gauss_code.append(n.array(line_gauss_code))
+            gauss_code.append(np.array(line_gauss_code))
 
         self._gauss_code = gauss_code
 
@@ -183,7 +182,7 @@ class GaussCode(object):
                 line_gauss_code.append([int(line_crossing[:-2]),
                                         over_under[line_crossing[-2]],
                                         signs[line_crossing[-1]]])
-            gauss_code.append(n.array(line_gauss_code))
+            gauss_code.append(np.array(line_gauss_code))
 
         self._gauss_code = gauss_code
 
@@ -236,7 +235,7 @@ class GaussCode(object):
 
         # These lists keep track of which crossings have been removed, to
         # avoid modifying the arrays every time an RM is performed
-        keeps = [n.ones(l.shape[0], dtype=bool) for l in code]
+        keeps = [np.ones(l.shape[0], dtype=bool) for l in code]
 
         # First do RM1 and RM2
         for line_index, line in enumerate(code):
@@ -273,7 +272,7 @@ class GaussCode(object):
             # Do extended RM1 as a separate step
             print
             code = [(line[keep] if len(line) > 0 else line) for (line, keep) in zip(code, keeps)]
-            keeps = [n.ones(l.shape[0], dtype=bool) for l in code]
+            keeps = [np.ones(l.shape[0], dtype=bool) for l in code]
 
             crossing_indices = {}
             for line_index, line in enumerate(code):
@@ -302,7 +301,7 @@ class GaussCode(object):
                 if len(in_between) > 0:
                     in_between = in_between[in_between_keeps]
 
-                if n.abs(n.sum(in_between[:, 1])) == len(in_between):
+                if np.abs(np.sum(in_between[:, 1])) == len(in_between):
                     # all crossings over or under
                     keeps[line_index][first_index] = False
                     keeps[line_index][second_index] = False
@@ -318,14 +317,14 @@ class GaussCode(object):
                 # Second, wrap around the list if a big rm1 wasn't performed
                 if number not in crossing_numbers:
                     continue
-                in_between = n.vstack((code[line_index][second_index+1:],
+                in_between = np.vstack((code[line_index][second_index+1:],
                                        code[line_index][:first_index]))
-                in_between_keeps = n.hstack((keeps[line_index][second_index+1:],
+                in_between_keeps = np.hstack((keeps[line_index][second_index+1:],
                                              keeps[line_index][:first_index]))
                 if len(in_between) > 0:
                     in_between = in_between[in_between_keeps]
 
-                if n.abs(n.sum(in_between[:, 1])) == len(in_between):
+                if np.abs(np.sum(in_between[:, 1])) == len(in_between):
                     keeps[line_index][first_index] = False
                     keeps[line_index][second_index] = False
                     for entry in in_between:
@@ -366,19 +365,19 @@ class GaussCode(object):
 
         if self.verbose:
             print('Simplifying: initially {} crossings'.format(
-                n.sum([len(line) for line in self._gauss_code])))
+                np.sum([len(line) for line in self._gauss_code])))
 
         number_of_runs = 0
         while True:
             original_gc = self._gauss_code
-            original_len = n.sum([len(line) for line in original_gc])
+            original_len = np.sum([len(line) for line in original_gc])
             self._do_reidemeister_moves(one, two)
             new_gc = self._gauss_code
-            new_len = n.sum([len(line) for line in new_gc])
+            new_len = np.sum([len(line) for line in new_gc])
             number_of_runs += 1
             if self.verbose:
                 sys.stdout.write('\r-> {} crossings after {} runs'.format(
-                    n.sum([len(line) for line in new_gc]), number_of_runs))
+                    np.sum([len(line) for line in new_gc]), number_of_runs))
                 sys.stdout.flush()
             if new_len == original_len:
                 break

@@ -2,7 +2,7 @@
 Cython functions for space curve analysis.
 '''
 
-import numpy as n
+import numpy as np
 cimport numpy as n
 
 cimport cython

@@ -4,7 +4,7 @@ Utility functions
 '''
 
 import sys
-import numpy as n
+import numpy as np
 
 def vprint(string='', newline=True, condition=True):
     '''
@@ -38,7 +38,7 @@ def mag(v):
     v : ndarray
         A vector of any dimension.
     '''
-    return n.sqrt(v.dot(v))
+    return np.sqrt(v.dot(v))
 
 def get_rotation_matrix(angles):
     '''
@@ -53,9 +53,9 @@ def get_rotation_matrix(angles):
     '''
     
     phi, theta, psi = angles
-    sin = n.sin
-    cos = n.cos
-    rotmat = n.array([
+    sin = np.sin
+    cos = np.cos
+    rotmat = np.array([
             [cos(theta)*cos(psi),
              -1*cos(phi)*sin(psi) + sin(phi)*sin(theta)*cos(psi),
              sin(phi)*sin(psi) + cos(phi)*sin(theta)*cos(psi)],

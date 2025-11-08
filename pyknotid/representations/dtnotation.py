@@ -18,7 +18,7 @@ if sys.version_info.major == 2:
 else:
     string_types = str
 
-class DTNotation(object):
+class DTNotation:
     '''
     Class for containing and manipulation DT notation.
 

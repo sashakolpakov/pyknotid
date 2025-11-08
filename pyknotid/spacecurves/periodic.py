@@ -1,6 +1,4 @@
-from __future__ import print_function, division
-
-import numpy as n
+import numpy as np
 
 from pyknotid.utils import ensure_shape_tuple, vprint
 from periodiccell import _cram_into_cell, _cut_line_at_jumps, _interpret_line
@@ -15,7 +13,7 @@ except ImportError:
 ROTATION_MAGIC_NUMBERS = (0.02, 1.1)
 ROTATION_MAGIC_NUMBERS = (0.53, 1.0)
 
-class PeriodicKnot(object):
+class PeriodicKnot:
     def __init__(self, points, period_vector=None, autorotate=True, repeats=1):
 
         if repeats < 1:
@@ -25,9 +23,9 @@ class PeriodicKnot(object):
             new_points = [points]
             for i in range(1, repeats):
                 new_points.append(k.translated_points(i))
-            points = n.vstack(new_points)
+            points = np.vstack(new_points)
         
-        self.points = n.array(points).copy()
+        self.points = np.array(points).copy()
         self._period_vector = period_vector
 
         from pyknotid.spacecurves.rotation import rotate_to_top
@@ -56,7 +54,7 @@ class PeriodicKnot(object):
         shape = ensure_shape_tuple(shape)
 
         points = line.copy()
-        points += n.array([0.00123, 0.00231, 0.00321])
+        points += np.array([0.00123, 0.00231, 0.00321])
 
         dx, dy, dz = shape
         for i in range(1, len(points)):
@@ -87,7 +85,7 @@ class PeriodicKnot(object):
     @property
     def period_vector(self):
         if self._period_vector is not None:
-            return n.array(self._period_vector)
+            return np.array(self._period_vector)
         return self.points[-1] - self.points[0]
 
     def rotate_period_vector_to_x(self):
@@ -95,7 +93,7 @@ class PeriodicKnot(object):
         from pyknotid.spacecurves.rotation import (
             rotate_vector_to_top, rotate_axis_angle)
         self._apply_matrix(rotate_vector_to_top(v))
-        self._apply_matrix(rotate_axis_angle((0, 1., 0), n.pi/2.))
+        self._apply_matrix(rotate_axis_angle((0, 1., 0), np.pi/2.))
 
     def get_periodic_segments(self):
         '''Returns a list of line segments making up the curve, cut at the
@@ -110,12 +108,12 @@ class PeriodicKnot(object):
         for i in range(len(self.points) - 1):
             v1 = self.points[i]
             v2 = self.points[i+1]
-            interpolated_points = n.zeros((factor, 3))
-            interpolated_points[:, 0] = n.linspace(v1[0], v2[0], factor + 1)[:-1]
-            interpolated_points[:, 1] = n.linspace(v1[1], v2[1], factor + 1)[:-1]
-            interpolated_points[:, 2] = n.linspace(v1[2], v2[2], factor + 1)[:-1]
+            interpolated_points = np.zeros((factor, 3))
+            interpolated_points[:, 0] = np.linspace(v1[0], v2[0], factor + 1)[:-1]
+            interpolated_points[:, 1] = np.linspace(v1[1], v2[1], factor + 1)[:-1]
+            interpolated_points[:, 2] = np.linspace(v1[2], v2[2], factor + 1)[:-1]
             new_points.append(interpolated_points)
-        self.points = n.vstack(new_points)
+        self.points = np.vstack(new_points)
 
     def nearest_non_overlapping_translation(self):
         '''Returns the minimal number of translations that can be used in
@@ -124,14 +122,14 @@ class PeriodicKnot(object):
         points = self.points[:, :2]
         end_end_distance = mag(points[-1] - self.translated_points(1)[-1, :2])
 
-        max_dist_from_start = n.max(n.apply_along_axis(mag, 1, points - points[0]))
-        max_dist_from_end = n.max(n.apply_along_axis(mag, 1, points - points[-1]))
-        largest_possible_distance = n.max([max_dist_from_start, max_dist_from_end])
+        max_dist_from_start = np.max(np.apply_along_axis(mag, 1, points - points[0]))
+        max_dist_from_end = np.max(np.apply_along_axis(mag, 1, points - points[-1]))
+        largest_possible_distance = np.max([max_dist_from_start, max_dist_from_end])
 
         # print('largest possible distance', largest_possible_distance)
         # print('end_end', end_end_distance)
 
-        return int(n.ceil(largest_possible_distance / end_end_distance) + 4)
+        return int(np.ceil(largest_possible_distance / end_end_distance) + 4)
 
     def roll(self, num):
         pv = self.period_vector
@@ -139,9 +137,9 @@ class PeriodicKnot(object):
 
         for _ in range(abs(num)):
             if num > 0:
-                ps = n.vstack((ps[1:], [ps[1] + pv]))
+                ps = np.vstack((ps[1:], [ps[1] + pv]))
             elif num < 0:
-                ps = n.vstack(([ps[-2] - pv], ps[:-1]))
+                ps = np.vstack(([ps[-2] - pv], ps[:-1]))
         self.points = ps
 
     def plot_with_translation(self, with_translation=0, **kwargs):
@@ -189,8 +187,8 @@ class PeriodicKnot(object):
         points = self.points
         translated_points = self.translated_points(num_translations)
         if mat is not None:
-            points = n.apply_along_axis(mat.dot, 1, points)
-            translated_points = n.apply_along_axis(
+            points = np.apply_along_axis(mat.dot, 1, points)
+            translated_points = np.apply_along_axis(
                 mat.dot, 1, translated_points)
         ax.plot(points[:, 0], points[:, 1], color='purple', linewidth=1.5)
         ax.plot(translated_points[:, 0],
@@ -205,7 +203,7 @@ class PeriodicKnot(object):
         for i in range(-num_translations, num_translations):
             new_points.append(self.translated_points(i)[:-1])
         new_points.append(self.translated_points(num_translations))
-        points = n.vstack(new_points)
+        points = np.vstack(new_points)
         return points
 
     def rotate(self, angles=None):
@@ -221,7 +219,7 @@ class PeriodicKnot(object):
         '''
         from pyknotid.utils import get_rotation_matrix
         if angles is None:
-            angles = n.random.random(3) * 2*n.pi
+            angles = np.random.random(3) * 2*np.pi
         phi, theta, psi = angles
         rot_mat = get_rotation_matrix(angles)
         self._apply_matrix(rot_mat)
@@ -233,7 +231,7 @@ class PeriodicKnot(object):
         '''
         Applies the given matrix to all of self.points.
         '''
-        self.points = n.apply_along_axis(mat.dot, 1, self.points)
+        self.points = np.apply_along_axis(mat.dot, 1, self.points)
 
     def plot_projection(self, num_translations=None):
         if num_translations is None:
@@ -253,7 +251,7 @@ class PeriodicKnot(object):
         # prev_points = self.translated_points(-1)
         # ax.plot(prev_points[:, 0], prev_points[:, 1], color='orange', linewidth=1.5)
         fig, ax = plot_projection(points,
-                                  crossings=n.array(plot_crossings),
+                                  crossings=np.array(plot_crossings),
                                   mark_start=True,
                                   fig_ax = (fig, ax),
                                   show=True)
@@ -274,9 +272,9 @@ class PeriodicKnot(object):
         core_num = len(self.points) - 1
         core_index = num_translations * core_num 
 
-        segment_lengths = n.roll(points[:, :2], -1, axis=0) - points[:, :2]
-        segment_lengths = n.sqrt(n.sum(segment_lengths**2, axis=1))
-        max_segment_length = n.max(segment_lengths[:-1])
+        segment_lengths = np.roll(points[:, :2], -1, axis=0) - points[:, :2]
+        segment_lengths = np.sqrt(np.sum(segment_lengths**2, axis=1))
+        max_segment_length = np.max(segment_lengths[:-1])
         jump_mode = 2
 
         core_points = points[(core_index):(core_index + core_num + 1)]
@@ -317,7 +315,7 @@ class PeriodicKnot(object):
                 jump_mode))
 
         crossings.sort(key=lambda j: j[0])
-        return n.array(crossings), core_num, core_index
+        return np.array(crossings), core_num, core_index
 
     def alternative_raw_crossings(self, num_translations=None):
         if num_translations is None:
@@ -429,7 +427,7 @@ class PeriodicKnot(object):
             k._apply_matrix(rotate_to_top(*angs))
             v2s.append([angs[0], angs[1], k.vassiliev_degree_2()])
 
-        return n.array(v2s)
+        return np.array(v2s)
 
     def vassiliev_degree_3(self, num_translations=None):
         if num_translations is None:
@@ -477,7 +475,7 @@ class PeriodicKnot(object):
             k._apply_matrix(rotate_to_top(*angs))
             v3s.append([angs[0], angs[1], k.vassiliev_degree_3()])
 
-        return n.array(v3s)
+        return np.array(v3s)
 
     def vassiliev_degree_2_integral(self, num_translations=3):
         ps = self.points_with_translations(num_translations)
@@ -510,13 +508,13 @@ class PeriodicKnot(object):
 
 
 def mag(v):
-    return n.sqrt(v.dot(v))
+    return np.sqrt(v.dot(v))
 
-prefactor = 1 / (4*n.pi)
+prefactor = 1 / (4*np.pi)
 def writhe_contribution(v0, dv0, v1, dv1):
     diff = v1 - v0
     return (mag(dv0) * mag(dv1) * prefactor *
-            n.cross(dv0, dv1).dot(diff) /
+            np.cross(dv0, dv1).dot(diff) /
             (mag(diff)**3))
     
 
@@ -524,10 +522,10 @@ def get_equivalent_crossing_indices(crossings, span):
     equivalencies = defaultdict(set)
     for i, row1 in enumerate(crossings):
         for j, row2 in enumerate(crossings[i+1:], i+1):
-            proximity = n.abs(row1[0] - row2[0]) % span
+            proximity = np.abs(row1[0] - row2[0]) % span
             if proximity < 0.00000001 or proximity > (span - 0.00000001):
-            # if ((n.abs((row1[0] - row2[0])) % span < 0.000001) or
-            #     (span - (n.abs((row1[0] - row2[0])) % span) > (span - 0.000001))):
+            # if ((np.abs((row1[0] - row2[0])) % span < 0.000001) or
+            #     (span - (np.abs((row1[0] - row2[0])) % span) > (span - 0.000001))):
                 equivalencies[i].add(j)
                 for val in equivalencies[i]:
                     equivalencies[val].add(j)
@@ -550,16 +548,16 @@ def get_equivalent_crossing_numbers(indices, gauss_code):
     return equivalent_crossing_numbers
 
 
-class CellKnot(object):
+class CellKnot:
     def __init__(self, points, shape, period=None):
         # points will automatically be folded
         points = _interpret_line(points)
 
-        self.shape = n.array(ensure_shape_tuple(shape))
+        self.shape = np.array(ensure_shape_tuple(shape))
         self.points = _cut_line_at_jumps(points, self.shape)
 
         if period is None:
-            period = (n.round((self.unfolded_points()[-1] - self.points[0][0]) /
+            period = (np.round((self.unfolded_points()[-1] - self.points[0][0]) /
                               self.shape)) 
         self.period = period
     
@@ -567,7 +565,7 @@ class CellKnot(object):
     def folding(cls, points, shape, origin=(0, 0, 0.), **kwargs):
         '''Return an instance of PeriodicKnot resulting from folding the
         points within the given shape.'''
-        origin = n.array(origin)
+        origin = np.array(origin)
         shape = ensure_shape_tuple(shape)
 
         points -= origin
@@ -585,28 +583,28 @@ class CellKnot(object):
 
     def unfolded_points(self):
         points = [self.points[0]]
-        current_shift = n.array([0., 0., 0.])
+        current_shift = np.array([0., 0., 0.])
         for i, segment in enumerate(self.points[1:], 1):
             segment = segment - current_shift * self.shape
             diff = segment[0] - points[-1][-1]
-            diff = n.round(diff / self.shape)
+            diff = np.round(diff / self.shape)
             current_shift += diff 
             points.append(segment - diff * self.shape)
-        return n.vstack(points)
+        return np.vstack(points)
 
     def unfolded_points_with_translations(self, num=3, mat=None):
         points = []
         unfolded = self.unfolded_points()
         for i in range(-num, num+1):
             points.append(unfolded + self.period_vector() * i)
-        points = n.vstack(points)
+        points = np.vstack(points)
         if mat is not None:
-             points = n.apply_along_axis(mat.dot, 1, points)
-        return n.vstack(points)
+             points = np.apply_along_axis(mat.dot, 1, points)
+        return np.vstack(points)
 
 
     def translate(self, distance):
-        distance = n.array(ensure_shape_tuple(distance))
+        distance = np.array(ensure_shape_tuple(distance))
         points = self.unfolded_points() + distance
         points = _fold(points, self.shape)
         self.points = _cut_line_at_jumps(points, self.shape)
@@ -616,11 +614,11 @@ class CellKnot(object):
         if len(self.points) < 2:
             return
         closing_vector = self.points[-1][-1] - self.points[0][0]
-        if n.all(closing_vector < 0.9*self.shape):
+        if np.all(closing_vector < 0.9*self.shape):
             first = self.points[0]
             self.points = self.points[1:]
             last = self.points.pop()
-            self.points.append(n.vstack((last, first)))
+            self.points.append(np.vstack((last, first)))
             
     def period_vector(self):
         return self.period * self.shape
@@ -634,9 +632,9 @@ class CellKnot(object):
         core_num = len(self.unfolded_points())
         core_index = num_translations * core_num + shift
 
-        segment_lengths = n.roll(points[:, :2], -1, axis=0) - points[:, :2]
-        segment_lengths = n.sqrt(n.sum(segment_lengths**2, axis=1))
-        max_segment_length = n.max(segment_lengths[:-1])
+        segment_lengths = np.roll(points[:, :2], -1, axis=0) - points[:, :2]
+        segment_lengths = np.sqrt(np.sum(segment_lengths**2, axis=1))
+        max_segment_length = np.max(segment_lengths[:-1])
         jump_mode = 2
 
         core_points = points[(core_index):(core_index + core_num + 1)]
@@ -677,7 +675,7 @@ class CellKnot(object):
                 jump_mode))
 
         crossings.sort(key=lambda j: j[0])
-        return n.array(crossings), core_num, core_index
+        return np.array(crossings), core_num, core_index
 
     def plot_projection_by_unfolding(self, num_translations=0, shift=0):
         from pyknotid.visualise import plot_line, plot_projection
@@ -693,7 +691,7 @@ class CellKnot(object):
             dr = points[(xint+1) % len(points)] - r
             plot_crossings.append(r + (x-xint) * dr)
         fig, ax = plot_projection(points,
-                                  crossings=n.array(plot_crossings),
+                                  crossings=np.array(plot_crossings),
                                   mark_start=True,
                                   show=True)
         core_points = points[num_translations * len(self.unfolded_points()) + shift:
@@ -712,8 +710,8 @@ class CellKnot(object):
         length = len(self.points)
         for i, row1 in enumerate(crossings):
             for j, row2 in enumerate(crossings[i+1:], i+1):
-                # print(i, j, n.abs((row1[0] - row2[0]) % 40))
-                if n.abs((row1[0] - row2[0]) % len(self.unfolded_points())) < 0.000001:
+                # print(i, j, np.abs((row1[0] - row2[0]) % 40))
+                if np.abs((row1[0] - row2[0]) % len(self.unfolded_points())) < 0.000001:
                     equivalent_crossing_indices[i].add(j)
                     for val in equivalent_crossing_indices[i]:
                         equivalent_crossing_indices[val].add(j)
@@ -745,10 +743,10 @@ class CellKnot(object):
             crossing_number = code[i][0]
             if crossing_number not in translation_numbers:
                 position1 = row[0]
-                translation1 = int(n.floor((position1 - centre_start) / (len(self.unfolded_points() + 0))))
+                translation1 = int(np.floor((position1 - centre_start) / (len(self.unfolded_points() + 0))))
 
                 position2 = row[1]
-                translation2 = int(n.floor((position2 - centre_start) / (len(self.unfolded_points() + 0))))
+                translation2 = int(np.floor((position2 - centre_start) / (len(self.unfolded_points() + 0))))
 
                 translation_numbers[crossing_number] = (translation1, translation2)
                 
@@ -758,17 +756,17 @@ class CellKnot(object):
     def raw_crossings(self, num_translations=0, mat=None, shift=0):
         from pyknotid.spacecurves import OpenKnot
         points = self.unfolded_points()
-        points = n.vstack((points[shift:], points[:(shift+1)] + self.period_vector()))
+        points = np.vstack((points[shift:], points[:(shift+1)] + self.period_vector()))
         translated_points = points + num_translations * self.period_vector()
 
         if mat is not None:
-            points = n.apply_along_axis(mat.dot, 1, points)
-            translated_points = n.apply_along_axis(mat.dot, 1, translated_points)
+            points = np.apply_along_axis(mat.dot, 1, points)
+            translated_points = np.apply_along_axis(mat.dot, 1, translated_points)
 
         # 1) get crossings of self with self
         self_crossings = OpenKnot(points, verbose=False).raw_crossings().tolist()
         if num_translations == 0:
-            return n.array(self_crossings)
+            return np.array(self_crossings)
         
         # # 2) get crossings of other with other
         # other_crossings = OpenKnot(translated_points).raw_crossings().tolist()
@@ -777,11 +775,11 @@ class CellKnot(object):
 
         # 3) get crossings of self with other
         inter_crossings = []
-        segment_lengths = (n.roll(translated_points[:, :2], -1, axis=0) -
+        segment_lengths = (np.roll(translated_points[:, :2], -1, axis=0) -
                            translated_points[:, :2])
-        segment_lengths = n.sqrt(n.sum(segment_lengths * segment_lengths,
+        segment_lengths = np.sqrt(np.sum(segment_lengths * segment_lengths,
                                        axis=1))
-        max_segment_length = n.max(segment_lengths[:-1])
+        max_segment_length = np.max(segment_lengths[:-1])
         jump_mode = 2
         for i in range(len(points) - 1):
             v0 = points[i]
@@ -802,20 +800,20 @@ class CellKnot(object):
                 jump_mode
                 ))
         # if len(inter_crossings):
-        #     inter_crossings = n.array(inter_crossings)
+        #     inter_crossings = np.array(inter_crossings)
         #     inter_crossings[::2, 1] += len(points)
         #     inter_crossings[1::2, 0] += len(points)
         #     inter_crossings = inter_crossings.tolist()
 
         if num_translations < 0:
-            self_crossings = n.array(self_crossings)
+            self_crossings = np.array(self_crossings)
             self_crossings[:, :2] += len(points)
             self_crossings = self_crossings.tolist()
 
         all_crossings = self_crossings + inter_crossings # + other_crossings
         all_crossings.sort(key=lambda j: j[0])
 
-        return n.array(all_crossings)
+        return np.array(all_crossings)
 
     def gauss_code(self, num_translations=0, mat=None, shift=0):
         '''Returns the Gauss code alongside a list of  that are
@@ -841,11 +839,11 @@ class CellKnot(object):
         import matplotlib.pyplot as plt
         fig, ax = plt.subplots()
         points = self.unfolded_points()
-        points = n.vstack((points[shift:], points[:(shift+1)] + self.period_vector()))
+        points = np.vstack((points[shift:], points[:(shift+1)] + self.period_vector()))
         translated_points = points + num_translations * self.period_vector()
         if mat is not None:
-            points = n.apply_along_axis(mat.dot, 1, points)
-            translated_points = n.apply_along_axis(mat.dot, 1, translated_points)
+            points = np.apply_along_axis(mat.dot, 1, points)
+            translated_points = np.apply_along_axis(mat.dot, 1, translated_points)
         ax.plot(points[:, 0], points[:, 1])
         ax.plot(translated_points[:, 0], translated_points[:, 1])
         fig.show()
@@ -854,11 +852,11 @@ class CellKnot(object):
     def plot(self, num_translations=0, mat=None, shift=0):
         import matplotlib.pyplot as plt
         points = self.unfolded_points()
-        points = n.vstack((points[shift:], points[:(shift+1)] + self.period_vector()))
+        points = np.vstack((points[shift:], points[:(shift+1)] + self.period_vector()))
         translated_points = points + num_translations * self.period_vector()
         if mat is not None:
-            points = n.apply_along_axis(mat.dot, 1, points)
-            translated_points = n.apply_along_axis(mat.dot, 1, translated_points)
+            points = np.apply_along_axis(mat.dot, 1, points)
+            translated_points = np.apply_along_axis(mat.dot, 1, translated_points)
         from pyknotid.spacecurves import Link
         Link([points, translated_points]).plot()
         
@@ -880,11 +878,11 @@ class CellKnot(object):
                 # print(theta + 0.13, phi + 0.43, gc, numbers)
             print()
             print('translation {:03}, v2s_cur {}'.format(translations, v2s_cur))
-            v2s.append(n.average(v2s_cur))
+            v2s.append(np.average(v2s_cur))
             v2_arrs.append(v2s_cur)
         vprint()
-        print('totals are', n.sum(v2_arrs, axis=0))
-        return n.sum(v2s)
+        print('totals are', np.sum(v2_arrs, axis=0))
+        return np.sum(v2s)
 
     def periodic_vassiliev_degree_2_by_unfolding(self, num_translations=3, shift=0):
         gc, equivalencies, translation_indices = self.gauss_code_by_unfolding(num_translations, shift=shift)
@@ -1264,11 +1262,11 @@ def periodic_vassiliev_degree_2(representation, relevant_crossing_numbers=[]):
 
 def _fold(points, shape):
     '''Imposes the shape as periodic boundary conditions.'''
-    shape = n.array(shape)
+    shape = np.array(shape)
     dx, dy, dz = shape
 
-    points = n.vstack([[points[0] + 0.001], points])
-    rest = n.array(points).copy()
+    points = np.vstack([[points[0] + 0.001], points])
+    rest = np.array(points).copy()
     new_points = []
     i = 0
     while i < len(rest) - 1:
@@ -1280,42 +1278,42 @@ def _fold(points, shape):
             new_points.append(rest[:i+1])
             boundary_point = cur + cur[0] / (cur[0] - nex[0]) * (nex - cur)
             new_points.append([boundary_point])
-            rest = n.vstack([[boundary_point], rest[i+1:]])
+            rest = np.vstack([[boundary_point], rest[i+1:]])
             rest[:, 0] += dx
             i = 0
         elif nex[0] > dx:
             new_points.append(rest[:i+1])
             boundary_point = cur + (dx - cur[0]) / (nex[0] - cur[0]) * (nex - cur)
             new_points.append([boundary_point])
-            rest = n.vstack([[boundary_point], rest[i+1:]])
+            rest = np.vstack([[boundary_point], rest[i+1:]])
             rest[:, 0] -= dx
             i = 0
         elif nex[1] < 0:
             new_points.append(rest[:i+1])
             boundary_point = cur + cur[1] / (cur[1] - nex[1]) * (nex - cur)
             new_points.append([boundary_point])
-            rest = n.vstack([[boundary_point], rest[i+1:]])
+            rest = np.vstack([[boundary_point], rest[i+1:]])
             rest[:, 1] += dy
             i = 0
         elif nex[1] > dy:
             new_points.append(rest[:i+1])
             boundary_point = cur + (dx - cur[1]) / (nex[1] - cur[1]) * (nex - cur)
             new_points.append([boundary_point])
-            rest = n.vstack([[boundary_point], rest[i+1:]])
+            rest = np.vstack([[boundary_point], rest[i+1:]])
             rest[:, 1] -= dy
             i = 0
         elif nex[2] < 0:
             new_points.append(rest[:i+1])
             boundary_point = cur + cur[2] / (cur[2] - nex[2]) * (nex - cur)
             new_points.append([boundary_point])
-            rest = n.vstack([[boundary_point], rest[i+1:]])
+            rest = np.vstack([[boundary_point], rest[i+1:]])
             rest[:, 2] += dz
             i = 0
         elif nex[2] > dz:
             new_points.append(rest[:i+1])
             boundary_point = cur + (dx - cur[2]) / (nex[2] - cur[2]) * (nex - cur)
             new_points.append([boundary_point])
-            rest = n.vstack([[boundary_point], rest[i+1:]])
+            rest = np.vstack([[boundary_point], rest[i+1:]])
             rest[:, 2] -= dz
             i = 0
         else:
@@ -1324,7 +1322,7 @@ def _fold(points, shape):
 
     print('new points', new_points)
 
-    return n.vstack(new_points)[1:]
+    return np.vstack(new_points)[1:]
     
 def get_true_crossing_numbers(equivalent_cs, cores):
     output = {}

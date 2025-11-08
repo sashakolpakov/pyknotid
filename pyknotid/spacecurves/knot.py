@@ -10,9 +10,6 @@ API documentation
 
 '''
 
-from __future__ import division
-
-import numpy as n
 import numpy as np
 
 from pyknotid.spacecurves.spacecurve import SpaceCurve
@@ -106,11 +103,11 @@ class Knot(SpaceCurve):
         '''
         if hasattr(root, '__contains__'):
             return [self.alexander_at_root(r, round=round, **kwargs) for r in root]
-        variable = n.exp(2 * n.pi * 1.j / root)
+        variable = np.exp(2 * np.pi * 1.j / root)
         value = self.alexander_polynomial(variable, **kwargs)
-        value = n.abs(value)
+        value = np.abs(value)
         if round and root in (1, 2, 3, 4):
-            value = int(n.round(value))
+            value = int(np.round(value))
         return value
 
     def determinant(self):
@@ -312,11 +309,11 @@ class Knot(SpaceCurve):
         points = self.points
         if num_samples == 0:
             num_samples = len(points)
-        indices = n.linspace(0, len(points), num_samples).astype(n.int)
+        indices = np.linspace(0, len(points), num_samples).astype(np.int_)
 
         from pyknotid.spacecurves.openknot import OpenKnot
 
-        arr = n.ones((num_samples, num_samples))
+        arr = np.ones((num_samples, num_samples))
         for index, points_index in enumerate(indices):
             self._vprint('\rindex = {} / {}'.format(index, len(indices)),
                          False)
@@ -334,8 +331,8 @@ class Knot(SpaceCurve):
         fig, ax = plt.subplots()
         ax.imshow(arr, interpolation='none')
 
-        ax.plot(n.linspace(0, num_samples, 100) - 0.5,
-                n.linspace(num_samples, 0, 100) - 0.5,
+        ax.plot(np.linspace(0, num_samples, 100) - 0.5,
+                np.linspace(num_samples, 0, 100) - 0.5,
                 color='black',
                 linewidth=3)
 
@@ -366,7 +363,7 @@ class Knot(SpaceCurve):
             return start, end
 
         roll_dist = int(0.25*len(self.points))
-        k2 = OpenKnot(n.roll(self.points, roll_dist, axis=0), verbose=False)
+        k2 = OpenKnot(np.roll(self.points, roll_dist, axis=0), verbose=False)
         start, end = _isolate_open_knot(k2, determinant, 0, len(k2))[1:]
         print('se', start, end)
         start -= roll_dist
@@ -391,7 +388,7 @@ class Knot(SpaceCurve):
         start, end = self.isolate_knot()
         if end < start:
             end, start = start, end
-        mus = n.zeros(len(self.points))
+        mus = np.zeros(len(self.points))
         mus[start:end+1] = 0.4
         if end - start > 0.6*len(self) or end == start:
             mus = 0.4 - mus
@@ -434,11 +431,11 @@ class Knot(SpaceCurve):
                     new_cs = new_cs[new_cs[:, 0] != new_cs[-1, 0]]
                     new_r._remove_crossing(new_r._gauss_code[0][-1, 0])
 
-                new_points = points[int(n.ceil(new_start)):int(new_end)]
+                new_points = points[int(np.ceil(new_start)):int(new_end)]
                 new_start_remainder = new_start % 1
                 new_end_remainder = new_end % 1
 
-                new_points = n.vstack((points[int(new_start)] + new_start_remainder * (points[int(new_start) + 1] - points[int(new_start)]),
+                new_points = np.vstack((points[int(new_start)] + new_start_remainder * (points[int(new_start) + 1] - points[int(new_start)]),
                                        new_points,
                                        points[int(new_end)] + new_end_remainder * (points[int(new_end) + 1] - points[int(new_end)])))
                 # results[(i, j)] = points[int(new_start):int(new_end)]
@@ -449,8 +446,8 @@ class Knot(SpaceCurve):
         from matplotlib.gridspec import GridSpec
 
         points = self.points
-        mins = n.min(self.points, axis=0)
-        maxs = n.max(self.points, axis=0)
+        mins = np.min(self.points, axis=0)
+        maxs = np.max(self.points, axis=0)
         span = max((maxs - mins)[:2])
         size = span * 1.16
 
@@ -726,7 +723,7 @@ class Knot(SpaceCurve):
 
 
 def mag(v):
-    return n.sqrt(v.dot(v))
+    return np.sqrt(v.dot(v))
 
 
 def _isolate_open_knot(k, det, start, end):

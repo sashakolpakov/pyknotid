@@ -22,12 +22,15 @@ API documentation
 import numpy as np
 import sys
 
+from pyknotid.logger import get_logger
+
+logger = get_logger(__name__)
+
 try:
     from pyknotid.spacecurves import chelpers
 except ImportError:
-    print('Could not import cythonised chelpers, using Python '
-          'alternative. This will '
-          'give the same result, but is slower.')
+    logger.info('Cython extension not available, using Python implementation. '
+                'Performance may be reduced but results will be identical.')
     from pyknotid.spacecurves import helpers as chelpers
 from pyknotid.spacecurves import helpers as helpers
 from pyknotid.spacecurves.geometry import arclength, radius_of_gyration
@@ -41,7 +44,7 @@ from pyknotid.utils import (mag, get_rotation_matrix,
                            ensure_shape_tuple)
 
 
-class SpaceCurve(object):
+class SpaceCurve:
     '''
     Class for holding the vertices of a single line, providing helper
     methods for convenient manipulation and analysis.
@@ -347,8 +350,7 @@ class SpaceCurve(object):
         for i in range(num_strands):
             cur_strand = strands_by_initial_index[index]
             line.extend(cur_strand)
-            print('index is', index)
-            print('cur strand is', cur_strand)
+            logger.info(f'Processing strand {i}/{num_strands}: index={index}, points={len(cur_strand)}')
             index = int(np.round(cur_strand[-1][0])) - 1
 
         k = cls(np.array(line)*5.)
@@ -415,7 +417,7 @@ class SpaceCurve(object):
         tangents = np.roll(points, -1, axis=0) - points
         angles = np.arctan2(tangents[:, 1], tangents[:, 0])
 
-        print('angles', angles)
+        logger.info(f'Calculated {len(angles)} tangent angles for curve analysis')
 
         cuaps = []
 

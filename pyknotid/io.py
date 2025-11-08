@@ -6,7 +6,7 @@ Functions for saving and loading knot data from files.
 '''
 
 import json
-import numpy as n
+import numpy as np
 
 
 def to_json_file(points, filen):
@@ -21,7 +21,7 @@ def to_json_file(points, filen):
     filen : str
         The (relative) filename to save in
     '''
-    points = n.array(points).tolist()
+    points = np.array(points).tolist()
     with open(filen, 'w') as fileh:
         json.dump(points, fileh)
 
@@ -38,7 +38,7 @@ def from_json_file(filen):
     with open(filen, 'r') as fileh:
         points = json.load(fileh)
 
-    return n.array(points)
+    return np.array(points)
 
 
 def from_csv(filen, index_col=None, header_row=None, **kwargs):

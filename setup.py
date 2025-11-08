@@ -67,7 +67,7 @@ else:
                 version = matches[0].strip("'").strip('"')
                 break
 if version is None:
-    raise Exception('Error: version could not be loaded from {}'.format(pyknotid_init_filen))
+    raise RuntimeError(f'Error: version could not be loaded from {pyknotid_init_filen}')
 
 if 'READTHEDOCS' in environ and environ['READTHEDOCS'] == 'True':
     print('Installing for doc only')
@@ -75,7 +75,7 @@ if 'READTHEDOCS' in environ and environ['READTHEDOCS'] == 'True':
 else:
     install_requires=['numpy', 'networkx', 'planarity',
                       'peewee', 'vispy', 'sympy', 'appdirs',
-                      'requests', 'tqdm'],
+                      'requests', 'tqdm']
 
 long_description = '''
 Pyknotid

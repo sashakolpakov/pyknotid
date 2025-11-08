@@ -5,7 +5,7 @@ Space curve geometry
 Functions for evaluating geometrical properties of space curves.
 '''
 
-import numpy as n
+import numpy as np
 
 def arclength(points, include_closure=True):
     '''
@@ -24,9 +24,9 @@ def arclength(points, include_closure=True):
     if len(points) < 2:
         return 0.
         
-    lengths = n.roll(points, -1, axis=0) - points
-    length_mags = n.sqrt(n.sum(lengths*lengths, axis=1))
-    arclength = n.sum(length_mags[:-1])
+    lengths = np.roll(points, -1, axis=0) - points
+    length_mags = np.sqrt(np.sum(lengths*lengths, axis=1))
+    arclength = np.sum(length_mags[:-1])
     if include_closure:
         arclength += length_mags[-1]
     return arclength
@@ -42,11 +42,11 @@ def radius_of_gyration(points):
     points : array-like
         Nx3 array of points in the line.
     '''
-    av_pos = n.average(points, axis=0)
+    av_pos = np.average(points, axis=0)
     diffs = (points - av_pos)**2
-    rogs = n.sum(diffs, 1)
-    rog = n.average(rogs)
-    return n.sqrt(rog)
+    rogs = np.sum(diffs, 1)
+    rog = np.average(rogs)
+    return np.sqrt(rog)
 
 
 # def persistences(points, step=None):
@@ -56,4 +56,4 @@ def radius_of_gyration(points):
 
 #     if step is None:
 #         import pyknot.
-#         step = n.average
+#         step = np.average

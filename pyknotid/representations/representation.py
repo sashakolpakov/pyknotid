@@ -9,7 +9,6 @@ API documentation
 ~~~~~~~~~~~~~~~~~
 '''
 
-from __future__ import print_function, division
 from pyknotid.representations.gausscode import GaussCode
 from collections import defaultdict
 import numpy as np
@@ -530,7 +529,7 @@ class Representation(GaussCode):
         return k
 
 
-class CrossingLine(object):
+class CrossingLine:
     def __init__(self, start, end, points):
         self.start = start
         self.end = end

@@ -11,7 +11,7 @@ from pyknotid.utils import ensure_shape_tuple
 from pyknotid.spacecurves import Knot, OpenKnot
 import numpy as np
 
-class Cell(object):
+class Cell:
     '''Class for holding the vertices of some number of lines with
     periodic boundary conditions.
 
@@ -348,7 +348,7 @@ def _is_closed_loop(line, cutoff=5.):
 
 from pyknotid.spacecurves.link import Link
 
-class BoundingBox(object):
+class BoundingBox:
     def __init__(self, l):
         if hasattr(l, 'points'):
             # crudely get the points if l is a

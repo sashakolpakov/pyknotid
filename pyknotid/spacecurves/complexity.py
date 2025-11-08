@@ -6,14 +6,11 @@ Functions for evaluating the (mainly geometrical) complexity of space
 curves.
 '''
 
-from __future__ import print_function
-
 from . import Knot
 from . import SpaceCurve
 from pyknotid.spacecurves.rotation import (get_rotation_angles,
                                           rotate_to_top)
 from pyknotid.utils import vprint
-import numpy as n
 import numpy as np
 
 import sys
@@ -56,9 +53,9 @@ def writhe_and_crossing_number(points, number_of_samples=10,
         k._apply_matrix(rotate_to_top(theta, phi))
         crossings = k.raw_crossings(include_closure=include_closure, **kwargs)
         crossing_numbers.append(len(crossings) / 2)
-        writhes.append(n.sum(crossings[:, 3]) / 2. if len(crossings) else 0)
+        writhes.append(np.sum(crossings[:, 3]) / 2. if len(crossings) else 0)
 
-    return n.average(crossing_numbers), n.average(writhes)
+    return np.average(crossing_numbers), np.average(writhes)
 
 
 # def writhe_integral(points, closed=False):

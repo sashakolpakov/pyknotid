@@ -1,4 +1,3 @@
-from __future__ import division, print_function
 import numpy as np
 from math import factorial
 from functools import wraps

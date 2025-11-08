@@ -3,7 +3,7 @@
 Modified version of code from http://scipy.org/Cookbook/SignalSmooth
 """
 
-import numpy as n
+import numpy as np
 
 def smooth(x, window_len=10, window='hanning'):
     """smooth the data using a window with requested size.
@@ -25,8 +25,8 @@ def smooth(x, window_len=10, window='hanning'):
     example:
 
     import numpy as n    
-    t = n.linspace(-2,2,0.1)
-    x = n.sin(t)+n.random.randn(len(t))*0.1
+    t = np.linspace(-2,2,0.1)
+    x = np.sin(t)+np.random.randn(len(t))*0.1
     y = smooth(x)
     
     see also: 
@@ -49,14 +49,14 @@ def smooth(x, window_len=10, window='hanning'):
     if not window in ['flat', 'hanning', 'hamming', 'bartlett', 'blackman', 'myown']:
         raise ValueError("Window is on of 'flat', 'hanning', 'hamming', 'bartlett', 'blackman'")
 
-    s=n.r_[2*x[0]-x[window_len:1:-1], x, 2*x[-1]-x[-1:-window_len:-1]]
+    s=np.r_[2*x[0]-x[window_len:1:-1], x, 2*x[-1]-x[-1:-window_len:-1]]
     #print(len(s))
     
     if window == 'flat': #moving average
-        w = n.ones(window_len,'d')
+        w = np.ones(window_len,'d')
     elif window == 'myown':
         w = my_smoothing_kernel(window_len)
     else:
-        w = getattr(n, window)(window_len)
-    y = n.convolve(w/w.sum(), s, mode='same')
+        w = getattr(np, window)(window_len)
+    y = np.convolve(w/w.sum(), s, mode='same')
     return y[window_len-1:-window_len+1]

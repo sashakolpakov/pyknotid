@@ -13,14 +13,12 @@ calculate new invariants based on the DT notation.
 
 '''
 
-from __future__ import print_function
-
 from pyknotid.catalogue.database import Knot, db
 from pyknotid.catalogue.converters import homfly_to_jones, db2py_homfly, py2db_jones
 
 import csv
 import json
-import numpy as n
+import numpy as np
 
 
 def planar_writhe_from_dt_code(max_crossings=12):
@@ -122,17 +120,17 @@ def alexander_imags_from_alexander(min_crossings=None):
             array = json.loads(knot.alexander)
 
             exp_2s = [(-1.)**i for i in range(len(array))]
-            alexander_imag_2 = int(n.round(n.abs(n.sum([
+            alexander_imag_2 = int(np.round(np.abs(np.sum([
                 coefficient * exponential for coefficient, exponential
                 in zip(array, exp_2s)]))))
             
-            exp_3s = [n.exp(i*2*n.pi*1j/3.) for i in range(len(array))]
-            alexander_imag_3 = int(n.round(n.abs(n.sum([
+            exp_3s = [np.exp(i*2*np.pi*1j/3.) for i in range(len(array))]
+            alexander_imag_3 = int(np.round(np.abs(np.sum([
                 coefficient * exponential for coefficient, exponential
                 in zip(array, exp_3s)]))))
 
             exp_4s = [(1.j)**i for i in range(len(array))]
-            alexander_imag_4 = int(n.round(n.abs(n.sum([
+            alexander_imag_4 = int(np.round(np.abs(np.sum([
                 coefficient * exponential for coefficient, exponential
                 in zip(array, exp_4s)]))))
 

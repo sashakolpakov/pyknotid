@@ -14,11 +14,10 @@ API documentation
 ~~~~~~~~~~~~~~~~~
 '''
 
-from __future__ import print_function
-import numpy as n
+import numpy as np
 
 
-class GaussDiagram(object):
+class GaussDiagram:
     '''
     Class for containing and manipulating Gauss diagrams.
 
@@ -65,20 +64,20 @@ class GaussDiagram(object):
         gc = self._gauss_code[0]
         num_points = len(gc)
 
-        angles = n.linspace(0, 2*n.pi, num_points+1)[:-1]
+        angles = np.linspace(0, 2*np.pi, num_points+1)[:-1]
 
         other_angles = {}
         for i, angle in enumerate(angles):
             gc_entry = gc[i, 0]
 
-            circ_pos = 100*n.array([n.cos(angle), n.sin(angle)])
+            circ_pos = 100*np.array([np.cos(angle), np.sin(angle)])
             rad_pos = 1.2*circ_pos
             ax.annotate(str(gc_entry), xy=circ_pos, xytext=rad_pos)
 
             if gc_entry in other_angles:
                 other_angle = other_angles.pop(gc_entry)
-                other_pos = 100*n.array([n.cos(other_angle),
-                                         n.sin(other_angle)])
+                other_pos = 100*np.array([np.cos(other_angle),
+                                         np.sin(other_angle)])
 
                 over = gc[i, 1]
                 sign = gc[i, 2]
@@ -94,7 +93,7 @@ class GaussDiagram(object):
 
         ax.add_artist(c1)
 
-        ax.plot(100*n.cos(angles), 100*n.sin(angles), 'o', markersize=8,
+        ax.plot(100*np.cos(angles), 100*np.sin(angles), 'o', markersize=8,
                 color='black')
 
         ax.set_xlim(-140, 140)

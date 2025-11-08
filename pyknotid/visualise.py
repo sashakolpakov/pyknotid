@@ -18,17 +18,13 @@ API documentation
 
 '''
 
-from __future__ import division
-
 import vispy
 # vispy.use('PyQt5')
 
-import numpy as n
 import numpy as np
 from colorsys import hsv_to_rgb
 from pyknotid.utils import ensure_shape_tuple, vprint
 import random
-from colorsys import hsv_to_rgb
 
 try:
     from vispy.visuals.transforms import MatrixTransform
@@ -114,7 +110,7 @@ def plot_line_mayavi(points, clf=True, tube_radius=1., colormap='hsv',
     if clf:
         may.clf()
     if mus is None:
-        mus = n.linspace(0, 1, len(points))
+        mus = np.linspace(0, 1, len(points))
     may.plot3d(points[:, 0], points[:, 1], points[:, 2], mus,
                colormap=colormap, tube_radius=tube_radius, **kwargs)
 
@@ -272,7 +268,7 @@ def plot_line_vispy(points, clf=True, tube_radius=1.,
                     tube_points=8, **kwargs):
     # Add an extra point to fix tube drawing bug
     last_tangent = points[-1] - points[-2]
-    points = n.vstack([points, points[-1] + 0.0001 * last_tangent])
+    points = np.vstack([points, points[-1] + 0.0001 * last_tangent])
     
     ensure_vispy_canvas()
     if clf:
@@ -283,17 +279,17 @@ def plot_line_vispy(points, clf=True, tube_radius=1.,
     if isinstance(cmap, str):
         from matplotlib.cm import get_cmap
         mpl_cmap = get_cmap(cmap)
-        cmap = lambda v: n.array(mpl_cmap(v))
+        cmap = lambda v: np.array(mpl_cmap(v))
     cmap = cmap or (lambda c: hsv_to_rgb(c, 1, 1))
 
     if colour is None:
-        colours = n.linspace(0, 1, len(points))
-        colours = n.array([cmap(c) for c in colours])
+        colours = np.linspace(0, 1, len(points))
+        colours = np.array([cmap(c) for c in colours])
     else:
         colours = color.ColorArray(colour)
 
     if mus is not None:
-        colours = n.array([hsv_to_rgb(c, 1, 1) for c in mus])
+        colours = np.array([hsv_to_rgb(c, 1, 1) for c in mus])
             
 
     l = scene.visuals.Tube(points, color=colours,
@@ -304,13 +300,13 @@ def plot_line_vispy(points, clf=True, tube_radius=1.,
     
     canvas.view.add(l)
     # canvas.view.camera = 'arcball'
-    canvas.view.camera = scene.ArcballCamera(fov=30, distance=7.5*n.max(
-        n.abs(points)))
+    canvas.view.camera = scene.ArcballCamera(fov=30, distance=7.5*np.max(
+        np.abs(points)))
     #canvas.view.camera = scene.TurntableCamera(fov=30)
     if zero_centroid:
         l.transform = MatrixTransform()
         # l.transform = scene.transforms.AffineTransform()
-        l.transform.translate(-1*n.average(points, axis=0))
+        l.transform.translate(-1*np.average(points, axis=0))
 
     canvas.show()
     # import ipdb
@@ -349,13 +345,13 @@ def plot_lines_vispy(lines, clf=True, tube_radius=1.,
     canvas.view.camera = 'arcball'
     canvas.view.camera.fov = 30
     # canvas.view.camera = scene.TurntableCamera(
-    #     fov=90, up='z', distance=1.2*n.max(n.max(
+    #     fov=90, up='z', distance=1.2*np.max(np.max(
     #         points, axis=0)))
 
     if zero_centroid:
         l.transform = MatrixTransform()
         # l.transform = scene.transforms.AffineTransform()
-        l.transform.translate(-1*n.average(points, axis=0))
+        l.transform.translate(-1*np.average(points, axis=0))
 
     canvas.show()
     return canvas
@@ -385,8 +381,8 @@ def plot_projection(points, crossings=None, mark_start=False,
     ax.set_xticks([])
     ax.set_yticks([])
 
-    xmin, ymin = n.min(points[:, :2], axis=0)
-    xmax, ymax = n.max(points[:, :2], axis=0)
+    xmin, ymin = np.min(points[:, :2], axis=0)
+    xmax, ymax = np.max(points[:, :2], axis=0)
     dx = (xmax - xmin) / 10.
     dy = (ymax - ymin) / 10.
 
@@ -398,7 +394,7 @@ def plot_projection(points, crossings=None, mark_start=False,
                 marker='o')
     
     if crossings is not None and len(crossings):
-        crossings = n.array(crossings)
+        crossings = np.array(crossings)
         ax.plot(crossings[:, 0], crossings[:, 1], 'ro', alpha=0.5)
     if show:
         fig.show()
@@ -436,15 +432,15 @@ def plot_shell_mayavi(func,
     positions, values = func(
         number_of_samples, zero_centroid=zero_centroid)
 
-    thetas = n.arcsin(n.linspace(-1, 1, 100)) + n.pi / 2.
-    phis = n.linspace(0, 2 * n.pi, 157)
+    thetas = np.arcsin(np.linspace(-1, 1, 100)) + np.pi / 2.
+    phis = np.linspace(0, 2 * np.pi, 157)
 
-    thetas, phis = n.meshgrid(thetas, phis)
+    thetas, phis = np.meshgrid(thetas, phis)
 
-    r = sphere_radius_factor * n.max(points)
-    zs = r * n.cos(thetas)
-    xs = r * n.sin(thetas) * n.cos(phis)
-    ys = r * n.sin(thetas) * n.sin(phis)
+    r = sphere_radius_factor * np.max(points)
+    zs = r * np.cos(thetas)
+    xs = r * np.sin(thetas) * np.cos(phis)
+    ys = r * np.sin(thetas) * np.sin(phis)
 
     import mayavi.mlab as may
 
@@ -472,20 +468,20 @@ def plot_sphere_shell_vispy(func, rows=100, cols=100,
     mesh = s.mesh
     md = mesh._meshdata
     vertices = md.get_vertices()
-    md.set_vertices(vertices + n.array(translation))
+    md.set_vertices(vertices + np.array(translation))
 
-    values = n.zeros(len(vertices))
-    opacities = n.ones(len(vertices))
+    values = np.zeros(len(vertices))
+    opacities = np.ones(len(vertices))
 
     print('pre')
     for i, vertex in enumerate(vertices):
         if i % 10 == 0:
             vprint('\ri = {} / {}'.format(i, len(vertices)), newline=False)
-        vertex = vertex / n.sqrt(n.sum(vertex*vertex))
-        theta = n.arccos(vertex[2])
-        phi = n.arctan2(vertex[1], vertex[0])
+        vertex = vertex / np.sqrt(np.sum(vertex*vertex))
+        theta = np.arccos(vertex[2])
+        phi = np.arctan2(vertex[1], vertex[0])
 
-        if n.isnan(theta):
+        if np.isnan(theta):
             theta = 0.0
         values[i] = func(theta, phi)
         distance = vertex[1] - cutoff
@@ -494,10 +490,10 @@ def plot_sphere_shell_vispy(func, rows=100, cols=100,
         opacities[i] = 1. if vertex[1] < cutoff else opacity
     vprint()
 
-    colours = n.zeros((len(values), 4))
-    max_val = n.max(values)
-    min_val = n.min(values)
-    unique_values = n.unique(colours)
+    colours = np.zeros((len(values), 4))
+    max_val = np.max(values)
+    min_val = np.min(values)
+    unique_values = np.unique(colours)
     # max_val += (1. + 1./len(unique_values))*(max_val - min_val)
     diff = (max_val - min_val)
 
@@ -510,7 +506,7 @@ def plot_sphere_shell_vispy(func, rows=100, cols=100,
 
     faces = md.get_faces()
     for si in range(smooth):
-        new_colours = [[n.array(row) for _ in range(3)]
+        new_colours = [[np.array(row) for _ in range(3)]
                        for row in colours]
         for i, face in enumerate(faces):
             new_colours[face[0]].append(colours[face[1]])
@@ -520,7 +516,7 @@ def plot_sphere_shell_vispy(func, rows=100, cols=100,
             new_colours[face[2]].append(colours[face[0]])
             new_colours[face[2]].append(colours[face[1]])
 
-        new_colours = n.array([n.average(cs, axis=0) for cs in new_colours])
+        new_colours = np.array([np.average(cs, axis=0) for cs in new_colours])
 
         colours = new_colours
 
@@ -553,20 +549,20 @@ def plot_shell_vispy(func,
         number_of_samples, radius=radius,
         zero_centroid=zero_centroid)
     
-    thetas = n.arcsin(n.linspace(-1, 1, 100)) + n.pi/2.
-    phis = n.linspace(0, 2*n.pi, 157)
+    thetas = np.arcsin(np.linspace(-1, 1, 100)) + np.pi/2.
+    phis = np.linspace(0, 2*np.pi, 157)
     
-    thetas, phis = n.meshgrid(thetas, phis)
+    thetas, phis = np.meshgrid(thetas, phis)
     
-    r = sphere_radius_factor*n.max(points)
-    zs = r*n.cos(thetas)
-    xs = r*n.sin(thetas)*n.cos(phis)
-    ys = r*n.sin(thetas)*n.sin(phis)
+    r = sphere_radius_factor*np.max(points)
+    zs = r*np.cos(thetas)
+    xs = r*np.sin(thetas)*np.cos(phis)
+    ys = r*np.sin(thetas)*np.sin(phis)
     
-    colours = n.zeros((values.shape[0], values.shape[1], 4))
-    max_val = n.max(values)
-    min_val = n.min(values)
-    unique_values = n.unique(colours)
+    colours = np.zeros((values.shape[0], values.shape[1], 4))
+    max_val = np.max(values)
+    min_val = np.min(values)
+    unique_values = np.unique(colours)
     max_val += (1. + 1./len(unique_values))*(max_val - min_val)
     diff = (max_val - min_val)
 
@@ -610,7 +606,7 @@ def plot_cell_mayavi(lines, boundary=None, clf=True, smooth=True,
     import mayavi.mlab as may
     may.clf()
 
-    hues = n.linspace(0, 1, len(lines) + 1)[:-1]
+    hues = np.linspace(0, 1, len(lines) + 1)[:-1]
     colours = [hsv_to_rgb(hue, 1, 1) for hue in hues]
     random.shuffle(colours)
     i = 0
@@ -637,18 +633,18 @@ def draw_bounding_box_mayavi(shape, colour=(0, 0, 0), tube_radius=1, markz=False
 
     xmin, xmax, ymin, ymax, zmin, zmax = shape
     ls = []
-    ls.append(n.array([[xmax, ymax, zmin],[xmax, ymax, zmax]]))
-    ls.append(n.array([[xmax, ymin, zmin],[xmax, ymin, zmax]]))
-    ls.append(n.array([[xmin, ymax, zmin],[xmin, ymax, zmax]]))
-    ls.append(n.array([[xmin, ymin, zmin],[xmin, ymin, zmax]]))
-    ls.append(n.array([[xmin, ymax, zmax],[xmax, ymax, zmax]]))
-    ls.append(n.array([[xmin, ymin, zmax],[xmax, ymin, zmax]]))
-    ls.append(n.array([[xmin, ymax, zmin],[xmax, ymax, zmin]]))
-    ls.append(n.array([[xmin, ymin, zmin],[xmax, ymin, zmin]]))
-    ls.append(n.array([[xmax, ymin, zmax],[xmax, ymax, zmax]]))
-    ls.append(n.array([[xmin, ymin, zmax],[xmin, ymax, zmax]]))
-    ls.append(n.array([[xmax, ymin, zmin],[xmax, ymax, zmin]]))
-    ls.append(n.array([[xmin, ymin, zmin],[xmin, ymax, zmin]]))
+    ls.append(np.array([[xmax, ymax, zmin],[xmax, ymax, zmax]]))
+    ls.append(np.array([[xmax, ymin, zmin],[xmax, ymin, zmax]]))
+    ls.append(np.array([[xmin, ymax, zmin],[xmin, ymax, zmax]]))
+    ls.append(np.array([[xmin, ymin, zmin],[xmin, ymin, zmax]]))
+    ls.append(np.array([[xmin, ymax, zmax],[xmax, ymax, zmax]]))
+    ls.append(np.array([[xmin, ymin, zmax],[xmax, ymin, zmax]]))
+    ls.append(np.array([[xmin, ymax, zmin],[xmax, ymax, zmin]]))
+    ls.append(np.array([[xmin, ymin, zmin],[xmax, ymin, zmin]]))
+    ls.append(np.array([[xmax, ymin, zmax],[xmax, ymax, zmax]]))
+    ls.append(np.array([[xmin, ymin, zmax],[xmin, ymax, zmax]]))
+    ls.append(np.array([[xmax, ymin, zmin],[xmax, ymax, zmin]]))
+    ls.append(np.array([[xmin, ymin, zmin],[xmin, ymax, zmin]]))
 
     ls = [interpolate(p) for p in ls]
 
@@ -662,7 +658,7 @@ def plot_cell_vispy(lines, boundary=None, clf=True, colours=None,
         clear_vispy_canvas()
     
     if colours is None:
-        hues = n.linspace(0, 1, len(lines) + 1)[:-1]
+        hues = np.linspace(0, 1, len(lines) + 1)[:-1]
         colours = [hsv_to_rgb(hue, 1, 1) for hue in hues]
         if randomise_colours:
             random.shuffle(colours)
@@ -704,18 +700,18 @@ def draw_bounding_box_vispy(shape, colour=(0, 0, 0), tube_radius=1.):
 
     xmin, xmax, ymin, ymax, zmin, zmax = shape
     ls = []
-    ls.append(n.array([[xmax, ymax, zmin],[xmax, ymax, zmax]]))
-    ls.append(n.array([[xmax, ymin, zmin],[xmax, ymin, zmax]]))
-    ls.append(n.array([[xmin, ymax, zmin],[xmin, ymax, zmax]]))
-    ls.append(n.array([[xmin, ymin, zmin],[xmin, ymin, zmax]]))
-    ls.append(n.array([[xmin, ymax, zmax],[xmax, ymax, zmax]]))
-    ls.append(n.array([[xmin, ymin, zmax],[xmax, ymin, zmax]]))
-    ls.append(n.array([[xmin, ymax, zmin],[xmax, ymax, zmin]]))
-    ls.append(n.array([[xmin, ymin, zmin],[xmax, ymin, zmin]]))
-    ls.append(n.array([[xmax, ymin, zmax],[xmax, ymax, zmax]]))
-    ls.append(n.array([[xmin, ymin, zmax],[xmin, ymax, zmax]]))
-    ls.append(n.array([[xmax, ymin, zmin],[xmax, ymax, zmin]]))
-    ls.append(n.array([[xmin, ymin, zmin],[xmin, ymax, zmin]]))
+    ls.append(np.array([[xmax, ymax, zmin],[xmax, ymax, zmax]]))
+    ls.append(np.array([[xmax, ymin, zmin],[xmax, ymin, zmax]]))
+    ls.append(np.array([[xmin, ymax, zmin],[xmin, ymax, zmax]]))
+    ls.append(np.array([[xmin, ymin, zmin],[xmin, ymin, zmax]]))
+    ls.append(np.array([[xmin, ymax, zmax],[xmax, ymax, zmax]]))
+    ls.append(np.array([[xmin, ymin, zmax],[xmax, ymin, zmax]]))
+    ls.append(np.array([[xmin, ymax, zmin],[xmax, ymax, zmin]]))
+    ls.append(np.array([[xmin, ymin, zmin],[xmax, ymin, zmin]]))
+    ls.append(np.array([[xmax, ymin, zmax],[xmax, ymax, zmax]]))
+    ls.append(np.array([[xmin, ymin, zmax],[xmin, ymax, zmax]]))
+    ls.append(np.array([[xmax, ymin, zmin],[xmax, ymax, zmin]]))
+    ls.append(np.array([[xmin, ymin, zmin],[xmin, ymax, zmin]]))
 
     ls = [interpolate(p) for p in ls]
 
@@ -734,7 +730,7 @@ def draw_bounding_box_vispy(shape, colour=(0, 0, 0), tube_radius=1.):
 
 def interpolate(p, num=10):
     p1, p2 = p
-    return n.array([n.linspace(i, j, num) for i, j in zip(p1, p2)]).T
+    return np.array([np.linspace(i, j, num) for i, j in zip(p1, p2)]).T
 
 def cell_to_povray(filen, lines, shape):
     from jinja2 import Environment, FileSystemLoader
@@ -742,8 +738,8 @@ def cell_to_povray(filen, lines, shape):
         '/home/asandy/devel/pyknotid/pyknotid/templates'))
     template = env.get_template('cell.pov')
 
-    colours = n.linspace(0, 1, len(lines) + 1)[:-1]
-    colours = n.array([hsv_to_rgb(c, 1, 1) for c in colours])
+    colours = np.linspace(0, 1, len(lines) + 1)[:-1]
+    colours = np.array([hsv_to_rgb(c, 1, 1) for c in colours])
 
     coloured_segments = []
     for line, colour in zip(lines, colours):
@@ -775,14 +771,14 @@ def plot_sphere_mollweide_vispy(func, circle_points=50, depth=2,
         vertices, indices = circles_ellipse_mesh(circle_points, depth)
     else:
         vertices, indices = recursive_ellipse_mesh(circle_points, depth)
-    vertices[:, 0] *= 2*n.sqrt(2)
-    vertices[:, 1] *= n.sqrt(2)
+    vertices[:, 0] *= 2*np.sqrt(2)
+    vertices[:, 1] *= np.sqrt(2)
     mesh = Mesh(vertices, indices)
 
     md = mesh._meshdata
     vertices = md.get_vertices()
 
-    values = n.zeros(len(vertices))
+    values = np.zeros(len(vertices))
 
     print('pre')
     thetas = []
@@ -791,32 +787,32 @@ def plot_sphere_mollweide_vispy(func, circle_points=50, depth=2,
         if i % 10 == 0:
             vprint('\ri = {} / {}'.format(i, len(vertices)), newline=False)
 
-        intermediate = n.arcsin(vertex[1] / n.sqrt(2))
-        theta = n.arcsin((2*intermediate + n.sin(2*intermediate)) / n.pi)
-        phi = n.pi * vertex[0] / (2*n.sqrt(2) * n.cos(intermediate))
+        intermediate = np.arcsin(vertex[1] / np.sqrt(2))
+        theta = np.arcsin((2*intermediate + np.sin(2*intermediate)) / np.pi)
+        phi = np.pi * vertex[0] / (2*np.sqrt(2) * np.cos(intermediate))
 
-        # theta = n.arccos(vertex[2])
-        # phi = n.arctan2(vertex[1], vertex[0])
+        # theta = np.arccos(vertex[2])
+        # phi = np.arctan2(vertex[1], vertex[0])
 
-        if n.isnan(theta):
+        if np.isnan(theta):
             theta = 0.0
             print('theta', vertex)
-        if n.isnan(phi):
+        if np.isnan(phi):
             phi = 0.0
             print('phi', vertex)
 
         thetas.append(theta)
         phis.append(phi)
-        values[i] = func(theta + n.pi/2, phi + n.pi)
+        values[i] = func(theta + np.pi/2, phi + np.pi)
     vprint()
 
-    print('thetas', n.min(thetas), n.max(thetas))
-    print('phis', n.min(phis), n.max(phis))
+    print('thetas', np.min(thetas), np.max(thetas))
+    print('phis', np.min(phis), np.max(phis))
 
-    colours = n.zeros((len(values), 4))
-    max_val = n.max(values)
-    min_val = n.min(values)
-    unique_values = n.unique(colours)
+    colours = np.zeros((len(values), 4))
+    max_val = np.max(values)
+    min_val = np.min(values)
+    unique_values = np.unique(colours)
     max_val += (1. + 1./len(unique_values))*(max_val - min_val)
     diff = (max_val - min_val)
 
@@ -829,7 +825,7 @@ def plot_sphere_mollweide_vispy(func, circle_points=50, depth=2,
 
     faces = md.get_faces()
     for si in range(smooth):
-        new_colours = [[n.array(row) for _ in range(3)]
+        new_colours = [[np.array(row) for _ in range(3)]
                        for row in colours]
         for i, face in enumerate(faces):
             new_colours[face[0]].append(colours[face[1]])
@@ -839,7 +835,7 @@ def plot_sphere_mollweide_vispy(func, circle_points=50, depth=2,
             new_colours[face[2]].append(colours[face[0]])
             new_colours[face[2]].append(colours[face[1]])
 
-        new_colours = n.array([n.average(cs, axis=0) for cs in new_colours])
+        new_colours = np.array([np.average(cs, axis=0) for cs in new_colours])
 
         colours = new_colours
 
@@ -852,25 +848,25 @@ def plot_sphere_mollweide_vispy(func, circle_points=50, depth=2,
     vispy_canvas.show()
 
 def circles_ellipse_mesh(radial=5, azimuthal=100):
-    angles = n.linspace(0, 2*n.pi, azimuthal + 1)[:-1]
-    radii = n.linspace(0, 1., radial)
+    angles = np.linspace(0, 2*np.pi, azimuthal + 1)[:-1]
+    radii = np.linspace(0, 1., radial)
 
-    offsets = n.zeros(len(angles))
-    offsets[::2] += 2*n.pi / azimuthal
+    offsets = np.zeros(len(angles))
+    offsets[::2] += 2*np.pi / azimuthal
 
     vertices = []
     for i, radius in enumerate(radii):
         cur_angles = angles
         if i % 2 == 0:
-            cur_angles += 0.5* (2*n.pi) / azimuthal
-        points = n.zeros((len(angles), 3))
-        points[:, 0] = n.cos(angles) * radius
-        points[:, 1] = n.sin(angles) * radius
+            cur_angles += 0.5* (2*np.pi) / azimuthal
+        points = np.zeros((len(angles), 3))
+        points[:, 0] = np.cos(angles) * radius
+        points[:, 1] = np.sin(angles) * radius
 
 
         vertices.append(points)
 
-    vertices = n.vstack(vertices)
+    vertices = np.vstack(vertices)
 
     indices = []
     num_angles = len(angles)
@@ -885,7 +881,7 @@ def circles_ellipse_mesh(radial=5, azimuthal=100):
             indices.append((cur_index, next_r_index_1, next_r_index_2))
             indices.append((cur_index, next_r_index_2, next_index))
 
-    return vertices, n.array(indices)
+    return vertices, np.array(indices)
                             
 def plot_vertices_indices(vertices, indices):
     import matplotlib.pyplot as plt
@@ -907,21 +903,21 @@ def plot_vertices_indices(vertices, indices):
 
 
 def recursive_ellipse_mesh(init_num_points=10, depth=2):
-    triangle = n.array([[0., 0.],
+    triangle = np.array([[0., 0.],
                         [1., 0.],
                         [0.5, 1.5]])
 
-    angles = n.linspace(0, 2*n.pi, init_num_points + 1)[:-1]
-    xs = n.sin(angles)
-    ys = n.cos(angles)
-    centre = n.array([0., 0.])
+    angles = np.linspace(0, 2*np.pi, init_num_points + 1)[:-1]
+    xs = np.sin(angles)
+    ys = np.cos(angles)
+    centre = np.array([0., 0.])
         
     vertices = []
     indices = []
     vertices_dict = {}
 
     for i in range(len(angles)):
-        triangle = n.array([centre, (xs[i], ys[i]),
+        triangle = np.array([centre, (xs[i], ys[i]),
                             (xs[(i+1) % len(angles)],
                              ys[(i+1) % len(angles)])])
         indices.extend(get_subtriangles(triangle, vertices,
@@ -931,7 +927,7 @@ def recursive_ellipse_mesh(init_num_points=10, depth=2):
 
     # indices = get_subtriangles(triangle, vertices, {}, 0, depth)
 
-    return (n.array(vertices), n.array(indices))
+    return (np.array(vertices), np.array(indices))
                          
     
 
@@ -947,12 +943,12 @@ def get_subtriangles(points, vertices, vertices_dict, depth, max_depth):
                 
         return [indices]
 
-    arr_points = n.array(points)
+    arr_points = np.array(points)
 
-    centre = n.average(arr_points, axis=0)
-    half_edges = arr_points + 0.5*(n.roll(arr_points, -1, axis=0) - arr_points)
+    centre = np.average(arr_points, axis=0)
+    half_edges = arr_points + 0.5*(np.roll(arr_points, -1, axis=0) - arr_points)
 
-    new_points = n.array([arr_points[0],
+    new_points = np.array([arr_points[0],
                           half_edges[0],
                           arr_points[1],
                           half_edges[1],
@@ -961,7 +957,7 @@ def get_subtriangles(points, vertices, vertices_dict, depth, max_depth):
 
     subtriangles = []
     for i in range(6):
-        new_triangle = n.array([centre, new_points[i], new_points[(i+1) % 6]])
+        new_triangle = np.array([centre, new_points[i], new_points[(i+1) % 6]])
         subtriangles.extend(get_subtriangles(new_triangle, vertices,
                                              vertices_dict,
                                              depth+1, max_depth))
@@ -984,8 +980,8 @@ def plot_sphere_lambert_vispy(func, circle_points=50, depth=2,
         vertices, indices = circles_ellipse_mesh(circle_points, depth)
     else:
         vertices, indices = recursive_ellipse_mesh(circle_points, depth)
-    # vertices[:, 0] *= 2*n.sqrt(2)
-    # vertices[:, 1] *= n.sqrt(2)
+    # vertices[:, 0] *= 2*np.sqrt(2)
+    # vertices[:, 1] *= np.sqrt(2)
     vertices[:, 0] *= 2
     vertices[:, 1] *= 2
     mesh = Mesh(vertices, indices)
@@ -993,7 +989,7 @@ def plot_sphere_lambert_vispy(func, circle_points=50, depth=2,
     md = mesh._meshdata
     vertices = md.get_vertices()
 
-    values = n.zeros(len(vertices))
+    values = np.zeros(len(vertices))
 
     print('pre')
     thetas = []
@@ -1006,35 +1002,35 @@ def plot_sphere_lambert_vispy(func, circle_points=50, depth=2,
         # print('radius is', np.sqrt(vertex[0]**2 + vertex[1]**2))
         # print('angle is', np.arctan2(vertex[1], vertex[0]))
 
-        # intermediate = n.arcsin(vertex[1] / n.sqrt(2))
-        # theta = n.arcsin((2*intermediate + n.sin(2*intermediate)) / n.pi)
-        # phi = n.pi * vertex[0] / (2*n.sqrt(2) * n.cos(intermediate))
+        # intermediate = np.arcsin(vertex[1] / np.sqrt(2))
+        # theta = np.arcsin((2*intermediate + np.sin(2*intermediate)) / np.pi)
+        # phi = np.pi * vertex[0] / (2*np.sqrt(2) * np.cos(intermediate))
 
         theta = 2*np.arccos(np.sqrt(vertex[0]**2 + vertex[1]**2)/2.)
         phi = np.arctan2(vertex[1], vertex[0])
 
-        # theta = n.arccos(vertex[2])
-        # phi = n.arctan2(vertex[1], vertex[0])
+        # theta = np.arccos(vertex[2])
+        # phi = np.arctan2(vertex[1], vertex[0])
 
-        if n.isnan(theta):
+        if np.isnan(theta):
             theta = 0.0
             print('theta', vertex)
-        if n.isnan(phi):
+        if np.isnan(phi):
             phi = 0.0
             print('phi', vertex)
 
         thetas.append(theta)
         phis.append(phi)
-        values[i] = func(theta + n.pi/2, phi + n.pi)
+        values[i] = func(theta + np.pi/2, phi + np.pi)
     vprint()
 
-    print('thetas', n.min(thetas), n.max(thetas))
-    print('phis', n.min(phis), n.max(phis))
+    print('thetas', np.min(thetas), np.max(thetas))
+    print('phis', np.min(phis), np.max(phis))
 
-    colours = n.zeros((len(values), 4))
-    max_val = n.max(values)
-    min_val = n.min(values)
-    unique_values = n.unique(colours)
+    colours = np.zeros((len(values), 4))
+    max_val = np.max(values)
+    min_val = np.min(values)
+    unique_values = np.unique(colours)
     max_val += (1. + 1./len(unique_values))*(max_val - min_val)
     diff = (max_val - min_val)
 
@@ -1047,7 +1043,7 @@ def plot_sphere_lambert_vispy(func, circle_points=50, depth=2,
 
     faces = md.get_faces()
     for si in range(smooth):
-        new_colours = [[n.array(row) for _ in range(3)]
+        new_colours = [[np.array(row) for _ in range(3)]
                        for row in colours]
         for i, face in enumerate(faces):
             new_colours[face[0]].append(colours[face[1]])
@@ -1057,7 +1053,7 @@ def plot_sphere_lambert_vispy(func, circle_points=50, depth=2,
             new_colours[face[2]].append(colours[face[0]])
             new_colours[face[2]].append(colours[face[1]])
 
-        new_colours = n.array([n.average(cs, axis=0) for cs in new_colours])
+        new_colours = np.array([np.average(cs, axis=0) for cs in new_colours])
 
         colours = new_colours
 
@@ -1092,7 +1088,7 @@ def plot_sphere_lambert_sharp_vispy(func, circle_points=50, depth=2,
     md = mesh._meshdata
     vertices = md.get_vertices()
 
-    values = n.zeros(len(vertices))
+    values = np.zeros(len(vertices))
 
     print('pre')
     thetas = []
@@ -1104,16 +1100,16 @@ def plot_sphere_lambert_sharp_vispy(func, circle_points=50, depth=2,
         theta = 2*np.arccos(np.sqrt(vertex[0]**2 + vertex[1]**2)/2.)
         phi = np.arctan2(vertex[1], vertex[0])
 
-        if n.isnan(theta):
+        if np.isnan(theta):
             theta = 0.0
             print('theta', vertex)
-        if n.isnan(phi):
+        if np.isnan(phi):
             phi = 0.0
             print('phi', vertex)
 
         thetas.append(theta)
         phis.append(phi)
-        values[i] = func(theta + n.pi/2, phi + n.pi)
+        values[i] = func(theta + np.pi/2, phi + np.pi)
     vprint()
 
     return thetas, phis, values
@@ -1124,8 +1120,8 @@ def plot_sphere_lambert_sharp_vispy(func, circle_points=50, depth=2,
     import matplotlib.pyplot as plt
     cmap = plt.get_cmap(cmap)
     
-    max_value = n.max(values)
-    min_value = n.min(values)
+    max_value = np.max(values)
+    min_value = np.min(values)
     def normalise(v):
         return (v - min_value) / (max_value - min_value)
     for tri_i, triangle in enumerate(indices):
@@ -1148,8 +1144,8 @@ def plot_sphere_lambert_sharp_vispy(func, circle_points=50, depth=2,
         v3_x = (v3[0] + offset_x) / 4. * output_size
         v3_y = (v3[1] + offset_y) / 4. * output_size
 
-        c_x = n.average([v1_x, v2_x, v3_x])
-        c_y = n.average([v1_y, v2_y, v3_y])
+        c_x = np.average([v1_x, v2_x, v3_x])
+        c_y = np.average([v1_y, v2_y, v3_y])
 
         v12_x = (v1_x + v2_x) / 2.
         v12_y = (v1_y + v2_y) / 2.
@@ -1211,12 +1207,12 @@ def get_coloured_subtriangles(points, point_values, vertices, values, vertices_d
                 
         return [indices]
 
-    arr_points = n.array(points)
+    arr_points = np.array(points)
 
-    centre = n.average(arr_points, axis=0)
-    half_edges = arr_points + 0.5*(n.roll(arr_points, -1, axis=0) - arr_points)
+    centre = np.average(arr_points, axis=0)
+    half_edges = arr_points + 0.5*(np.roll(arr_points, -1, axis=0) - arr_points)
 
-    new_points = n.array([arr_points[0],
+    new_points = np.array([arr_points[0],
                           half_edges[0],
                           arr_points[1],
                           half_edges[1],
@@ -1225,7 +1221,7 @@ def get_coloured_subtriangles(points, point_values, vertices, values, vertices_d
 
     subtriangles = []
     for i in range(6):
-        new_triangle = n.array([centre, new_points[i], new_points[(i+1) % 6]])
+        new_triangle = np.array([centre, new_points[i], new_points[(i+1) % 6]])
         subtriangles.extend(get_subtriangles(new_triangle, vertices,
                                              vertices_dict,
                                              depth+1, max_depth))

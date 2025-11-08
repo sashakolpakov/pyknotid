@@ -24,13 +24,15 @@ API documentation
 -----------------
 
 '''
-from __future__ import print_function
 import subprocess
 import re
 import sympy as sym
 import numpy as np
 
 from pyknotid.utils import vprint
+from pyknotid.logger import get_logger
+
+logger = get_logger(__name__)
 
 def alexander(representation, variable=-1, quadrant='lr', simplify=True,
               mode='python'):
@@ -95,7 +97,7 @@ def alexander(representation, variable=-1, quadrant='lr', simplify=True,
     if len(code_list) == 0:
         return 1
     elif len(code_list) > 1:
-        raise Exception('tried to calculate alexander polynomial'
+        raise ValueError('tried to calculate alexander polynomial '
                         'for something with more than 1 component')
 
     crossings = code_list[0]
@@ -104,7 +106,7 @@ def alexander(representation, variable=-1, quadrant='lr', simplify=True,
         return 1
 
     if quadrant not in ['lr', 'ur', 'ul', 'll']:
-        raise Exception('invalid quadrant')
+        raise ValueError('invalid quadrant')
 
     mode = mode.lower()
     if mode == 'maxima':
@@ -132,7 +134,6 @@ def _alexander_numpy(crossings, variable=-1.0, quadrant='lr'):
     at a float), assuming the input has been sanitised by
     :func:`alexander`.
     '''
-    import numpy as n
     num_crossings = int(len(crossings)/2)
     dtype = complex if isinstance(variable, complex) else float
     matrix = np.zeros((num_crossings, num_crossings), dtype=dtype)
@@ -287,7 +288,7 @@ def alexander_maxima(representation, quadrant='ul', verbose=False,
 
     result = subprocess.check_output(
         ['maxima', '-b', 'maxima_batch.maxima'])
-    print('Maxima output is:\n', result)
+    logger.info(f'Maxima computation completed, processing output ({len(result)} bytes)')
     result = result.decode('utf-8').split('\n')[-3][6:]
 
     t = sym.var('t')
@@ -640,7 +641,7 @@ def _mathematica_matrix(cs, quadrant='lr', verbose=False):
     for i, crossing in enumerate(cs):
         if verbose and (i+1) % 100 == 0:
             sys.stdout.write('\ri = {0} / {1}'.format(i, len(cs)))
-        print('crossing is', crossing)
+        logger.info(f'Processing crossing {i+1}/{len(cs)}: identifier={crossing[0]}')
         identifier, upper, direc = crossing
         for entry in crossing_dict:
             if entry[0] == identifier:
@@ -665,7 +666,7 @@ def _mathematica_matrix(cs, quadrant='lr', verbose=False):
                                     matrix_element))
             spec = (crossing_num, line_num % num_crossings)
             if spec in written_indices:
-                print(spec)
+                logger.info(f'Duplicate matrix entry detected: crossing={crossing_num}, line={line_num % num_crossings}')
             else:
                 written_indices.append((crossing_num,
                                         line_num % num_crossings))
@@ -678,7 +679,7 @@ def _mathematica_matrix(cs, quadrant='lr', verbose=False):
                                     line_num % num_crossings, '-1'))
             spec = (crossing_num, line_num % num_crossings)
             if spec in written_indices:
-                print(spec)
+                logger.info(f'Duplicate matrix entry detected: crossing={crossing_num}, line={line_num % num_crossings}')
             else:
                 written_indices.append((crossing_num,
                                         line_num % num_crossings))
@@ -688,7 +689,7 @@ def _mathematica_matrix(cs, quadrant='lr', verbose=False):
                                     new_matrix_element))
             spec = (crossing_num, line_num % num_crossings)
             if spec in written_indices:
-                print(spec)
+                logger.info(f'Duplicate matrix entry detected: crossing={crossing_num}, line={line_num % num_crossings}')
             else:
                 written_indices.append((crossing_num,
                                         line_num % num_crossings))
@@ -792,7 +793,7 @@ def _maxima_matrix(cs, quadrant='lr', verbose=False):
                 (crossing_num, line_num % num_crossings)] =  matrix_element
             spec = (crossing_num, line_num % num_crossings)
             if spec in written_indices:
-                print(spec)
+                logger.info(f'Duplicate matrix entry detected: crossing={crossing_num}, line={line_num % num_crossings}')
             else:
                 written_indices.append((crossing_num,
                                         line_num % num_crossings))
@@ -804,7 +805,7 @@ def _maxima_matrix(cs, quadrant='lr', verbose=False):
             mathmat_entries[(crossing_num, line_num % num_crossings)] =  '-1'
             spec = (crossing_num, line_num % num_crossings)
             if spec in written_indices:
-                print(spec)
+                logger.info(f'Duplicate matrix entry detected: crossing={crossing_num}, line={line_num % num_crossings}')
             else:
                 written_indices.append((crossing_num,
                                         line_num % num_crossings))
@@ -813,7 +814,7 @@ def _maxima_matrix(cs, quadrant='lr', verbose=False):
                 (crossing_num, line_num % num_crossings)] = new_matrix_element
             spec = (crossing_num, line_num % num_crossings)
             if spec in written_indices:
-                print(spec)
+                logger.info(f'Duplicate matrix entry detected: crossing={crossing_num}, line={line_num % num_crossings}')
             else:
                 written_indices.append((crossing_num,
                                         line_num % num_crossings))
@@ -891,7 +892,7 @@ def _cypari_matrix(cs, quadrant='lr', verbose=False):
                 (crossing_num, line_num % num_crossings)] =  matrix_element
             spec = (crossing_num, line_num % num_crossings)
             if spec in written_indices:
-                print(spec)
+                logger.info(f'Duplicate matrix entry detected: crossing={crossing_num}, line={line_num % num_crossings}')
             else:
                 written_indices.append((crossing_num,
                                         line_num % num_crossings))
@@ -903,7 +904,7 @@ def _cypari_matrix(cs, quadrant='lr', verbose=False):
             mathmat_entries[(crossing_num, line_num % num_crossings)] =  '-1'
             spec = (crossing_num, line_num % num_crossings)
             if spec in written_indices:
-                print(spec)
+                logger.info(f'Duplicate matrix entry detected: crossing={crossing_num}, line={line_num % num_crossings}')
             else:
                 written_indices.append((crossing_num,
                                         line_num % num_crossings))
@@ -912,15 +913,15 @@ def _cypari_matrix(cs, quadrant='lr', verbose=False):
                 (crossing_num, line_num % num_crossings)] = new_matrix_element
             spec = (crossing_num, line_num % num_crossings)
             if spec in written_indices:
-                print(spec)
+                logger.info(f'Duplicate matrix entry detected: crossing={crossing_num}, line={line_num % num_crossings}')
             else:
                 written_indices.append((crossing_num,
                                         line_num % num_crossings))
 
     if verbose:
-        print
+        logger.info('Matrix construction completed')
 
-    print('Warning: quadrant ignored!')
+    logger.info('Note: quadrant parameter is not used in this calculation mode')
     
     outstrs = ['[']
     num_crossings = int(len(cs) / 2)
@@ -1217,8 +1218,8 @@ def _vassiliev_degree_3_python(representation):
                                               signs[i3])
                     used_sets.add(ordered_indices)
 
-    print()
-    
+    logger.info(f'Vassiliev degree 3 calculation completed: sum1={representations_sum_1}, sum2={representations_sum_2}')
+
     return int(round(representations_sum_1 / 2.)) + representations_sum_2
 
     
@@ -1242,7 +1243,7 @@ def _vassiliev_degree_3_numpy(representation):
     try:
         from pyknotid import cinvariants
     except ImportError:
-        print('Failed to import cinvariants. Using *slow* python numpy method.')
+        logger.info('Cython extension cinvariants not available, using Python/NumPy implementation (slower performance)')
     else:
         return int(round(cinvariants.vassiliev_degree_3(arrows)))
 
@@ -1434,9 +1435,8 @@ def virtual_vassiliev_degree_3(representation):
                     representations_sum -= (signs[i1] * signs[i2] *
                                               signs[i3])
                     used_sets.add(ordered_indices)
-                    # print('6')
 
-    print()
+    logger.info(f'Virtual Vassiliev degree 3 calculation completed: result={representations_sum}')
 
     return representations_sum
     return int(round(representations_sum))

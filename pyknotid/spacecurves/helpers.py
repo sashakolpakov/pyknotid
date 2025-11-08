@@ -2,10 +2,10 @@
 Python version of cython functions for space curve analysis.
 '''
 
-import numpy as n
+import numpy as np
 
-csqrt = n.sqrt
-floor = n.floor
+csqrt = np.sqrt
+floor = np.floor
 
 
 def find_crossings(v, dv,

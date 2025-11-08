@@ -8,14 +8,12 @@ API documentation
 -----------------
 '''
 
-from __future__ import division
-
 import numpy as np
 
 try:
     from fractions import gcd
-except:
-    from fractions import math
+except ImportError:
+    import math
     gcd = math.gcd
 
 from pyknotid.spacecurves.knot import Knot
@@ -60,7 +58,7 @@ def torus_link(p=3, q=6, num=100):
     return Link(TorusKnot(p, q, num).components)
 
 
-class TorusKnot(object):
+class TorusKnot:
     """Representation of a torus knot or link.
 
     A torus knot is one that can be drawn on the surface of a

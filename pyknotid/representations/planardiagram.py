@@ -10,9 +10,7 @@ API documentation
 ~~~~~~~~~~~~~~~~~
 '''
 
-from __future__ import print_function
-
-import numpy as n
+import numpy as np
 
 
 class PlanarDiagram(list):
@@ -344,7 +342,7 @@ def gausscode_to_crossings(gc):
     incomplete_crossings = {}
     line_lengths = [len(line) for line in cl]
     total_lines = sum(line_lengths)
-    line_indices = [1] + list(n.cumsum(line_lengths)[:-1] + 1)
+    line_indices = [1] + list(np.cumsum(line_lengths)[:-1] + 1)
 
     curline = 1
     for i, line in enumerate(cl):

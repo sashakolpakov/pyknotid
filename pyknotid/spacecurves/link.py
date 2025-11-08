@@ -16,11 +16,11 @@ API documentation
 ~~~~~~~~~~~~~~~~~
 '''
 
-import numpy as n
+import numpy as np
 
 try:
     from pyknotid.spacecurves import chelpers
-except:
+except ImportError:
     from pyknotid.spacecurves import helpers as chelpers
 from pyknotid.spacecurves import helpers
 from pyknotid.spacecurves.knot import Knot
@@ -29,7 +29,7 @@ from pyknotid.utils import (vprint, get_rotation_matrix,
                            ensure_shape_tuple)
 
 
-class Link(object):
+class Link:
     '''
     Class for holding the vertices of multiple lines, providing helper
     methods for convenient manipulation and analysis.
@@ -94,7 +94,7 @@ class Link(object):
                  for line in lines]
         link = cls(lines)
         if perturb:
-            link.translate(n.array([0.00123, 0.00231, 0.00321]))
+            link.translate(np.array([0.00123, 0.00231, 0.00321]))
             link.rotate()
         return link
 
@@ -164,7 +164,7 @@ class Link(object):
         # Get length of each line
         line_lengths = [0.]
         line_lengths.extend([line.arclength() for line in lines])
-        cumulative_lengths = n.cumsum(line_lengths)[:-1]
+        cumulative_lengths = np.cumsum(line_lengths)[:-1]
 
         if only_with_other_lines:
             crossings = [[] for _ in lines]
@@ -183,16 +183,16 @@ class Link(object):
                      'naive': 3}[mode]
 
         segment_lengths = [
-            n.roll(line.points[:, :2], -1, axis=0) - line.points[:, :2] for
+            np.roll(line.points[:, :2], -1, axis=0) - line.points[:, :2] for
             line in lines]
         segment_lengths = [
-            n.sqrt(n.sum(lengths * lengths, axis=1)) for
+            np.sqrt(np.sum(lengths * lengths, axis=1)) for
             lengths in segment_lengths]
 
         if include_closures:
-            max_segment_length = n.max(n.hstack(segment_lengths))
+            max_segment_length = np.max(np.hstack(segment_lengths))
         else:
-            max_segment_length = n.max(n.hstack([
+            max_segment_length = np.max(np.hstack([
                 lengths[:-1] for lengths in segment_lengths]))
 
         for line_index, line in enumerate(lines):
@@ -206,7 +206,7 @@ class Link(object):
                 points = line.points
                 comparison_points = other_line.points
                 if include_closures:
-                    comparison_points = n.vstack((comparison_points,
+                    comparison_points = np.vstack((comparison_points,
                                                   comparison_points[:1]))
 
                 other_seg_lengths = segment_lengths[other_index]
@@ -236,10 +236,10 @@ class Link(object):
 
                     if not len(new_crossings):
                         continue
-                    first_crossings = n.array(new_crossings[::2])
+                    first_crossings = np.array(new_crossings[::2])
                     first_crossings[:, 0] += cumulative_lengths[line_index]
                     first_crossings[:, 1] += cumulative_lengths[other_index]
-                    sec_crossings = n.array(new_crossings[1::2])
+                    sec_crossings = np.array(new_crossings[1::2])
                     sec_crossings[:, 0] += cumulative_lengths[other_index]
                     sec_crossings[:, 1] += cumulative_lengths[line_index]
 
@@ -249,7 +249,7 @@ class Link(object):
         self._vprint('\n{} crossings found\n'.format(
             [len(cs) / 2 for cs in crossings]))
         [cs.sort(key=lambda s: s[0]) for cs in crossings]
-        crossings = [n.array(cs) for cs in crossings]
+        crossings = [np.array(cs) for cs in crossings]
         self._crossings = (only_with_other_lines, crossings)
 
         return crossings
@@ -287,7 +287,7 @@ class Link(object):
             are used. Defaults to None.
         '''
         if angles is None:
-            angles = n.random.random(3)
+            angles = np.random.random(3)
         for line in self.lines:
             line.rotate(angles)
         self._reset_cache()
@@ -321,7 +321,7 @@ class Link(object):
                         include_self_crossings=False):
         all_points = [line.points for line in self.lines]
         lengths = [k.arclength() for k in self.lines]
-        cum_lengths = n.hstack([[0], n.cumsum(lengths)])
+        cum_lengths = np.hstack([[0], np.cumsum(lengths)])
 
         crossings = None
         plot_crossings = []
@@ -336,7 +336,7 @@ class Link(object):
                     x, y, over, orientation = crossing
 
                     # Work out which line the crossing is on
-                    # next_x_start = n.argmax(cum_lengths > x)
+                    # next_x_start = np.argmax(cum_lengths > x)
                     # x_line = next_x_start - 1
                     # x -= cum_lengths[x_line]
                     x -= remove_length
@@ -346,11 +346,11 @@ class Link(object):
                     dr = points[(xint+1) % len(points)] - r
                     plot_crossings.append(r + (x-xint) * dr)
         fig, ax = plot_projection(all_points[0],
-                                  crossings=n.array(plot_crossings),
+                                  crossings=np.array(plot_crossings),
                                   mark_start=mark_start)
         for line in all_points[1:]:
             plot_projection(line,
-                            crossings=n.array(plot_crossings),
+                            crossings=np.array(plot_crossings),
                             mark_start=mark_start,
                             fig_ax=(fig, ax))
 
@@ -385,12 +385,12 @@ class Link(object):
         for line in self.lines:
             line.points = remove_nearby_points(line.points)
         for i in range(runs):
-            if n.sum([len(knot.points) for knot in self.lines]) > 30:
+            if np.sum([len(knot.points) for knot in self.lines]) > 30:
                 vprint('\rRun {} of {}, {} points remain'.format(
                     i, runs, len(self)), False, self.verbose)
 
             if rotate:
-                rot_mat = get_rotation_matrix(n.random.random(3))
+                rot_mat = get_rotation_matrix(np.random.random(3))
                 for line in self.lines:
                     line._apply_matrix(rot_mat)
 
@@ -412,7 +412,7 @@ class Link(object):
         vprint('\nReduced to {} points'.format(len(self)))
 
     def __len__(self):
-        return n.sum(map(len, self.lines))
+        return np.sum(map(len, self.lines))
 
     def arclength(self, include_closures=True):
         '''
@@ -424,7 +424,7 @@ class Link(object):
             Whether to include the distance between the final and
             first points of each line. Defaults to True.
         '''
-        return n.sum(k.arclength(include_closures) for k in self.lines)
+        return np.sum(k.arclength(include_closures) for k in self.lines)
 
     def _vprint(self, s, newline=True):
         '''Prints s, with optional newline. Intended for internal use
@@ -466,8 +466,8 @@ class Link(object):
         number = 0
         for line in crossings:
             if len(line):
-                number += n.sum(line[:, 3])
-        return int(n.abs(number / 2))
+                number += np.sum(line[:, 3])
+        return int(np.abs(number / 2))
 
     def smooth(self, *args, **kwargs):
         '''

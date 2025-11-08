@@ -5,7 +5,7 @@ Octree space curve simplification
 Module for simplifying lines with an octree decomposition.
 '''
 
-import numpy as n
+import numpy as np
 try:
     from coctree import (angle_exceeds as cangle_exceeds,
                          line_to_segments as cline_to_segments)
@@ -18,7 +18,7 @@ class OctreeError(Exception):
     pass
 
 
-class OctreeCell(object):
+class OctreeCell:
     '''Stores line segments, and is capable of splitting and simplifying
     them.
 
@@ -100,9 +100,9 @@ class OctreeCell(object):
         Other kwargs are passed directly to the OctreeCell.
         '''
         if shape is None:
-            shape = [n.min(line[:, 0]), n.max(line[:, 0]),
-                     n.min(line[:, 1]), n.max(line[:, 1]),
-                     n.min(line[:, 2]), n.max(line[:, 2])]
+            shape = [np.min(line[:, 0]), np.max(line[:, 0]),
+                     np.min(line[:, 1]), np.max(line[:, 1]),
+                     np.min(line[:, 2]), np.max(line[:, 2])]
         lineseg = LineSegment(line, identifier=1)
         lineseg.next = lineseg
         lineseg.prev = lineseg
@@ -119,14 +119,14 @@ class OctreeCell(object):
         Other kwargs are passed directly to the OctreeCell.
         '''
         if shape is None:
-            extremes = [[n.min(line[:, 0]), n.max(line[:, 0]),
-                         n.min(line[:, 1]), n.max(line[:, 1]),
-                         n.min(line[:, 2]), n.max(line[:, 2])] for
+            extremes = [[np.min(line[:, 0]), np.max(line[:, 0]),
+                         np.min(line[:, 1]), np.max(line[:, 1]),
+                         np.min(line[:, 2]), np.max(line[:, 2])] for
                          line in lines]
-            extremes = n.array(extremes)
-            shape = [n.min(extremes[:, 0]), n.max(extremes[:, 1]),
-                     n.min(extremes[:, 2]), n.max(extremes[:, 3]),
-                     n.min(extremes[:, 4]), n.max(extremes[:, 5])]
+            extremes = np.array(extremes)
+            shape = [np.min(extremes[:, 0]), np.max(extremes[:, 1]),
+                     np.min(extremes[:, 2]), np.max(extremes[:, 3]),
+                     np.min(extremes[:, 4]), np.max(extremes[:, 5])]
         segments = []
         for identifier, line in enumerate(lines):
             lineseg = LineSegment(line, identifier=identifier)
@@ -173,7 +173,7 @@ class OctreeCell(object):
                 # The CellJumpSegments isn't in self.segments, so it
                 # won't be simplified
                 jump_segment = CellJumpSegment(  
-                    n.vstack((seg_class.points[-1], nex.points[0])))
+                    np.vstack((seg_class.points[-1], nex.points[0])))
                 seg_class.next = jump_segment
                 nex.prev = jump_segment
                 jump_segment.prev = seg_class
@@ -213,7 +213,7 @@ class OctreeCell(object):
             if s1.next == s2.prev:
                 if isinstance(s1.next, Handle):
                     handle = s1.next
-                    points = n.vstack((s1.points, s2.points))
+                    points = np.vstack((s1.points, s2.points))
                     new_segment = LineSegment(points,
                                               identifier=s1.identifier)
                     handle.prev = s1.prev
@@ -226,7 +226,7 @@ class OctreeCell(object):
             elif s2.next == s1.prev:
                 if isinstance(s2.next, Handle):
                     handle = s2.next
-                    points = n.vstack((s2.points, s1.points))
+                    points = np.vstack((s2.points, s1.points))
                     new_segment = LineSegment(points,
                                               identifier=s2.identifier)
                     handle.prev = s2.prev
@@ -255,7 +255,7 @@ class OctreeCell(object):
             if not obey_knotting:
                 segment.replace_with_straight_line()
                 return
-            if not angle_exceeds_func(segment.points, 2.*n.pi, False):
+            if not angle_exceeds_func(segment.points, 2.*np.pi, False):
                 segment.replace_with_straight_line()
                 return
             if (self.is_knotted_func is not None and
@@ -331,9 +331,9 @@ class OctreeCell(object):
         '''Returns x, y and z values each uniformly randomly distributed
         through self.shape.'''
         xmin, xmax, ymin, ymax, zmin, zmax = self.shape
-        return (n.array([xmin, ymin, zmin]) +
-                (0.1 + 0.8*n.random.random(3)) *
-                n.array(self.get_cell_size()))
+        return (np.array([xmin, ymin, zmin]) +
+                (0.1 + 0.8*np.random.random(3)) *
+                np.array(self.get_cell_size()))
 
     def get_cell_size(self):
         return (self.shape[1] - self.shape[0],
@@ -347,7 +347,7 @@ class OctreeCell(object):
         later.'''
                  
         xmin, xmax, ymin, ymax, zmin, zmax = self.shape
-        return n.array([[xmin, ymin, zmin],
+        return np.array([[xmin, ymin, zmin],
                         [xmax, ymin, zmin],
                         [xmax, ymax, zmin],
                         [xmin, ymax, zmin],
@@ -384,7 +384,7 @@ class OctreeCell(object):
 
 
         
-class Handle(object):
+class Handle:
     '''Simply stores a next and previous LineSegment, with a method to
     reconstruct the line by walking along the segments.
 
@@ -428,7 +428,7 @@ class Handle(object):
             comp_segs = [seg for i, seg in enumerate(comp_segs) if
                          i not in invalid_indices]
 
-        return resample(n.vstack([seg.points[:-1] for
+        return resample(np.vstack([seg.points[:-1] for
                                   seg in comp_segs] +
                                  [comp_segs[0].points[:1] +
                                   0.00001]))
@@ -445,7 +445,7 @@ class Handle(object):
 
         
 
-class LineSegment(object):
+class LineSegment:
     '''Stores a section of line, and can split at boundaries.'''
 
     def __init__(self, points, next=None, prev=None, identifier=None):
@@ -522,7 +522,7 @@ class LineSegment(object):
         about any other parts of the full curve.'''
 
         if self.next is not self.prev:
-            self.points = n.vstack((self.points[0], self.points[-1]))
+            self.points = np.vstack((self.points[0], self.points[-1]))
         else:  # if the line is a loop, just cut out most points
             self.points = self.points[::int(len(self.points)/3.)]
 
@@ -545,12 +545,12 @@ def line_to_segments(line, cuts=None, join_ends=True):
     line = line.copy()
 
     if cuts is None:
-        xmin = n.min(line[:,0]) - 1
-        xmax = n.max(line[:,0]) + 1
-        ymin = n.min(line[:,1]) - 1
-        ymax = n.max(line[:,1]) + 1
-        zmin = n.min(line[:,2]) - 1
-        zmax = n.max(line[:,2]) + 1
+        xmin = np.min(line[:,0]) - 1
+        xmax = np.max(line[:,0]) + 1
+        ymin = np.min(line[:,1]) - 1
+        ymax = np.max(line[:,1]) + 1
+        zmin = np.min(line[:,2]) - 1
+        zmax = np.max(line[:,2]) + 1
 
         cut_x = (xmax + xmin) / 2.
         cut_y = (ymax + ymin) / 2.
@@ -568,22 +568,22 @@ def line_to_segments(line, cuts=None, join_ends=True):
         dv = nex - cur
         dx, dy, dz = dv
 
-        cross_cut_x = n.sign(cur[0] - cut_x) != n.sign(nex[0] - cut_x)
-        cross_cut_y = n.sign(cur[1] - cut_y) != n.sign(nex[1] - cut_y)
-        cross_cut_z = n.sign(cur[2] - cut_z) != n.sign(nex[2] - cut_z)
+        cross_cut_x = np.sign(cur[0] - cut_x) != np.sign(nex[0] - cut_x)
+        cross_cut_y = np.sign(cur[1] - cut_y) != np.sign(nex[1] - cut_y)
+        cross_cut_z = np.sign(cur[2] - cut_z) != np.sign(nex[2] - cut_z)
 
         if cross_cut_x and cross_cut_y and cross_cut_z:
             x_cut_pos = -1 * (cur[0]-cut_x)/dx
             y_cut_pos = -1 * (cur[1]-cut_y)/dy
             z_cut_pos = -1 * (cur[2]-cut_z)/dz
-            order = n.sort((x_cut_pos, y_cut_pos, z_cut_pos))
+            order = np.sort((x_cut_pos, y_cut_pos, z_cut_pos))
             # assert 0 < x_cut_pos < 1 and 0 < y_cut_pos < 1 and 0 < z_cut_pos < 1
             join_point_1 = cur + order[0]*dv
             join_point_2 = cur + order[1]*dv
             join_point_3 = cur + order[2]*dv
-            first_seg = n.vstack((line[cut_i:(i+1)].copy(), join_point_1))
-            second_seg = n.vstack((join_point_1, join_point_2))
-            third_seg = n.vstack((join_point_2, join_point_3))
+            first_seg = np.vstack((line[cut_i:(i+1)].copy(), join_point_1))
+            second_seg = np.vstack((join_point_1, join_point_2))
+            third_seg = np.vstack((join_point_2, join_point_3))
             line[i] = join_point_3
             cut_i = i
             segments.append(first_seg)
@@ -592,11 +592,11 @@ def line_to_segments(line, cuts=None, join_ends=True):
         elif cross_cut_x and cross_cut_y:
             x_cut_pos = -1 * (cur[0]-cut_x)/dx
             y_cut_pos = -1 * (cur[1]-cut_y)/dy
-            order = n.sort((x_cut_pos, y_cut_pos))
+            order = np.sort((x_cut_pos, y_cut_pos))
             join_point_1 = cur + order[0]*dv
             join_point_2 = cur + order[1]*dv
-            first_seg = n.vstack((line[cut_i:(i+1)].copy(), join_point_1))
-            second_seg = n.vstack((join_point_1, join_point_2))
+            first_seg = np.vstack((line[cut_i:(i+1)].copy(), join_point_1))
+            second_seg = np.vstack((join_point_1, join_point_2))
             line[i] = join_point_2
             cut_i = i
             segments.append(first_seg)
@@ -604,11 +604,11 @@ def line_to_segments(line, cuts=None, join_ends=True):
         elif cross_cut_x and cross_cut_z:
             x_cut_pos = -1 * (cur[0]-cut_x)/dx
             z_cut_pos = -1 * (cur[2]-cut_z)/dz
-            order = n.sort((x_cut_pos, z_cut_pos))
+            order = np.sort((x_cut_pos, z_cut_pos))
             join_point_1 = cur + order[0]*dv
             join_point_2 = cur + order[1]*dv
-            first_seg = n.vstack((line[cut_i:(i+1)].copy(), join_point_1))
-            second_seg = n.vstack((join_point_1, join_point_2))
+            first_seg = np.vstack((line[cut_i:(i+1)].copy(), join_point_1))
+            second_seg = np.vstack((join_point_1, join_point_2))
             line[i] = join_point_2
             cut_i = i
             segments.append(first_seg)
@@ -616,11 +616,11 @@ def line_to_segments(line, cuts=None, join_ends=True):
         elif cross_cut_y and cross_cut_z:
             y_cut_pos = -1 * (cur[1]-cut_y)/dy
             z_cut_pos = -1 * (cur[2]-cut_z)/dz
-            order = n.sort((y_cut_pos, z_cut_pos))
+            order = np.sort((y_cut_pos, z_cut_pos))
             join_point_1 = cur + order[0]*dv
             join_point_2 = cur + order[1]*dv
-            first_seg = n.vstack((line[cut_i:(i+1)].copy(), join_point_1))
-            second_seg = n.vstack((join_point_1, join_point_2))
+            first_seg = np.vstack((line[cut_i:(i+1)].copy(), join_point_1))
+            second_seg = np.vstack((join_point_1, join_point_2))
             line[i] = join_point_2
             cut_i = i
             segments.append(first_seg)
@@ -629,7 +629,7 @@ def line_to_segments(line, cuts=None, join_ends=True):
             cut_pos = -1 * (cur[0]-cut_x)/dx
             assert 0. <= cut_pos <= 1.
             join_point = cur + cut_pos*dv
-            first_seg = n.vstack((line[cut_i:(i+1)].copy(), join_point))
+            first_seg = np.vstack((line[cut_i:(i+1)].copy(), join_point))
             line[i] = join_point
             cut_i = i
             segments.append(first_seg)
@@ -637,7 +637,7 @@ def line_to_segments(line, cuts=None, join_ends=True):
             cut_pos = -1 * (cur[1]-cut_y)/dy
             assert 0. <= cut_pos <= 1.
             join_point = cur + cut_pos*dv
-            first_seg = n.vstack((line[cut_i:(i+1)].copy(), join_point))
+            first_seg = np.vstack((line[cut_i:(i+1)].copy(), join_point))
             line[i] = join_point
             cut_i = i
             segments.append(first_seg)
@@ -646,9 +646,9 @@ def line_to_segments(line, cuts=None, join_ends=True):
             assert 0. <= cut_pos <= 1.
             join_point = cur + cut_pos*dv
 
-            first_seg = n.vstack((line[cut_i:(i+1)].copy(), join_point))
+            first_seg = np.vstack((line[cut_i:(i+1)].copy(), join_point))
             line[i] = join_point
-            # second_seg = n.vstack((join_point, line[(i+1):]))
+            # second_seg = np.vstack((join_point, line[(i+1):]))
 
             cut_i = i
             segments.append(first_seg)
@@ -657,7 +657,7 @@ def line_to_segments(line, cuts=None, join_ends=True):
     if cut_i > 0:
         if join_ends:
             first_seg = segments.pop(0)
-            segments.append(n.vstack((final_seg, first_seg)))
+            segments.append(np.vstack((final_seg, first_seg)))
         else:
             segments.append(final_seg)
     else:
@@ -684,7 +684,7 @@ def crude_segs_to_segs(csegs, identifier=None):
     return segs
 
 
-def angle_exceeds(ps, val=2*n.pi, include_closure=True):
+def angle_exceeds(ps, val=2*np.pi, include_closure=True):
     '''Returns True if the sum of angles along ps exceeds
     val, else False.
 
@@ -705,22 +705,22 @@ def angle_exceeds(ps, val=2*n.pi, include_closure=True):
         dv2 = nex2-nex
         dv2 /= mag(dv2)
         increment = angle_between(dv, dv2)
-        if n.isnan(increment):
+        if np.isnan(increment):
             return True
         angle += increment
         if angle > val:
             return True
-    assert not n.isnan(angle)
+    assert not np.isnan(angle)
     return False
 
 def angle_between(v1, v2):
     '''Returns angle between v1 and v2, assuming they are normalised to 1.'''
     # clip becaus v1.dot(v2) may exceed 1 due to floating point
-    return n.arccos(n.clip(n.abs(v1.dot(v2)), 0., 1.))
+    return np.arccos(np.clip(np.abs(v1.dot(v2)), 0., 1.))
 
 
 def mag(v):
-    return n.sqrt(v.dot(v))
+    return np.sqrt(v.dot(v))
 
 def find_octants_of_segments(segments, cuts):
     '''For each LineSegment in the passed segments, returns an
@@ -767,7 +767,7 @@ def resample(points):
         changing = False
         length = len(points)
         points = points.copy()
-        keep = n.ones(len(points), dtype=bool)
+        keep = np.ones(len(points), dtype=bool)
         cur = points[0]
         nex = points[1]
         dv2 = nex-cur
@@ -777,14 +777,14 @@ def resample(points):
             prev = cur
             cur = nex
             nex = points[i+1]
-            if n.all(n.less(n.abs(cur-nex), 0.0001)):
+            if np.all(np.less(np.abs(cur-nex), 0.0001)):
                 keep[i] = False
             else:
                 dv1 = cur - prev
                 dv1 /= mag(dv1)
                 dv2 = nex - cur
                 dv2 /= mag(dv2)
-                if n.abs(dv1.dot(dv2) - 1) < 0.0001:
+                if np.abs(dv1.dot(dv2) - 1) < 0.0001:
                     keep[i] = False
         points = points[keep]
         new_length = len(points)
@@ -796,12 +796,12 @@ def remove_nearby_points(points):
     '''Takes a set of points, and removes those that are no distance from
     the previous one.'''
     points = points.copy()
-    keep = n.ones(len(points), dtype=n.bool)
+    keep = np.ones(len(points), dtype=np.bool)
 
     comparator = points[0]
     for i, point in enumerate(points):
         nex = points[(i+1) % len(points)]
-        if n.all(n.abs((nex - point)) < 0.00001):
+        if np.all(np.abs((nex - point)) < 0.00001):
             keep[i] = False
     keep[-1] = True
 
@@ -811,14 +811,14 @@ def remove_nearby_points(points):
 def split_cell_line(line, shape=(10, 10, 10.)):
     '''Takes a cell lines, and cuts at the periodic boundaries
     (in this represenation, this is where it jumps)'''
-    shape = n.array(shape)
+    shape = np.array(shape)
     line = line.copy()
     i = 0
     out = []
     while i < (len(line)-1):
         cur = line[i]
         nex = line[i+1]
-        if n.any(n.abs(nex-cur) > shape):
+        if np.any(np.abs(nex-cur) > shape):
             firsthalf = line[:(i+1)]
             secondhalf = line[(i+1):]
             out.append(firsthalf)

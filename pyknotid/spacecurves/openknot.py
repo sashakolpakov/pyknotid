@@ -11,8 +11,7 @@ API documentation
 
 '''
 
-from __future__ import print_function
-import numpy as n
+import numpy as np
 import sympy as sym
 
 from pyknotid.spacecurves.spacecurve import SpaceCurve
@@ -55,7 +54,7 @@ class OpenKnot(SpaceCurve):
         '''
         Returns the distance between the first and last points.
         '''
-        return n.linalg.norm(self.points[-1] - self.points[0])
+        return np.linalg.norm(self.points[-1] - self.points[0])
 
     def raw_crossings(self, mode='use_max_jump',
                       virtual_closure=False,
@@ -76,7 +75,7 @@ class OpenKnot(SpaceCurve):
                                                  try_cython=try_cython)
 
         if len(cs) > 0:
-            closure_cs = n.argwhere(((cs[:, 0] > len(self.points)-1)) |
+            closure_cs = np.argwhere(((cs[:, 0] > len(self.points)-1)) |
                                     ((cs[:, 1] > len(self.points)-1)))
             indices = closure_cs.flatten()
             for index in indices:
@@ -107,7 +106,7 @@ class OpenKnot(SpaceCurve):
             k.zero_centroid()
             cs = k.raw_crossings()
             if len(cs) > 0:
-                closure_cs = n.argwhere(((cs[:, 0] > len(self.points)-1) & (cs[:, 2] < 0.)) |
+                closure_cs = np.argwhere(((cs[:, 0] > len(self.points)-1) & (cs[:, 2] < 0.)) |
                                         ((cs[:, 1] > len(self.points)-1) & (cs[:, 2] > 0.)))
                 indices = closure_cs.flatten()
                 for index in indices:
@@ -229,7 +228,7 @@ class OpenKnot(SpaceCurve):
         cache_radius = radius
 
         if radius is None:
-            radius = 100 * n.max(self.points)
+            radius = 100 * np.max(self.points)
             # Not guaranteed to give 10* the real radius, but good enough
 
         print_dist = int(max(1, 3000. / len(self.points)))
@@ -245,7 +244,7 @@ class OpenKnot(SpaceCurve):
                 if optimise_closure:
                     cs = k.raw_crossings()
                     if len(cs) > 0:
-                        closure_cs = n.argwhere(((cs[:, 0] > len(self.points)-1) & (cs[:, 2] < 0.)) |
+                        closure_cs = np.argwhere(((cs[:, 0] > len(self.points)-1) & (cs[:, 2] < 0.)) |
                                                 ((cs[:, 1] > len(self.points)-1) & (cs[:, 2] > 0.)))
                         indices = closure_cs.flatten()
                         for index in indices:
@@ -258,16 +257,16 @@ class OpenKnot(SpaceCurve):
                     points = k.points
                     closure_point = points[-1] + points[0] / 2.
                     closure_point[2] = radius
-                    k.points = n.vstack([points, closure_point])
+                    k.points = np.vstack([points, closure_point])
 
                     polys.append([angs[0], angs[1], k.alexander_polynomial()])
         except IndexError:
             self.failed_case = k
 
         self._cached_alexanders[
-            (number_of_samples, cache_radius)] = n.array(polys)
+            (number_of_samples, cache_radius)] = np.array(polys)
 
-        return n.array(polys)
+        return np.array(polys)
 
     def closure_alexander_polynomial(self, theta=0, phi=0):
         '''Returns the Alexander polynomial of the knot, when projected in
@@ -286,7 +285,7 @@ class OpenKnot(SpaceCurve):
 
         cs = k.raw_crossings()
         if len(cs) > 0:
-            closure_cs = n.argwhere(((cs[:, 0] > len(self.points)-1) & (cs[:, 2] < 0.)) |
+            closure_cs = np.argwhere(((cs[:, 0] > len(self.points)-1) & (cs[:, 2] < 0.)) |
                                     ((cs[:, 1] > len(self.points)-1) & (cs[:, 2] > 0.)))
             indices = closure_cs.flatten()
             for index in indices:
@@ -302,12 +301,12 @@ class OpenKnot(SpaceCurve):
         '''
         polys = self.alexander_polynomials(
             number_of_samples=number_of_samples, **kwargs)
-        alexs = n.round(polys[:, 2]).astype(n.int)
+        alexs = np.round(polys[:, 2]).astype(np.int)
 
         fracs = []
         length = float(len(alexs))
-        for alex in n.unique(alexs):
-            fracs.append((alex, n.sum(alexs == alex) / length))
+        for alex in np.unique(alexs):
+            fracs.append((alex, np.sum(alexs == alex) / length))
 
         return sorted(fracs, key=lambda j: j[1])
 
@@ -321,14 +320,14 @@ class OpenKnot(SpaceCurve):
         positions = []
         for i, row in enumerate(polys):
             positions.append(gall_peters(row[0], row[1]))
-        positions = n.array(positions)
+        positions = np.array(positions)
 
-        interpolation_points = n.mgrid[0:2*n.pi:int(1.57*interpolation)*1j,
+        interpolation_points = np.mgrid[0:2*np.pi:int(1.57*interpolation)*1j,
                                        -2.:2.:interpolation*1j]
-        # interpolation_points = n.mgrid[0:2 * n.pi:157j,
+        # interpolation_points = np.mgrid[0:2 * np.pi:157j,
         #                        -2.:2.:100j]
-        # '''interpolation_points = n.mgrid[-n.pi:n.pi:157j,
-        #                        -n.pi/2:n.pi/2:100j]'''
+        # '''interpolation_points = np.mgrid[-np.pi:np.pi:157j,
+        #                        -np.pi/2:np.pi/2:100j]'''
 
         values = griddata(positions, polys[:, 2],
                           tuple(interpolation_points),
@@ -376,7 +375,7 @@ class OpenKnot(SpaceCurve):
             fig.colorbar(cax)
         else:
             ax.contourf(values.T, cmap='jet',
-                        levels=[0] + range(3, int(n.max(values) + 1.1), 2))
+                        levels=[0] + range(3, int(np.max(values) + 1.1), 2))
         ax.set_xticks([])
         ax.set_yticks([])
 
@@ -419,7 +418,7 @@ class OpenKnot(SpaceCurve):
         virtual = False
 
         for crossing_number in self.gauss_code().crossing_numbers:
-            occurences = n.where(gauss_code == crossing_number)[0]
+            occurences = np.where(gauss_code == crossing_number)[0]
             first_occurence = occurences[0]
             second_occurence = occurences[1]
             crossing_difference = second_occurence - first_occurence
@@ -469,7 +468,7 @@ class OpenKnot(SpaceCurve):
             isvirtual = k.virtual_check()
             polys.append([angs[0], angs[1], isvirtual])
 
-        return n.array(polys)
+        return np.array(polys)
 
     def virtual_fractions(self, number_of_samples=10, **kwargs):
         '''Returns each of the virtual booleans from
@@ -477,12 +476,12 @@ class OpenKnot(SpaceCurve):
         '''
         polys = self.virtual_checks(
             number_of_samples=number_of_samples, **kwargs)
-        alexs = n.round(polys[:, 2]).astype(n.int)
+        alexs = np.round(polys[:, 2]).astype(np.int)
 
         fracs = []
         length = float(len(alexs))
-        for alex in n.unique(alexs):
-            fracs.append((alex, n.sum(alexs == alex) / length))
+        for alex in np.unique(alexs):
+            fracs.append((alex, np.sum(alexs == alex) / length))
 
         return sorted(fracs, key=lambda j: j[1])
         
@@ -495,9 +494,9 @@ class OpenKnot(SpaceCurve):
         positions = []
         for i, row in enumerate(polys):
             positions.append(gall_peters(row[0], row[1]))
-        positions = n.array(positions)
+        positions = np.array(positions)
 
-        interpolation_points = n.mgrid[0:2 * n.pi:157j,
+        interpolation_points = np.mgrid[0:2 * np.pi:157j,
                                -2.:2.:100j]
         values = griddata(positions, polys[:, 2],
                           tuple(interpolation_points),
@@ -525,7 +524,7 @@ class OpenKnot(SpaceCurve):
             fig.colorbar(cax)
         else:
             ax.contourf(values.T, cmap='jet',
-                        levels=[0] + range(3, int(n.max(values) + 1.1), 2))
+                        levels=[0] + range(3, int(np.max(values) + 1.1), 2))
         ax.set_xticks([])
         ax.set_yticks([])
 
@@ -565,15 +564,15 @@ class OpenKnot(SpaceCurve):
         positions, values = self._virtual_map_values(
             number_of_samples, zero_centroid=False)
 
-        thetas = n.arcsin(n.linspace(-1, 1, 100)) + n.pi / 2.
-        phis = n.linspace(0, 2 * n.pi, 157)
+        thetas = np.arcsin(np.linspace(-1, 1, 100)) + np.pi / 2.
+        phis = np.linspace(0, 2 * np.pi, 157)
 
-        thetas, phis = n.meshgrid(thetas, phis)
+        thetas, phis = np.meshgrid(thetas, phis)
 
-        r = sphere_radius_factor * n.max(self.points)
-        zs = r * n.cos(thetas)
-        xs = r * n.sin(thetas) * n.cos(phis)
-        ys = r * n.sin(thetas) * n.sin(phis)
+        r = sphere_radius_factor * np.max(self.points)
+        zs = r * np.cos(thetas)
+        xs = r * np.sin(thetas) * np.cos(phis)
+        ys = r * np.sin(thetas) * np.sin(phis)
 
         import mayavi.mlab as may
 
@@ -621,7 +620,7 @@ class OpenKnot(SpaceCurve):
 
         cs = k.raw_crossings()
         if len(cs) > 0:
-            closure_cs = n.argwhere(((cs[:, 0] > len(self.points)-1) & (cs[:, 2] < 0.)) |
+            closure_cs = np.argwhere(((cs[:, 0] > len(self.points)-1) & (cs[:, 2] < 0.)) |
                                     ((cs[:, 1] > len(self.points)-1) & (cs[:, 2] > 0.)))
             indices = closure_cs.flatten()
             for index in indices:
@@ -672,7 +671,7 @@ class OpenKnot(SpaceCurve):
             self_linking = k.self_linking()
             polys.append([angs[0], angs[1], self_linking])
 
-        return n.array(polys)
+        return np.array(polys)
 
     def self_linking_fractions(self, number_of_samples=10, **kwargs):
         '''Returns each of the self linking numbers from
@@ -680,16 +679,16 @@ class OpenKnot(SpaceCurve):
         '''
         self_linkings = self.self_linkings(
             number_of_samples=number_of_samples, **kwargs)
-        self_linkings = n.round(self_linkings[:, 2]).astype(n.int)
+        self_linkings = np.round(self_linkings[:, 2]).astype(np.int)
 
         fracs = []
         length = float(len(self_linkings))
-        for alex in n.unique(self_linkings):
-            fracs.append((alex, n.sum(self_linkings == alex) / length))
-        # fracs = n.array(fracs)
+        for alex in np.unique(self_linkings):
+            fracs.append((alex, np.sum(self_linkings == alex) / length))
+        # fracs = np.array(fracs)
 
         return sorted(fracs, key=lambda j: j[1])
-        #return fracs[n.argsort(fracs[:, 1])]
+        #return fracs[np.argsort(fracs[:, 1])]
         
     def _self_linking_map_values(self, number_of_samples=10, **kwargs):
         polys = self.self_linkings(
@@ -700,9 +699,9 @@ class OpenKnot(SpaceCurve):
         positions = []
         for i, row in enumerate(polys):
             positions.append(gall_peters(row[0], row[1]))
-        positions = n.array(positions)
+        positions = np.array(positions)
 
-        interpolation_points = n.mgrid[0:2 * n.pi:157j,
+        interpolation_points = np.mgrid[0:2 * np.pi:157j,
                                -2.:2.:100j]
         values = griddata(positions, polys[:, 2],
                           tuple(interpolation_points),
@@ -730,7 +729,7 @@ class OpenKnot(SpaceCurve):
             fig.colorbar(cax)
         else:
             ax.contourf(values.T, cmap='jet',
-                        levels=[0] + range(3, int(n.max(values) + 1.1), 2))
+                        levels=[0] + range(3, int(np.max(values) + 1.1), 2))
         ax.set_xticks([])
         ax.set_yticks([])
 
@@ -784,8 +783,8 @@ class OpenKnot(SpaceCurve):
         self.plot(**kwargs)
 
         if radius is None:
-            self_radii = n.sqrt(n.sum(self.points*self.points, axis=1))
-            radius = n.max(self_radii) * 2
+            self_radii = np.sqrt(np.sum(self.points*self.points, axis=1))
+            radius = np.max(self_radii) * 2
         print('radius is', radius)
         if mode == 'mesh':
             plot_sphere_shell_vispy(self.closure_alexander_polynomial,
@@ -848,7 +847,7 @@ class OpenKnot(SpaceCurve):
         cache_radius = radius
 
         if radius is None:
-            radius = 100 * n.max(self.points)
+            radius = 100 * np.max(self.points)
             # Not guaranteed to give 10* the real radius, but good enough
 
         print_dist = int(max(1, 3000. / len(self.points)))
@@ -862,7 +861,7 @@ class OpenKnot(SpaceCurve):
             points = k.points
             closure_point = points[-1] + points[0] / 2.
             closure_point[2] = radius
-            k.points = n.vstack([points, closure_point])
+            k.points = np.vstack([points, closure_point])
             root_at_two = k.alexander_at_root(2)
             root_at_three = k.alexander_at_root(3)
             root_at_four = k.alexander_at_root(4)
@@ -879,7 +878,7 @@ class OpenKnot(SpaceCurve):
                           knot_type])
 
             # self._cached_alexanders[
-            #      (number_of_samples, cache_radius)] = n.array(polys)
+            #      (number_of_samples, cache_radius)] = np.array(polys)
 
         return polys
 
@@ -925,7 +924,7 @@ class OpenKnot(SpaceCurve):
 
         counter = 0
         for crossing_number in self.gauss_code().crossing_numbers:
-            occurrences = n.where(gauss_code_crossings == crossing_number)[0]
+            occurrences = np.where(gauss_code_crossings == crossing_number)[0]
             if gauss_code_orientations[occurrences[0]] == 1:
                 m = m_plus
             else:
@@ -999,7 +998,7 @@ class OpenKnot(SpaceCurve):
             v2 = k._slip_vassiliev_degree_2_projection()
             v2s.append(v2)
 
-        result = n.average(n.abs(v2s))
+        result = np.average(np.abs(v2s))
         return result
 
     def _slip_vassiliev_degree_2_projection(self):
@@ -1039,7 +1038,7 @@ class OpenKnot(SpaceCurve):
             v2 = k._vassiliev_degree_2_projection()
             v2s.append(v2)
 
-        result = n.average(n.abs(v2s))
+        result = np.average(np.abs(v2s))
         self._cached_v2[samples] = result
         return result
 
@@ -1068,11 +1067,11 @@ class OpenKnot(SpaceCurve):
             v3s.append(v3)
 
         if signed:
-            result = n.average(v3s)
+            result = np.average(v3s)
         elif signed is None:
-            result = (n.average(v3s), n.average(n.abs(v3s)))
+            result = (np.average(v3s), np.average(np.abs(v3s)))
         else:
-            result = n.average(n.abs(v3s))
+            result = np.average(np.abs(v3s))
         self._cached_v3[(samples, signed)] = result
         return result
 
@@ -1100,7 +1099,7 @@ class OpenKnot(SpaceCurve):
         cache_radius = radius
 
         if radius is None:
-            radius = 100 * n.max(self.points)
+            radius = 100 * np.max(self.points)
             # Not guaranteed to give 10* the real radius, but good enough
 
         print_dist = int(max(1, 3000. / len(self.points)))
@@ -1113,7 +1112,7 @@ class OpenKnot(SpaceCurve):
                 k.zero_centroid()
             cs = k.raw_crossings()
             if len(cs) > 0:
-                closure_cs = n.argwhere(((cs[:, 0] > len(self.points)-1) & (cs[:, 2] < 0.)) |
+                closure_cs = np.argwhere(((cs[:, 0] > len(self.points)-1) & (cs[:, 2] < 0.)) |
                                         ((cs[:, 1] > len(self.points)-1) & (cs[:, 2] > 0.)))
                 indices = closure_cs.flatten()
                 for index in indices:
@@ -1123,8 +1122,8 @@ class OpenKnot(SpaceCurve):
             polys.append([angs[0], angs[1], alexander(gc, simplify=False)])
 
             # Remove closing crossings to calculate self linking
-            xs, ys = n.where(cs[:, :2] > len(k.points) - 1)
-            keeps = n.ones(len(cs), dtype=n.bool)
+            xs, ys = np.where(cs[:, :2] > len(k.points) - 1)
+            keeps = np.ones(len(cs), dtype=np.bool)
             for x in xs:
                 keeps[x] = False
             cs = cs[keeps]
@@ -1142,29 +1141,29 @@ class OpenKnot(SpaceCurve):
             self_linkings.append((angs[0], angs[1], self_linking_counter))
 
 
-        return n.array(polys), n.array(self_linkings)
+        return np.array(polys), np.array(self_linkings)
 
     def _determinant_and_self_linking_fractions(self, number_of_samples=10,
                                                 **kwargs):
         polys, self_linkings = self._determinants_and_self_linkings(
             number_of_samples, **kwargs)
 
-        alexs = n.round(polys[:, 2]).astype(n.int)
+        alexs = np.round(polys[:, 2]).astype(np.int)
 
         fracs = []
         length = float(len(alexs))
-        for alex in n.unique(alexs):
-            fracs.append((alex, n.sum(alexs == alex) / length))
+        for alex in np.unique(alexs):
+            fracs.append((alex, np.sum(alexs == alex) / length))
 
         det_fracs = sorted(fracs, key=lambda j: j[1])
 
 
-        self_linkings = n.round(self_linkings[:, 2]).astype(n.int)
+        self_linkings = np.round(self_linkings[:, 2]).astype(np.int)
 
         fracs = []
         length = float(len(self_linkings))
-        for linking in n.unique(self_linkings):
-            fracs.append((linking, n.sum(self_linkings == linking) / length))
+        for linking in np.unique(self_linkings):
+            fracs.append((linking, np.sum(self_linkings == linking) / length))
 
         self_linking_fracs = sorted(fracs, key=lambda j: j[1])
 
@@ -1186,7 +1185,7 @@ class OpenKnot(SpaceCurve):
         cache_radius = radius
 
         if radius is None:
-            radius = 100 * n.max(self.points)
+            radius = 100 * np.max(self.points)
             # Not guaranteed to give 10* the real radius, but good enough
 
         print_dist = int(max(1, 3000. / len(self.points)))
@@ -1199,7 +1198,7 @@ class OpenKnot(SpaceCurve):
                 k.zero_centroid()
             cs = k.raw_crossings()
             if len(cs) > 0:
-                closure_cs = n.argwhere(((cs[:, 0] > len(self.points)-1) & (cs[:, 2] < 0.)) |
+                closure_cs = np.argwhere(((cs[:, 0] > len(self.points)-1) & (cs[:, 2] < 0.)) |
                                         ((cs[:, 1] > len(self.points)-1) & (cs[:, 2] > 0.)))
                 indices = closure_cs.flatten()
                 for index in indices:
@@ -1210,8 +1209,8 @@ class OpenKnot(SpaceCurve):
             closure_knotted.append([angs[0], angs[1], is_knotted])
 
             # Remove closing crossings to calculate self linking
-            xs, ys = n.where(cs[:, :2] > len(k.points) - 1)
-            keeps = n.ones(len(cs), dtype=n.bool)
+            xs, ys = np.where(cs[:, :2] > len(k.points) - 1)
+            keeps = np.ones(len(cs), dtype=np.bool)
             for x in xs:
                 keeps[x] = False
             cs = cs[keeps]
@@ -1226,8 +1225,8 @@ class OpenKnot(SpaceCurve):
                 projection_knotted.append([angs[0], angs[1], False])
 
 
-        return (n.array(closure_knotted), n.array(projection_virtual),
-                n.array(projection_knotted))
+        return (np.array(closure_knotted), np.array(projection_virtual),
+                np.array(projection_knotted))
 
     def _closure_and_projection_knotted_fractions(self, number_of_samples=10,
                                                     **kwargs):
@@ -1235,11 +1234,11 @@ class OpenKnot(SpaceCurve):
             number_of_samples, **kwargs)
         ck, pv, pk = self._closure_and_projection_invariants(number_of_samples, **kwargs)
 
-        ck_fraction = n.average(ck[:, -1])
-        pv_fraction = n.average(pv[:, -1])
+        ck_fraction = np.average(ck[:, -1])
+        pv_fraction = np.average(pv[:, -1])
 
-        return ck_fraction, pv_fraction, n.average(pv[:, -1].astype(n.bool) |
-                                                   pk[:, -1].astype(n.bool))
+        return ck_fraction, pv_fraction, np.average(pv[:, -1].astype(np.bool) |
+                                                   pk[:, -1].astype(np.bool))
 
     def plot_vassiliev_spectrum(self, angles=100, max_crossings=8):
         v2 = self.vassiliev_degree_2_average()
@@ -1280,8 +1279,8 @@ def gall_peters(theta, phi):
     phi : float
         The longitude, in radians.
     '''
-    theta -= n.pi / 2
-    return (phi, 2 * n.sin(theta))
+    theta -= np.pi / 2
+    return (phi, 2 * np.sin(theta))
 
 def mollweide(phi, lambda_):
     '''
@@ -1298,17 +1297,17 @@ def mollweide(phi, lambda_):
         The longitude, in radians.
     '''
 
-    if phi == n.pi/2 or phi == -n.pi/2:
+    if phi == np.pi/2 or phi == -np.pi/2:
         theta_m = phi
     else:
         theta_n = phi
         theta_m = 0
         while abs(theta_m - theta_n) > 0.000001:
             theta_n = theta_m
-            theta_m = (theta_n - (2*theta_n + n.sin(2*theta_n) - n.pi * n.sin(phi)) /
-                       (2 + 2*n.cos(2*theta_n)))
-    x = ((2 * n.sqrt(2)) / (n.pi)) * lambda_ * n.cos(theta_m)
-    y = n.sqrt(2) * n.sin(theta_m)
+            theta_m = (theta_n - (2*theta_n + np.sin(2*theta_n) - np.pi * np.sin(phi)) /
+                       (2 + 2*np.cos(2*theta_n)))
+    x = ((2 * np.sqrt(2)) / (np.pi)) * lambda_ * np.cos(theta_m)
+    y = np.sqrt(2) * np.sin(theta_m)
     return(x,y)
 
 
