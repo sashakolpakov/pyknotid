@@ -15,7 +15,7 @@ API documentation
 
 from functools import wraps
 from os.path import realpath, dirname, exists, join, abspath
-from os import mkdir, remove
+from os import makedirs, remove
 
 def find_database(db_version=None):
     '''Returns the path to the knots.db file.
@@ -70,7 +70,7 @@ def download_database():
     '''
     dirn = download_target_dir()
     if not exists(dirn):
-        mkdir(dirn)
+        makedirs(dirn, exist_ok=True)
 
     from pyknotid.catalogue import db_version
     db_name = 'knots_{}.db'.format(db_version)
