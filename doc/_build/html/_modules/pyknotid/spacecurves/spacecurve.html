@@ -1,0 +1,1323 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyknotid.spacecurves.spacecurve &mdash; pyknotid 0.5.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=c3dca1ed"></script>
+      <script src="../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            pyknotid
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/spacecurves/index.html">Space curve analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html">Invariants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.alexander"><code class="docutils literal notranslate"><span class="pre">alexander()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.alexander_cypari"><code class="docutils literal notranslate"><span class="pre">alexander_cypari()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.alexander_mathematica"><code class="docutils literal notranslate"><span class="pre">alexander_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.alexander_maxima"><code class="docutils literal notranslate"><span class="pre">alexander_maxima()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.arnold_2St_2Jminus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jminus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.arnold_2St_2Jplus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jplus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.contract_points"><code class="docutils literal notranslate"><span class="pre">contract_points()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.hyperbolic_volume"><code class="docutils literal notranslate"><span class="pre">hyperbolic_volume()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.jones_mathematica"><code class="docutils literal notranslate"><span class="pre">jones_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.second_order_writhe"><code class="docutils literal notranslate"><span class="pre">second_order_writhe()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.self_linking"><code class="docutils literal notranslate"><span class="pre">self_linking()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.vassiliev_degree_2"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_2()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.virtual_vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">virtual_vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/representations/index.html">Topological representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/catalogue/index.html">Knot catalogue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html">Visualise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_line"><code class="docutils literal notranslate"><span class="pre">plot_line()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_projection"><code class="docutils literal notranslate"><span class="pre">plot_projection()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_sphere_lambert_sharp_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_sharp_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_sphere_lambert_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_sphere_mollweide_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_mollweide_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_sphere_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/about.html">About pyknotid</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">pyknotid</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pyknotid.spacecurves.spacecurve</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pyknotid.spacecurves.spacecurve</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">SpaceCurve</span>
+<span class="sd">----------</span>
+
+<span class="sd">The :class:`SpaceCurve` class is the base for all space-curve analysis</span>
+<span class="sd">in pyknotid. It provides methods for geometrical manipulation</span>
+<span class="sd">(translation, rotation etc.), calculating geometrical characteristics</span>
+<span class="sd">such as the writhe, and obtaining topological representations of the</span>
+<span class="sd">curve by analysing its crossings in projection.</span>
+
+<span class="sd">pyknotid provides other classes for topological analysis of the curves:</span>
+
+<span class="sd">- :class:`~pyknotid.spacecurves.knot.Knot` for calculating knot invariants of the space-curve.</span>
+<span class="sd">- :class:`~pyknotid.spacecurves.link.Link` to handle multiple SpaceCurves and calculate linking invariants.</span>
+<span class="sd">- :class:`~pyknotid.spacecurves.periodiccell.Cell` for handling multiple space-curves in a box with periodic boundaries.</span>
+
+<span class="sd">API documentation</span>
+<span class="sd">~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_logger</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.spacecurves</span><span class="w"> </span><span class="kn">import</span> <span class="n">chelpers</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Cython extension not available, using Python implementation. &#39;</span>
+                <span class="s1">&#39;Performance may be reduced but results will be identical.&#39;</span><span class="p">)</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.spacecurves</span><span class="w"> </span><span class="kn">import</span> <span class="n">helpers</span> <span class="k">as</span> <span class="n">chelpers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.spacecurves</span><span class="w"> </span><span class="kn">import</span> <span class="n">helpers</span> <span class="k">as</span> <span class="n">helpers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.spacecurves.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">arclength</span><span class="p">,</span> <span class="n">radius_of_gyration</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.spacecurves.smooth</span><span class="w"> </span><span class="kn">import</span> <span class="n">smooth</span>
+
+<span class="c1"># We must be careful only to import modules that do not depend on this one, to</span>
+<span class="c1"># prevent import loops</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.visualise</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_line</span><span class="p">,</span> <span class="n">plot_projection</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_json_file</span><span class="p">,</span> <span class="n">from_json_file</span><span class="p">,</span> <span class="n">from_csv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">mag</span><span class="p">,</span> <span class="n">get_rotation_matrix</span><span class="p">,</span>
+                           <span class="n">ensure_shape_tuple</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="SpaceCurve"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">SpaceCurve</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Class for holding the vertices of a single line, providing helper</span>
+<span class="sd">    methods for convenient manipulation and analysis.</span>
+
+<span class="sd">    The methods of this class are largely geometrical (though this</span>
+<span class="sd">    includes listing the crossings in projection and extracting a</span>
+<span class="sd">    Gauss code etc.). For topological measurements, you should use</span>
+<span class="sd">    a :class:`~pyknotid.spacecurves.knot.Knot`.</span>
+
+<span class="sd">    This class deliberately combines methods to do many different kinds</span>
+<span class="sd">    of measurements or manipulations. Some of these are externally</span>
+<span class="sd">    available through other modules in pyknotid - if so, this is usually</span>
+<span class="sd">    indicated in the method docstrings.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    points : array-like</span>
+<span class="sd">        The 3d points (vertices) of a piecewise</span>
+<span class="sd">        linear curve representation</span>
+<span class="sd">    verbose : bool</span>
+<span class="sd">        Indicates whether the SpaceCurve should print</span>
+<span class="sd">        information during processing</span>
+<span class="sd">    add_closure : bool</span>
+<span class="sd">        If True, adds a final point to the knot near to the start point,</span>
+<span class="sd">        so that it will appear visually to close when plotted.</span>
+<span class="sd">    zero_centroid : bool</span>
+<span class="sd">        If True, shifts the coordinates of the points so that their centre</span>
+<span class="sd">        of mass is at the origin.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_closure</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">zero_centroid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">SpaceCurve</span><span class="p">):</span>
+            <span class="n">points</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crossings</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Will store a list of crossings if</span>
+                                <span class="c1"># self.crossings() has been called</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_writhe_and_crossing_numbers</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gauss_code</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_representation</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_recent_octree</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">add_closure</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_add_closure</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">zero_centroid</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">zero_centroid</span><span class="p">()</span>
+
+<div class="viewcode-block" id="SpaceCurve.copy"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.copy">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Returns another knot with the same points and verbosity</span>
+<span class="sd">        as self. Other attributes (e.g. cached crossings) are not</span>
+<span class="sd">        preserved.&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">SpaceCurve</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">tangents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">closed</span><span class="p">:</span>
+            <span class="n">ts</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">ts</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        The points of the spacecurve, as an Nx3 numpy array.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_points</span>
+
+    <span class="nd">@points</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_points</span> <span class="o">=</span> <span class="n">points</span>
+        <span class="c1"># Changing the points may change the crossings, so</span>
+        <span class="c1"># reset any cached crossing attributes.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crossings</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_writhe_and_crossing_numbers</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gauss_code</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">fix_endpoints</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="c1"># if fix_endpoints, adds a point at the end that matches the</span>
+        <span class="c1"># point at the start</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+        <span class="k">if</span> <span class="n">mag</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.000001</span> <span class="ow">and</span> <span class="n">fix_endpoints</span><span class="p">:</span>
+            <span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fix_endpoints</span><span class="p">:</span>
+            <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">points</span><span class="p">,</span> <span class="n">points</span><span class="p">[:</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">points</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_vprint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Prints s, with optional newline. Intended for internal use</span>
+<span class="sd">        in displaying progress.&#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">newline</span><span class="p">:</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_add_closure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">closing_distance</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">closing_distance</span> <span class="o">&gt;</span> <span class="mf">0.02</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span>
+                                    <span class="mf">0.001</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_unwrap_periodicity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Walks along the points of self, assuming that a periodic</span>
+<span class="sd">        boundary on a</span>
+<span class="sd">        lattice bounded by :param:`shape` has been crossed whenever one</span>
+<span class="sd">        point is too far from the previous one. When this occurs,</span>
+<span class="sd">        subtracts the lattice vector in this direction.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        shape : array-like</span>
+<span class="sd">            The x, y, z distances of the periodic boundary.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dz</span> <span class="o">=</span> <span class="n">shape</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)):</span>
+            <span class="n">prevLine</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">curLine</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">rest</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span>
+            <span class="n">change</span> <span class="o">=</span> <span class="n">curLine</span> <span class="o">-</span> <span class="n">prevLine</span>
+            <span class="k">if</span> <span class="o">-</span><span class="mf">1.05</span><span class="o">*</span><span class="n">dx</span> <span class="o">&lt;</span> <span class="n">change</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.95</span><span class="o">*</span><span class="n">dx</span><span class="p">:</span>
+                <span class="n">rest</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dx</span>
+            <span class="k">if</span> <span class="mf">1.05</span><span class="o">*</span><span class="n">dx</span> <span class="o">&gt;</span> <span class="n">change</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="o">*</span><span class="n">dx</span><span class="p">:</span>
+                <span class="n">rest</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">dx</span>
+            <span class="k">if</span> <span class="o">-</span><span class="mf">1.05</span><span class="o">*</span><span class="n">dy</span> <span class="o">&lt;</span> <span class="n">change</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.95</span><span class="o">*</span><span class="n">dy</span><span class="p">:</span>
+                <span class="n">rest</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dy</span>
+            <span class="k">if</span> <span class="mf">1.05</span><span class="o">*</span><span class="n">dy</span> <span class="o">&gt;</span> <span class="n">change</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="o">*</span><span class="n">dy</span><span class="p">:</span>
+                <span class="n">rest</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">dy</span>
+            <span class="k">if</span> <span class="o">-</span><span class="mf">1.05</span><span class="o">*</span><span class="n">dz</span> <span class="o">&lt;</span> <span class="n">change</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.95</span><span class="o">*</span><span class="n">dz</span><span class="p">:</span>
+                <span class="n">rest</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dz</span>
+            <span class="k">if</span> <span class="mf">1.05</span><span class="o">*</span><span class="n">dz</span> <span class="o">&gt;</span> <span class="n">change</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="o">*</span><span class="n">dz</span><span class="p">:</span>
+                <span class="n">rest</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-=</span> <span class="n">dz</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">points</span>
+
+<div class="viewcode-block" id="SpaceCurve.from_gauss_code"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.from_gauss_code">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_gauss_code</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Creates a Knot from the given code, which must be provided as a</span>
+<span class="sd">        string and may optionally include crossing orientations (these are</span>
+<span class="sd">        actually ignored).&#39;&#39;&#39;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.representations</span><span class="w"> </span><span class="kn">import</span> <span class="n">Representation</span>
+        <span class="k">if</span> <span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="n">code</span> <span class="ow">or</span> <span class="s1">&#39;c&#39;</span> <span class="ow">in</span> <span class="n">code</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">Representation</span><span class="p">(</span><span class="n">code</span><span class="p">)</span><span class="o">.</span><span class="n">space_curve</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">Representation</span><span class="o">.</span><span class="n">calculating_orientations</span><span class="p">(</span><span class="n">code</span><span class="p">)</span><span class="o">.</span><span class="n">space_curve</span><span class="p">())</span>
+        <span class="n">k</span><span class="o">.</span><span class="n">rotate</span><span class="p">((</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">k</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.closing_on_sphere"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.closing_on_sphere">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">closing_on_sphere</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">com</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Adds new vertices to close the line at its maximum radius,</span>
+<span class="sd">        returning a SpaceCurve representing the result.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        line : ndarray</span>
+<span class="sd">            The points of the line.</span>
+<span class="sd">        com : iterable</span>
+<span class="sd">            Optional additional centre of mass to shift by before closing</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">com</span> <span class="o">=</span> <span class="n">ensure_shape_tuple</span><span class="p">(</span><span class="n">com</span><span class="p">)</span>
+
+        <span class="n">points</span> <span class="o">=</span> <span class="n">line</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">com</span><span class="p">)</span>
+
+        <span class="n">start</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">start_r</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+        <span class="n">end_r</span> <span class="o">=</span> <span class="n">mag</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+
+        <span class="n">start_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">start</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">start_r</span><span class="p">)</span>
+        <span class="n">end_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">end</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">end_r</span><span class="p">)</span>
+
+        <span class="n">start_phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">start</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">start</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">end_phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">end</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">end</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">end_r</span><span class="p">,</span> <span class="n">start_r</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">thetas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">end_theta</span><span class="p">,</span> <span class="n">start_theta</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">phis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">end_phi</span><span class="p">,</span> <span class="n">start_phi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+        <span class="n">join_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">join_points</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">rs</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">thetas</span><span class="p">)</span>
+        <span class="n">join_points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">rs</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">thetas</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phis</span><span class="p">)</span>
+        <span class="n">join_points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rs</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">thetas</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phis</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">points</span><span class="p">,</span> <span class="n">join_points</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">com</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.from_periodic_line"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.from_periodic_line">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_periodic_line</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">perturb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Returns a :class:`SpaceCurve` instance in which the line has been</span>
+<span class="sd">        unwrapped through</span>
+<span class="sd">        the periodic boundaries.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        line : array-like</span>
+<span class="sd">            The Nx3 vector of points in the line</span>
+<span class="sd">        shape : array-like</span>
+<span class="sd">            The x, y, z distances of the periodic boundary</span>
+<span class="sd">        perturb : bool</span>
+<span class="sd">            If True, translates and rotates the knot to avoid any lattice</span>
+<span class="sd">            problems.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">ensure_shape_tuple</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">knot</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">knot</span><span class="o">.</span><span class="n">_unwrap_periodicity</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">perturb</span><span class="p">:</span>
+            <span class="n">knot</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.00123</span><span class="p">,</span> <span class="mf">0.00231</span><span class="p">,</span> <span class="mf">0.00321</span><span class="p">]))</span>
+            <span class="n">knot</span><span class="o">.</span><span class="n">rotate</span><span class="p">((</span><span class="mf">0.0002</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">knot</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.from_lattice_data"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.from_lattice_data">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_lattice_data</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Returns a :class:`SpaceCurve` instance in which the line has been</span>
+<span class="sd">        slightly translated and rotated, in order to (practically) ensure</span>
+<span class="sd">        no self intersections in closure or coincident points in</span>
+<span class="sd">        projection.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        line : array-like</span>
+<span class="sd">            The list of points in the line. May be any type that SpaceCurve</span>
+<span class="sd">            normally accepts.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`SpaceCurve`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">knot</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">knot</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.00123</span><span class="p">,</span> <span class="mf">0.00231</span><span class="p">,</span> <span class="mf">0.00321</span><span class="p">]))</span>
+        <span class="n">knot</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.012</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">knot</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.from_braid_word"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.from_braid_word">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_braid_word</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns a :class:`SpaceCurve` instance formed from the given braid</span>
+<span class="sd">        word.</span>
+
+<span class="sd">        The braid word should be of the form &#39;aAbBcC&#39; (i.e. capitalisation</span>
+<span class="sd">        denotes inverse).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        word : str</span>
+<span class="sd">            The braid word to interpret.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">num_strands</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()))</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_strands</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="n">y</span> <span class="o">=</span> <span class="mf">0.</span>
+
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[[[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+
+        <span class="n">strands_by_final_index</span> <span class="o">=</span> <span class="p">{</span><span class="n">strand</span><span class="p">:</span> <span class="n">lines</span><span class="p">[</span><span class="n">strand</span><span class="p">]</span> <span class="k">for</span> <span class="n">strand</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_strands</span><span class="p">)}</span>
+        <span class="n">strands_by_initial_index</span> <span class="o">=</span> <span class="p">{</span><span class="n">strand</span><span class="p">:</span> <span class="n">lines</span><span class="p">[</span><span class="n">strand</span><span class="p">]</span> <span class="k">for</span> <span class="n">strand</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_strands</span><span class="p">)}</span>
+
+        <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">letter</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+
+            <span class="n">sign</span> <span class="o">=</span> <span class="s1">&#39;+&#39;</span> <span class="k">if</span> <span class="n">letter</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;-&#39;</span>
+
+            <span class="k">if</span> <span class="n">sign</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span>
+                <span class="n">lines</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
+                <span class="n">lines</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+                <span class="n">lines</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">])</span>
+                <span class="n">lines</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">lines</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
+                <span class="n">lines</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+                <span class="n">lines</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">])</span>
+                <span class="n">lines</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+
+            <span class="n">lines</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">lines</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">lines</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+            <span class="n">strands_by_final_index</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">strands_by_final_index</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">strands_by_final_index</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">strands_by_final_index</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+            <span class="n">y</span> <span class="o">+=</span> <span class="mf">1.</span>
+
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+            <span class="n">line</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+            <span class="n">line</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">y</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+            <span class="n">line</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+            <span class="n">line</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+            <span class="n">line</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+
+        <span class="c1"># indices_by_strand = {strand: index for (strand, index) in strands_by_final_index.items()}</span>
+
+        <span class="n">line</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_strands</span><span class="p">):</span>
+            <span class="n">cur_strand</span> <span class="o">=</span> <span class="n">strands_by_initial_index</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+            <span class="n">line</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cur_strand</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Processing strand </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">num_strands</span><span class="si">}</span><span class="s1">: index=</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s1">, points=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cur_strand</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">cur_strand</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="n">k</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="o">*</span><span class="mf">5.</span><span class="p">)</span>
+        <span class="n">k</span><span class="o">.</span><span class="n">zero_centroid</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">k</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.scale"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.scale">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Scales all the points of self by the given factor.</span>
+
+<span class="sd">        You can accomplish the same thing, or other more subtle</span>
+<span class="sd">        transformations, by modifying self.:py:attr:`points`.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">*=</span> <span class="n">factor</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.translate"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.translate">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Translates all the points of self by the given vector.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        vector : array-like</span>
+<span class="sd">            The x, y, z translation distances</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.zero_centroid"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.zero_centroid">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">zero_centroid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Translate such that the centroid (average position of vertices)</span>
+<span class="sd">        is at (0, 0, 0).</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">centroid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">centroid</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.rotate"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.rotate">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Rotates all the points of self by the given angles in each axis.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        angles : array-like</span>
+<span class="sd">            The rotation angles about x, y and z. If None, random</span>
+<span class="sd">            angles are used. Defaults to None.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">angles</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">phi</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">psi</span> <span class="o">=</span> <span class="n">angles</span>
+        <span class="n">rot_mat</span> <span class="o">=</span> <span class="n">get_rotation_matrix</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_apply_matrix</span><span class="p">(</span><span class="n">rot_mat</span><span class="p">)</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_apply_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mat</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Applies the given matrix to all of self.points.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">apply_along_axis</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">dot</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SpaceCurve.cuaps"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.cuaps">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">cuaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">include_closure</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Returns a list of the &#39;cuaps&#39;, where the curve is parallel to the</span>
+<span class="sd">        positive x-axis. See D Bar-Natan and R van der Veen, &quot;A</span>
+<span class="sd">        polynomial time knot polynomial&quot;, 2017.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+        <span class="k">if</span> <span class="n">mag</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.000001</span><span class="p">:</span>
+            <span class="n">points</span> <span class="o">=</span> <span class="n">points</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Avoids a badly defined tangent</span>
+        <span class="n">tangents</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">points</span>
+        <span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">tangents</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">tangents</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Calculated </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span><span class="si">}</span><span class="s1"> tangent angles for curve analysis&#39;</span><span class="p">)</span>
+
+        <span class="n">cuaps</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">angle</span> <span class="o">=</span> <span class="n">angles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">next_angle</span> <span class="o">=</span> <span class="n">angles</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">angle</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.</span> <span class="o">&lt;</span> <span class="n">next_angle</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">cuaps</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.</span> <span class="o">&lt;</span> <span class="n">angle</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">next_angle</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">):</span>
+                <span class="n">cuaps</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">include_closure</span><span class="p">:</span>
+            <span class="n">angle</span> <span class="o">=</span> <span class="n">angles</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">next_angle</span> <span class="o">=</span> <span class="n">angles</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">angle</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.</span> <span class="o">&lt;</span> <span class="n">next_angle</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">cuaps</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.</span> <span class="o">&lt;</span> <span class="n">angle</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">next_angle</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">):</span>
+                <span class="n">cuaps</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+            <span class="n">angle</span> <span class="o">=</span> <span class="n">angles</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">next_angle</span> <span class="o">=</span> <span class="n">angles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">angle</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.</span> <span class="o">&lt;</span> <span class="n">next_angle</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">cuaps</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.</span> <span class="o">&lt;</span> <span class="n">angle</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">next_angle</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">):</span>
+                <span class="n">cuaps</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">cuaps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cuaps</span><span class="p">)</span>
+        <span class="c1"># cuaps[:, -1] *= -1</span>
+
+        <span class="k">return</span> <span class="n">cuaps</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.raw_crossings"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.raw_crossings">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">raw_crossings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;use_max_jump&#39;</span><span class="p">,</span> <span class="n">include_closure</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                      <span class="n">recalculate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">try_cython</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Returns the crossings in the diagram of the projection of the</span>
+<span class="sd">        space curve into its z=0 plane.</span>
+
+<span class="sd">        The crossings will be calculated the first time this function</span>
+<span class="sd">        is called, then cached until an operation that would change</span>
+<span class="sd">        the list (e.g. rotation, or changing ``self.points``).</span>
+
+<span class="sd">        Multiple modes are available (see parameters) - you should be</span>
+<span class="sd">        aware of this because different modes may be vastly slower or</span>
+<span class="sd">        faster depending on the type of line.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mode : str, optional</span>
+<span class="sd">            One of ``&#39;count_every_jump&#39;`` or ``&#39;use_max_jump&#39;`` or</span>
+<span class="sd">            ``&#39;naive&#39;``. In the first case,</span>
+<span class="sd">            walking along the line uses information about the length of</span>
+<span class="sd">            every step. In the second, it guesses that all steps have the</span>
+<span class="sd">            same length as the maximum step length. In the last, no</span>
+<span class="sd">            optimisation is made and every crossing is checked.</span>
+<span class="sd">            The optimal choice depends on the data but is usually</span>
+<span class="sd">            ``&#39;use_max_jump&#39;``, which is the default.</span>
+<span class="sd">        include_closure : bool, optional</span>
+<span class="sd">            Whether to include crossings with the</span>
+<span class="sd">            line joining the start and end points. Defaults to True.</span>
+<span class="sd">        recalculate : bool, optional</span>
+<span class="sd">            Whether to force a recalculation of the crossing positions.</span>
+<span class="sd">            Defaults to False.</span>
+<span class="sd">        try_cython : bool, optional</span>
+<span class="sd">            Whether to force the use of the python (as opposed to cython)</span>
+<span class="sd">            implementation of find_crossings. This will make no difference</span>
+<span class="sd">            if the cython could not be loaded, in which case python is already</span>
+<span class="sd">            used automatically. Defaults to True.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        array-like</span>
+<span class="sd">            The raw array of floats representing crossings, of the</span>
+<span class="sd">            form [[line_index, other_index, +-1, +-1], ...], where the</span>
+<span class="sd">            line_index and other_index are in arclength parameterised</span>
+<span class="sd">            by integers for each vertex and linearly interpolated,</span>
+<span class="sd">            and the +-1 represent over/under and clockwise/anticlockwise</span>
+<span class="sd">            respectively.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">recalculate</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_crossings</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_crossings</span>
+
+        <span class="k">if</span> <span class="n">try_cython</span><span class="p">:</span>
+            <span class="n">helpers_module</span> <span class="o">=</span> <span class="n">chelpers</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">helpers_module</span> <span class="o">=</span> <span class="n">helpers</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vprint</span><span class="p">(</span><span class="s1">&#39;Finding crossings&#39;</span><span class="p">)</span>
+
+        <span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+        <span class="n">segment_lengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">points</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">points</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">segment_lengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">segment_lengths</span> <span class="o">*</span> <span class="n">segment_lengths</span><span class="p">,</span>
+                                       <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="c1"># if include_closure:</span>
+        <span class="c1">#     max_segment_length = np.max(segment_lengths)</span>
+        <span class="c1"># else:</span>
+        <span class="n">max_segment_length</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">segment_lengths</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">numtries</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span>
+
+        <span class="n">crossings</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">jump_mode</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;count_every_jump&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;use_max_jump&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                     <span class="s1">&#39;naive&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}[</span><span class="n">mode</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_vprint</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">i = </span><span class="si">{}</span><span class="s1"> / </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">numtries</span><span class="p">),</span>
+                                 <span class="kc">False</span><span class="p">)</span>
+            <span class="n">v0</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">dv</span> <span class="o">=</span> <span class="n">points</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">-</span> <span class="n">v0</span>
+
+            <span class="n">s</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">:]</span>
+            <span class="n">vnum</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="n">compnum</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">2</span>
+
+            <span class="n">crossings</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">helpers_module</span><span class="o">.</span><span class="n">find_crossings</span><span class="p">(</span>
+                <span class="n">v0</span><span class="p">,</span> <span class="n">dv</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">segment_lengths</span><span class="p">[</span><span class="n">compnum</span><span class="p">:],</span>
+                <span class="n">vnum</span><span class="p">,</span> <span class="n">compnum</span><span class="p">,</span>
+                <span class="n">max_segment_length</span><span class="p">,</span>
+                <span class="n">jump_mode</span>
+                <span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">include_closure</span><span class="p">:</span>
+            <span class="n">closure_segment_length</span> <span class="o">=</span> <span class="n">segment_lengths</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">max_segment_length</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">closure_segment_length</span><span class="p">,</span>
+                                        <span class="n">max_segment_length</span><span class="p">])</span>
+            <span class="n">v0</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">dv</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">v0</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">vnum</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">compnum</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">crossings</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">helpers_module</span><span class="o">.</span><span class="n">find_crossings</span><span class="p">(</span>
+                <span class="n">v0</span><span class="p">,</span> <span class="n">dv</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">segment_lengths</span><span class="p">[</span><span class="n">compnum</span><span class="p">:],</span>
+                <span class="n">vnum</span><span class="p">,</span> <span class="n">compnum</span><span class="p">,</span>
+                <span class="n">max_segment_length</span><span class="p">,</span>
+                <span class="n">jump_mode</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vprint</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="si">{}</span><span class="s1"> crossings found</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">crossings</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">crossings</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">crossings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">crossings</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crossings</span> <span class="o">=</span> <span class="n">crossings</span>
+
+        <span class="k">return</span> <span class="n">crossings</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.planar_writhe"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.planar_writhe">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">planar_writhe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns the current planar writhe of the knot; the signed sum</span>
+<span class="sd">        of crossings of the current projection.</span>
+
+<span class="sd">        The &#39;true&#39; writhe is the average of this quantity over all</span>
+<span class="sd">        projection directions, and is available from the :meth:`writhe`</span>
+<span class="sd">        method.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        **kwargs :</span>
+<span class="sd">            These are passed directly to :meth:`raw_crossings`.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">crossings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_crossings</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">crossings</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">/</span> <span class="mf">2.</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">distance_quantity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.spacecurves.complexity</span><span class="w"> </span><span class="kn">import</span> <span class="n">distance_quantity</span>
+        <span class="k">return</span> <span class="n">distance_quantity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SpaceCurve.writhe"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.writhe">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">writhe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">recalculate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;integral&#39;</span><span class="p">,</span>
+               <span class="n">include_acn</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        The (approximate) writhe of the space curve, obtained by averaging</span>
+<span class="sd">        the planar writhe over the given number of directions.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        samples : int</span>
+<span class="sd">            The number of directions to average over. Defaults to 10.</span>
+<span class="sd">        recalculate : bool</span>
+<span class="sd">            Whether to recalculate the writhe even if a cached result</span>
+<span class="sd">            is available. Defaults to False.</span>
+<span class="sd">        method : str</span>
+<span class="sd">            If &#39;projections&#39;, averages the planar writhe over many</span>
+<span class="sd">            projections. If &#39;integral&#39;, calculates the writhing integral.</span>
+<span class="sd">        **kwargs :</span>
+<span class="sd">            These are passed directly to :meth:`raw_crossings`.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;projections&#39;</span><span class="p">:</span>
+            <span class="n">acn</span><span class="p">,</span> <span class="n">writhe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_writhe_and_crossing_numbers</span><span class="p">(</span>
+                <span class="n">samples</span><span class="p">,</span> <span class="n">recalculate</span><span class="o">=</span><span class="n">recalculate</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;integral&#39;</span><span class="p">:</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.spacecurves.complexity</span><span class="w"> </span><span class="kn">import</span> <span class="n">writhe_and_acn_integral</span>
+            <span class="n">writhe</span><span class="p">,</span> <span class="n">acn</span> <span class="o">=</span> <span class="n">writhe_and_acn_integral</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">include_acn</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">writhe</span><span class="p">,</span> <span class="n">acn</span>
+        <span class="k">return</span> <span class="n">writhe</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">higher_order_writhe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">try_cython</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.spacecurves.complexity</span><span class="w"> </span><span class="kn">import</span> <span class="n">higher_order_writhe_integral</span>
+        <span class="k">return</span> <span class="n">higher_order_writhe_integral</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
+                                            <span class="n">try_cython</span><span class="o">=</span><span class="n">try_cython</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">second_order_writhes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">try_cython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.spacecurves.complexity</span><span class="w"> </span><span class="kn">import</span> <span class="n">second_order_writhes</span>
+        <span class="k">return</span> <span class="n">second_order_writhes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">try_cython</span><span class="o">=</span><span class="n">try_cython</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SpaceCurve.planar_second_order_writhe"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.planar_second_order_writhe">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">planar_second_order_writhe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;The second order writhe (type 2, i1,i3,i2,i4) of the projection of</span>
+<span class="sd">        the curve along the z axis.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.invariants</span><span class="w"> </span><span class="kn">import</span> <span class="n">second_order_writhe</span>
+        <span class="n">gc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gauss_code</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">second_order_writhe</span><span class="p">(</span><span class="n">gc</span><span class="p">)</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">second_order_twist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.spacecurves</span><span class="w"> </span><span class="kn">import</span> <span class="n">complexity</span> <span class="k">as</span> <span class="n">com</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+        <span class="k">return</span> <span class="n">com</span><span class="o">.</span><span class="n">second_order_twist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SpaceCurve.average_crossing_number"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.average_crossing_number">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">average_crossing_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">recalculate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        The (approximate) average crossing number of the space curve,</span>
+<span class="sd">        obtained by averaging</span>
+<span class="sd">        the planar writhe over the given number of directions.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        samples : int</span>
+<span class="sd">            The number of directions to average over.</span>
+<span class="sd">        recalculate : bool</span>
+<span class="sd">            Whether to recalculate the ACN.</span>
+<span class="sd">        **kwargs :</span>
+<span class="sd">            These are passed directly to :meth:`raw_crossings`.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">crossing_number</span><span class="p">,</span> <span class="n">writhe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_writhe_and_crossing_numbers</span><span class="p">(</span>
+            <span class="n">samples</span><span class="p">,</span> <span class="n">recalculate</span><span class="o">=</span><span class="n">recalculate</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">crossing_number</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_writhe_and_crossing_numbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">recalculate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                     <span class="n">include_closure</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                     <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Calculates and stores the writhe and average crossing number.</span>
+<span class="sd">        Internal (not intended for external use).</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cached_writhe_and_crossing_numbers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_writhe_and_crossing_numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">samples</span> <span class="ow">and</span>
+            <span class="ow">not</span> <span class="n">recalculate</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_writhe_and_crossing_numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="kn">from</span><span class="w"> </span><span class="nn">.complexity</span><span class="w"> </span><span class="kn">import</span> <span class="n">writhe_and_crossing_number</span>
+        <span class="n">numbers</span> <span class="o">=</span> <span class="n">writhe_and_crossing_number</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span>
+                                             <span class="n">verbose</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
+                                             <span class="n">include_closure</span><span class="o">=</span><span class="n">include_closure</span><span class="p">,</span>
+                                             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_writhe_and_crossing_numbers</span> <span class="o">=</span> <span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">numbers</span>
+
+<div class="viewcode-block" id="SpaceCurve.gauss_code"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.gauss_code">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">gauss_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">recalculate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns a :class:`~pyknotid.representations.gausscode.GaussCode`</span>
+<span class="sd">        instance representing the crossings of the knot.</span>
+
+<span class="sd">        The GaussCode instance is cached internally. If you want to</span>
+<span class="sd">        recalculate it (e.g. to get an unsimplified version if you</span>
+<span class="sd">        have simplified it), you should pass `recalculate=True`.</span>
+
+<span class="sd">        This method passes kwargs directly to :meth:`raw_crossings`,</span>
+<span class="sd">        see the documentation of that function for all options.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="kn">from</span><span class="w"> </span><span class="nn">..representations.gausscode</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussCode</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">recalculate</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gauss_code</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gauss_code</span>
+        <span class="n">crossings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_crossings</span><span class="p">(</span><span class="n">recalculate</span><span class="o">=</span><span class="n">recalculate</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">gc</span> <span class="o">=</span> <span class="n">GaussCode</span><span class="p">(</span><span class="n">crossings</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gauss_code</span> <span class="o">=</span> <span class="n">gc</span>
+        <span class="k">return</span> <span class="n">gc</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.representation"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.representation">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">representation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">recalculate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns a :class:`~pyknotid.representations.representation.Representation`</span>
+<span class="sd">        instance representing the crossings of the knot.</span>
+
+<span class="sd">        The Representation instance is cached internally. If you want to</span>
+<span class="sd">        recalculate it (e.g. to get an unsimplified version if you</span>
+<span class="sd">        have simplified it), you should pass `recalculate=True`.</span>
+
+<span class="sd">        This method passes kwargs directly to :meth:`raw_crossings`,</span>
+<span class="sd">        see the documentation of that function for all options.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="kn">from</span><span class="w"> </span><span class="nn">..representations.representation</span><span class="w"> </span><span class="kn">import</span> <span class="n">Representation</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">recalculate</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_representation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_representation</span>
+        <span class="n">crossings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_crossings</span><span class="p">(</span><span class="n">recalculate</span><span class="o">=</span><span class="n">recalculate</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">gc</span> <span class="o">=</span> <span class="n">Representation</span><span class="p">(</span><span class="n">crossings</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_representation</span> <span class="o">=</span> <span class="n">gc</span>
+        <span class="k">return</span> <span class="n">gc</span></div>
+        
+
+<div class="viewcode-block" id="SpaceCurve.planar_diagram"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.planar_diagram">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">planar_diagram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns a</span>
+<span class="sd">        :class:`~pyknotid.representations.planardiagram.PlanarDiagram`</span>
+<span class="sd">        instance representing the crossings of the knot.</span>
+
+<span class="sd">        This method passes kwargs directly to :meth:`raw_crossings`,</span>
+<span class="sd">        see the documentation of that function for all options.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">..representations.planardiagram</span><span class="w"> </span><span class="kn">import</span> <span class="n">PlanarDiagram</span>
+        <span class="n">crossings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_crossings</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">PlanarDiagram</span><span class="p">(</span><span class="n">crossings</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.gauss_diagram"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.gauss_diagram">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">gauss_diagram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simplify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns a</span>
+<span class="sd">        :class:`~pyknotid.representations.gaussdiagram.GaussDiagram`</span>
+<span class="sd">        instance representing the crossings of the knot.</span>
+
+<span class="sd">        This method passes kwargs directly to :meth:`raw_crossings`,</span>
+<span class="sd">        see the documentation of that function for all options.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">..representations.gaussdiagram</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussDiagram</span>
+        <span class="n">gc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gauss_code</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">simplify</span><span class="p">:</span>
+            <span class="n">gc</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">GaussDiagram</span><span class="p">(</span><span class="n">gc</span><span class="p">)</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">reconstructed_space_curve</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">representation</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">SpaceCurve</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">space_curve</span><span class="p">())</span>
+
+<div class="viewcode-block" id="SpaceCurve.plot"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.plot">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+             <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Plots the line. See :func:`pyknotid.visualise.plot_line` for</span>
+<span class="sd">        full documentation.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">plot_line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">clf</span><span class="o">=</span><span class="n">clf</span><span class="p">,</span>
+                  <span class="n">closed</span><span class="o">=</span><span class="n">closed</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.plot_projection"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.plot_projection">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">plot_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_crossings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mark_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">fig_ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mark_points</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Plots a 2D diagram of the knot projected along the current</span>
+<span class="sd">        z-axis. The crossings, and start point of the curve, can</span>
+<span class="sd">        optionally be marked.</span>
+
+<span class="sd">        The projection is drawn using matplotlib.</span>
+
+<span class="sd">        .. image:: example_knot_projection_9_5.png</span>
+<span class="sd">           :align: center</span>
+<span class="sd">           :scale: 50%</span>
+<span class="sd">           :alt: An example knot projection.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        with_crossings : bool</span>
+<span class="sd">            If True, marks the location of each self-intersection in</span>
+<span class="sd">            projection. Defaults to True.</span>
+<span class="sd">        mark_start : bool</span>
+<span class="sd">            If True, marks the first point of the curve. Default to False.</span>
+<span class="sd">        fig_ax : tuple</span>
+<span class="sd">            A 2-tuple of the matplotlib (fig, ax) to use, or None</span>
+<span class="sd">            to create a new pair.</span>
+<span class="sd">        show : bool</span>
+<span class="sd">            If True, opens a new window showing the drawing. Defaults</span>
+<span class="sd">            to True.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        A 2-tuple of the matplotlib (fig, ax) used for the drawing.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+        <span class="n">crossings</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">plot_crossings</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">with_crossings</span><span class="p">:</span>
+            <span class="n">crossings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_crossings</span><span class="p">()</span>
+            <span class="n">plot_crossings</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">crossing</span> <span class="ow">in</span> <span class="n">crossings</span><span class="p">:</span>
+                <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">over</span><span class="p">,</span> <span class="n">orientation</span> <span class="o">=</span> <span class="n">crossing</span>
+                <span class="n">xint</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">xint</span><span class="p">]</span>
+                <span class="n">dr</span> <span class="o">=</span> <span class="n">points</span><span class="p">[(</span><span class="n">xint</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span> <span class="o">-</span> <span class="n">r</span>
+                <span class="n">plot_crossings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">xint</span><span class="p">)</span> <span class="o">*</span> <span class="n">dr</span><span class="p">)</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_projection</span><span class="p">(</span><span class="n">points</span><span class="p">,</span>
+                                  <span class="n">crossings</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">plot_crossings</span><span class="p">),</span>
+                                  <span class="n">mark_start</span><span class="o">=</span><span class="n">mark_start</span><span class="p">,</span>
+                                  <span class="n">mark_points</span><span class="o">=</span><span class="n">mark_points</span><span class="p">,</span>
+                                  <span class="n">fig_ax</span><span class="o">=</span><span class="n">fig_ax</span><span class="p">,</span>
+                                  <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_crossings</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&lt;SpaceCurve with </span><span class="si">{}</span><span class="s1"> points, </span><span class="si">{}</span><span class="s1"> crossings&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_crossings</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;SpaceCurve with </span><span class="si">{}</span><span class="s1"> points&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SpaceCurve.to_json"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.to_json">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filen</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Writes the knot points to the given filename, in a json format</span>
+<span class="sd">        that can be read later by :meth:`SpaceCurve.from_json`. Uses</span>
+<span class="sd">        :func:`pyknotid.io.to_json_file` internally.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">to_json_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">filen</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.from_json"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.from_json">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_json</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filen</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Loads knot points from the given filename, assuming json format,</span>
+<span class="sd">        and returns a :class:`SpaceCurve` with those points.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">points</span> <span class="o">=</span> <span class="n">from_json_file</span><span class="p">(</span><span class="n">filen</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">points</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.from_csv"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.from_csv">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_csv</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filen</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Loads knot points from the given csv file, and returns a</span>
+<span class="sd">        :class:`SpaceCurve` with those points.</span>
+<span class="sd">        </span>
+<span class="sd">        Arguments are passed straight to :func:`pyknot.io.from_csv`.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">from_csv</span><span class="p">(</span><span class="n">filen</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.to_txt"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.to_txt">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_txt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filen</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Writes the knot points to the given filename, formatted</span>
+<span class="sd">        with each x,y,z component of each point space-separated</span>
+<span class="sd">        on its own line, i.e.::</span>
+
+<span class="sd">            ...</span>
+<span class="sd">            1.2 6.1 98.5</span>
+<span class="sd">            6.19 8.5 1.9</span>
+<span class="sd">            ...</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filen</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fileh</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">:</span>
+                <span class="n">fileh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.octree_simplify"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.octree_simplify">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">octree_simplify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">runs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rotate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">obey_knotting</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Simplifies the curve via the octree reduction of</span>
+<span class="sd">        :mod:`pyknotid.simplify.octree`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        runs : int</span>
+<span class="sd">            The number of times to run the octree simplification.</span>
+<span class="sd">            Defaults to 1.</span>
+<span class="sd">        plot : bool</span>
+<span class="sd">            Whether to plot the curve after each run. Defaults to False.</span>
+<span class="sd">        rotate : bool</span>
+<span class="sd">            Whether to rotate the space curve before each run. Defaults</span>
+<span class="sd">            to True as this can make things much faster.</span>
+<span class="sd">        obey_knotting : bool</span>
+<span class="sd">            Whether to not let the line pass through itself. Defaults to</span>
+<span class="sd">            True as this is always what you want for a closed curve.</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Any remaining kwargs are passed to the</span>
+<span class="sd">            :class:`pyknotid.simplify.octree.OctreeCell`</span>
+<span class="sd">            constructor.</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.simplify.octree</span><span class="w"> </span><span class="kn">import</span> <span class="n">OctreeCell</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">runs</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_vprint</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">Run </span><span class="si">{}</span><span class="s1"> of </span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1"> points remain&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">i</span><span class="p">,</span> <span class="n">runs</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)))</span>
+
+            <span class="k">if</span> <span class="n">rotate</span><span class="p">:</span>
+                <span class="n">rot_mat</span> <span class="o">=</span> <span class="n">get_rotation_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_apply_matrix</span><span class="p">(</span><span class="n">rot_mat</span><span class="p">)</span>
+
+            <span class="n">oc</span> <span class="o">=</span> <span class="n">OctreeCell</span><span class="o">.</span><span class="n">from_single_line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">oc</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">obey_knotting</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_recent_octree</span> <span class="o">=</span> <span class="n">oc</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">oc</span><span class="o">.</span><span class="n">get_single_line</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">rotate</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_apply_matrix</span><span class="p">(</span><span class="n">rot_mat</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vprint</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Reduced to </span><span class="si">{}</span><span class="s1"> points&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)))</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.arclength"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.arclength">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">arclength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">include_closure</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns the arclength of the line, the sum of lengths of each</span>
+<span class="sd">        piecewise linear segment.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        include_closure : bool</span>
+<span class="sd">            Whether to include the distance between the final and</span>
+<span class="sd">            first points. Defaults to True.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">arclength</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">include_closure</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.radius_of_gyration"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.radius_of_gyration">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">radius_of_gyration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns the radius of gyration of the points of self,</span>
+<span class="sd">        assuming each has equal weight and ignoring the connecting</span>
+<span class="sd">        lines.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">radius_of_gyration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">radius_of_gyration_2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">rog_squared</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">point</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">next_point</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="c1"># next_point = self.points[i+1]</span>
+                <span class="n">rog_squared</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">next_point</span> <span class="o">-</span> <span class="n">point</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">rog_squared</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rog_squared</span><span class="p">)</span>
+            
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SpaceCurve.reparameterised"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.reparameterised">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">reparameterised</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;arclength&#39;</span><span class="p">,</span> <span class="n">num_points</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                        <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns a new :class:`SpaceCurve` where new points have been selected</span>
+<span class="sd">        by interpolating the current ones.</span>
+
+<span class="sd">        .. warning:: This doesn&#39;t do what you expect! The new segments</span>
+<span class="sd">                     will probably not all be separated by the right amount</span>
+<span class="sd">                     in terms of the new parameterisation.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mode : str</span>
+<span class="sd">            The function to reparameterise by. Defaults to &#39;arclength&#39;,</span>
+<span class="sd">            which is currently the only option.</span>
+<span class="sd">        num_points : int</span>
+<span class="sd">            The number of points in the new parameterisation. Defaults</span>
+<span class="sd">            to None, which means the same as the current number.</span>
+<span class="sd">        interpolation : str</span>
+<span class="sd">            The type of interpolation to use, passed directly to the</span>
+<span class="sd">            ``kind`` option of ``scipy.interpolate.interp1d``. Defaults</span>
+<span class="sd">            to &#39;linear&#39;, and other options have not been tested.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">interp1d</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_indices_by_arclength</span><span class="p">(</span><span class="n">num_points</span><span class="p">)</span>
+
+        <span class="n">interp_xs</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+                             <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+                                      <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][:</span><span class="mi">1</span><span class="p">])))</span>
+        <span class="n">interp_ys</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+                             <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+                                      <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][:</span><span class="mi">1</span><span class="p">])))</span>
+        <span class="n">interp_zs</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+                             <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+                                      <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">][:</span><span class="mi">1</span><span class="p">])))</span>
+
+        <span class="n">new_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">new_points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">interp_xs</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+        <span class="n">new_points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">interp_ys</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+        <span class="n">new_points</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">interp_zs</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">SpaceCurve</span><span class="p">(</span><span class="n">new_points</span><span class="p">)</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_new_indices_by_arclength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">number</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span>
+        <span class="n">total_arclength</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arclength</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">step</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">arclengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">total_arclength</span> <span class="o">-</span> <span class="n">gap</span><span class="p">,</span> <span class="n">number</span><span class="o">+</span><span class="mi">1</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">arclengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">total_arclength</span> <span class="o">-</span> <span class="n">gap</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+
+        <span class="n">arclengths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.000001</span>
+
+        <span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+        <span class="n">segment_arclengths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">segment_arclengths</span><span class="p">()</span>
+        <span class="n">cumulative_arclength</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([[</span><span class="mf">0.</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">segment_arclengths</span><span class="p">)])</span>
+        <span class="n">total_arclength</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arclength</span><span class="p">()</span>
+
+        <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">arclength</span> <span class="ow">in</span> <span class="n">arclengths</span><span class="p">:</span>
+            <span class="n">first_greater_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">cumulative_arclength</span> <span class="o">&gt;</span> <span class="n">arclength</span><span class="p">)</span>
+            <span class="n">last_lower_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">first_greater_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+            <span class="n">arclength_below</span> <span class="o">=</span> <span class="n">cumulative_arclength</span><span class="p">[</span><span class="n">last_lower_index</span><span class="p">]</span>
+            <span class="n">step_arclength</span> <span class="o">=</span> <span class="n">segment_arclengths</span><span class="p">[</span><span class="n">last_lower_index</span><span class="p">]</span>
+            <span class="n">step_fraction</span> <span class="o">=</span> <span class="p">(</span><span class="n">arclength</span> <span class="o">-</span> <span class="n">arclength_below</span><span class="p">)</span> <span class="o">/</span> <span class="n">step_arclength</span>
+            <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">last_lower_index</span> <span class="o">+</span> <span class="n">step_fraction</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">indices</span>
+
+<div class="viewcode-block" id="SpaceCurve.segment_arclengths"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.segment_arclengths">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">segment_arclengths</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns an array of arclengths of every step in the line</span>
+<span class="sd">        defined by self.points.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">apply_along_axis</span><span class="p">(</span>
+            <span class="n">mag</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.smooth"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.smooth">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">smooth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repeats</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">periodic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">window_len</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+               <span class="n">window</span><span class="o">=</span><span class="s1">&#39;hanning&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Smooths each of the x, y and z components of self.points by</span>
+<span class="sd">        convolving with a window of the given type and size.</span>
+
+<span class="sd">        .. warning:: This is *not* topologically safe, it can change</span>
+<span class="sd">                     the knot type of the curve. For topologically</span>
+<span class="sd">                     safe reduction, see :meth:`octree_simplify`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        repeats : int</span>
+<span class="sd">            Number of times to run the smoothing algorithm. Defaults to 1.</span>
+<span class="sd">        periodic : bool</span>
+<span class="sd">            If True, the convolution window wraps around the curve.</span>
+<span class="sd">            Defaults to True.</span>
+<span class="sd">        window_len : int</span>
+<span class="sd">            Width of the convolution window. Defaults to 10.</span>
+<span class="sd">            Passed to :func:`pyknotid.spacecurves.smooth.smooth`.</span>
+<span class="sd">        window : string</span>
+<span class="sd">            The type of convolution window. Defaults to &#39;hanning&#39;.</span>
+<span class="sd">            Passed to :func:`pyknotid.spacecurves.smooth.smooth`.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+        <span class="k">if</span> <span class="n">periodic</span><span class="p">:</span>
+            <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">points</span><span class="p">[</span><span class="o">-</span><span class="p">(</span><span class="n">window_len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):],</span>
+                               <span class="n">points</span><span class="p">,</span>
+                               <span class="n">points</span><span class="p">[:(</span><span class="n">window_len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">window_len</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">repeats</span><span class="p">):</span>
+                <span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">smooth</span><span class="p">(</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">window_len</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span>
+                <span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">smooth</span><span class="p">(</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">window_len</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span>
+                <span class="n">points</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">smooth</span><span class="p">(</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">window_len</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">periodic</span><span class="p">:</span>
+                    <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">start</span>
+                    <span class="n">points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">end</span>
+        <span class="k">if</span> <span class="n">periodic</span><span class="p">:</span>
+            <span class="n">points</span> <span class="o">=</span> <span class="n">points</span><span class="p">[(</span><span class="n">window_len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span><span class="o">-</span><span class="p">(</span><span class="n">window_len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">points</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.simplify_straight_segments"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.simplify_straight_segments">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">simplify_straight_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Replaces successive curve segments with identical tangents with a</span>
+<span class="sd">        single longer segment.&#39;&#39;&#39;</span>
+
+        <span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">points</span>
+
+        <span class="n">keep_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+        <span class="n">ts_range</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">closed</span> <span class="k">else</span> <span class="n">ts</span>
+
+        <span class="k">for</span> <span class="n">i1</span><span class="p">,</span> <span class="n">t1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ts_range</span><span class="p">):</span>
+            <span class="n">t1</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">t1</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+            <span class="n">t2</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[(</span><span class="n">i1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)]</span>
+            <span class="n">t2</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">t2</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">10e-10</span><span class="p">):</span>
+                <span class="n">keep_points</span><span class="p">[</span><span class="n">i1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="n">keep_points</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.curvatures"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.curvatures">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">curvatures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Returns curvatures at each vertex (or really line segment).&#39;&#39;&#39;</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">points</span>
+        <span class="n">vs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ts</span><span class="o">*</span><span class="n">ts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+        <span class="n">gamma_dd</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">points</span><span class="p">)</span>
+        <span class="n">vns</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">vs</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">gamma_d</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">vs</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">kappas</span> <span class="o">=</span> <span class="n">gamma_dd</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;i,ij-&gt;ij&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">ans</span> <span class="o">/</span> <span class="n">vns</span><span class="p">),</span> <span class="n">gamma_d</span><span class="p">)</span>
+        <span class="n">kappas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">kappas</span> <span class="o">*</span> <span class="n">kappas</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">kappas</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">vns</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">kappas</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">closed</span><span class="p">:</span>
+            <span class="n">kappas</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">kappas</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">kappas</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">=</span> <span class="n">kappas</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">kappas</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">sum_of_angles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">points</span>
+        <span class="n">segments_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">mags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">segments</span> <span class="o">*</span> <span class="n">segments</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">mags_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">mags</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">segments</span> <span class="o">*</span> <span class="n">segments_2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mags</span> <span class="o">*</span> <span class="n">mags_2</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="SpaceCurve.torsions"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.torsions">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">torsions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Returns torsions at each vertex.&#39;&#39;&#39;</span>
+
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span>
+
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">d</span>
+        <span class="n">vs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ts</span><span class="o">*</span><span class="n">ts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+        <span class="n">gamma_dd</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">vns</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">vs</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">gamma_d</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">vs</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+        <span class="n">kappas</span> <span class="o">=</span> <span class="n">gamma_dd</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;i,ij-&gt;ij&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">ans</span> <span class="o">/</span> <span class="n">vns</span><span class="p">),</span> <span class="n">gamma_d</span><span class="p">)</span>
+        <span class="n">kappas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">kappas</span> <span class="o">*</span> <span class="n">kappas</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">gamma_ddd</span> <span class="o">=</span> <span class="mf">0.125</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span>
+                            <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+        <span class="n">numerator</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">gamma_d</span><span class="p">,</span> <span class="n">gamma_dd</span><span class="p">)</span> <span class="o">*</span> <span class="n">gamma_ddd</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">denominator</span> <span class="o">=</span> <span class="n">vns</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">kappas</span><span class="p">)</span>
+
+        <span class="n">torsions</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">signed</span><span class="p">:</span>
+            <span class="n">torsions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">torsions</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">closed</span><span class="p">:</span>
+            <span class="n">torsions</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">torsions</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">torsions</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">=</span> <span class="n">torsions</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">torsions</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.close"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.close">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Adds the starting point to the end of the curve, so that it ends</span>
+<span class="sd">        exactly where it began.</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:</span><span class="mi">1</span><span class="p">]])</span></div>
+
+<div class="viewcode-block" id="SpaceCurve.interpolate"><a class="viewcode-back" href="../../../sources/spacecurves/spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.interpolate">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">interpolate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_points</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Replaces self.points with points from a B-spline interpolation.</span>
+
+<span class="sd">        This method uses scipy.interpolate.splprep. kwargs are passed</span>
+<span class="sd">        to this function.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">splprep</span><span class="p">,</span> <span class="n">splev</span>
+
+        <span class="n">lengths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">segment_arclengths</span><span class="p">()</span>
+        <span class="n">cum_length_fracs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+
+        <span class="n">tck</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">splprep</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]],</span>
+                         <span class="n">u</span><span class="o">=</span><span class="n">cum_length_fracs</span><span class="p">,</span>
+                         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="n">splev</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_points</span><span class="p">),</span>
+                            <span class="n">tck</span><span class="p">)</span>
+
+        <span class="n">new_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_points</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">new_points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">new_points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">new_points</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">new_points</span></div></div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2018.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

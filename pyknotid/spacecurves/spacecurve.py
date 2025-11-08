@@ -872,7 +872,7 @@ class SpaceCurve:
                         obey_knotting=True, **kwargs):
         '''
         Simplifies the curve via the octree reduction of
-        :module:`pyknotid.simplify.octree`.
+        :mod:`pyknotid.simplify.octree`.
 
         Parameters
         ----------

@@ -177,9 +177,9 @@ class Knot(SpaceCurve):
             digits, e.g. 0.00021 with 1 digit precision = 2E-4.
         solution_type : str
             The solution type of the manifold. Normally one of:
+
             - 'contains degenerate tetrahedra' => may not be a valid result
-            - 'all tetrahedra positively oriented' =>
-              really probably hyperbolic
+            - 'all tetrahedra positively oriented' => really probably hyperbolic
         '''
         from ..invariants import hyperbolic_volume
         m = self.exterior_manifold()
@@ -304,7 +304,7 @@ class Knot(SpaceCurve):
             means to sample at all indices.
         **kwargs :
             Keyword arguments, passed directly to
-            :meth:`pyknotid.spacecurves.openknot.OpenKnot.alexander_fractions.
+            :meth:`pyknotid.spacecurves.openknot.OpenKnot.alexander_fractions`.
         '''
         points = self.points
         if num_samples == 0:

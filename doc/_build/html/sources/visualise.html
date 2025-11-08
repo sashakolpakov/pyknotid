@@ -1,0 +1,216 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visualise &mdash; pyknotid 0.5.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=c3dca1ed"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="About pyknotid" href="about.html" />
+    <link rel="prev" title="Database module" href="catalogue/database.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            pyknotid
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spacecurves/index.html">Space curve analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html">Invariants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.alexander"><code class="docutils literal notranslate"><span class="pre">alexander()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.alexander_cypari"><code class="docutils literal notranslate"><span class="pre">alexander_cypari()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.alexander_mathematica"><code class="docutils literal notranslate"><span class="pre">alexander_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.alexander_maxima"><code class="docutils literal notranslate"><span class="pre">alexander_maxima()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.arnold_2St_2Jminus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jminus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.arnold_2St_2Jplus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jplus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.contract_points"><code class="docutils literal notranslate"><span class="pre">contract_points()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.hyperbolic_volume"><code class="docutils literal notranslate"><span class="pre">hyperbolic_volume()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.jones_mathematica"><code class="docutils literal notranslate"><span class="pre">jones_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.second_order_writhe"><code class="docutils literal notranslate"><span class="pre">second_order_writhe()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.self_linking"><code class="docutils literal notranslate"><span class="pre">self_linking()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.vassiliev_degree_2"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_2()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariants.html#pyknotid.invariants.virtual_vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">virtual_vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="representations/index.html">Topological representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catalogue/index.html">Knot catalogue</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Visualise</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#api-documentation">API documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#pyknotid.visualise.plot_line"><code class="docutils literal notranslate"><span class="pre">plot_line()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#pyknotid.visualise.plot_projection"><code class="docutils literal notranslate"><span class="pre">plot_projection()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#pyknotid.visualise.plot_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#pyknotid.visualise.plot_sphere_lambert_sharp_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_sharp_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#pyknotid.visualise.plot_sphere_lambert_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#pyknotid.visualise.plot_sphere_mollweide_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_mollweide_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#pyknotid.visualise.plot_sphere_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About pyknotid</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pyknotid</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Visualise</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/sources/visualise.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-pyknotid.visualise"></span><section id="visualise">
+<h1>Visualise<a class="headerlink" href="#visualise" title="Permalink to this heading"></a></h1>
+<p>Functions for plotting knots, supporting different toolkits and types
+of plot.</p>
+<p>pyknotid primarily supports <a class="reference external" href="http://vispy.org/">Vispy</a> as the
+plotting mechanism. <a class="reference external" href="http://docs.enthought.com/mayavi/mayavi/">Mayavi</a> is semi-supported but
+may not always work.</p>
+<p>Many of these functions can be called in a more convenient way via
+methods of the <a class="reference internal" href="spacecurves/index.html"><span class="doc">space curve classes</span></a>
+(e.g. <a class="reference internal" href="spacecurves/knot.html#pyknotid.spacecurves.knot.Knot" title="pyknotid.spacecurves.knot.Knot"><code class="xref py py-class docutils literal notranslate"><span class="pre">Knot</span></code></a>).</p>
+<section id="api-documentation">
+<h2>API documentation<a class="headerlink" href="#api-documentation" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyknotid.visualise.plot_line">
+<span class="sig-prename descclassname"><span class="pre">pyknotid.visualise.</span></span><span class="sig-name descname"><span class="pre">plot_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyknotid/visualise.html#plot_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.visualise.plot_line" title="Permalink to this definition"></a></dt>
+<dd><p>Plots the given line, using the toolkit given by mode.</p>
+<p>kwargs are passed to the toolkit specific function, except for:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points</strong> (<em>ndarray</em>) – The nx3 array to plot.</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – The toolkit to draw with. Defaults to ‘auto’, which will
+automatically pick the first available toolkit from
+[‘mayavi’, ‘matplotlib’, ‘vispy’], or raise an exception
+if none can be imported.</p></li>
+<li><p><strong>clf</strong> (<em>bool</em>) – Whether the existing figure should be cleared
+before drawing the new one.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyknotid.visualise.plot_projection">
+<span class="sig-prename descclassname"><span class="pre">pyknotid.visualise.</span></span><span class="sig-name descname"><span class="pre">plot_projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crossings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mark_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mark_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyknotid/visualise.html#plot_projection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.visualise.plot_projection" title="Permalink to this definition"></a></dt>
+<dd><p>Plot the 2d projection of the given points, with optional
+markers for where the crossings are.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>points</strong> (<em>array-like</em>) – The nxm array of points in the line, with m &gt;= 2.</p></li>
+<li><p><strong>crossings</strong> (<em>array-like</em><em> or </em><em>None</em>) – The nx2 array of crossing positions. If None, crossings
+are not plotted. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyknotid.visualise.plot_shell_vispy">
+<span class="sig-prename descclassname"><span class="pre">pyknotid.visualise.</span></span><span class="sig-name descname"><span class="pre">plot_shell_vispy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_centroid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sphere_radius_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hsv'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyknotid/visualise.html#plot_shell_vispy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.visualise.plot_shell_vispy" title="Permalink to this definition"></a></dt>
+<dd><p>func must be a function returning values at angles and points,
+like OpenKnot._alexander_map_values.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyknotid.visualise.plot_sphere_lambert_sharp_vispy">
+<span class="sig-prename descclassname"><span class="pre">pyknotid.visualise.</span></span><span class="sig-name descname"><span class="pre">plot_sphere_lambert_sharp_vispy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circle_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'brg'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'circles'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyknotid/visualise.html#plot_sphere_lambert_sharp_vispy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.visualise.plot_sphere_lambert_sharp_vispy" title="Permalink to this definition"></a></dt>
+<dd><p>func must be a function of sphere angles theta, phi</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyknotid.visualise.plot_sphere_lambert_vispy">
+<span class="sig-prename descclassname"><span class="pre">pyknotid.visualise.</span></span><span class="sig-name descname"><span class="pre">plot_sphere_lambert_vispy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circle_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hsv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'circles'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyknotid/visualise.html#plot_sphere_lambert_vispy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.visualise.plot_sphere_lambert_vispy" title="Permalink to this definition"></a></dt>
+<dd><p>func must be a function of sphere angles theta, phi</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyknotid.visualise.plot_sphere_mollweide_vispy">
+<span class="sig-prename descclassname"><span class="pre">pyknotid.visualise.</span></span><span class="sig-name descname"><span class="pre">plot_sphere_mollweide_vispy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circle_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hsv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'circles'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyknotid/visualise.html#plot_sphere_mollweide_vispy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.visualise.plot_sphere_mollweide_vispy" title="Permalink to this definition"></a></dt>
+<dd><p>func must be a function of sphere angles theta, phi</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyknotid.visualise.plot_sphere_shell_vispy">
+<span class="sig-prename descclassname"><span class="pre">pyknotid.visualise.</span></span><span class="sig-name descname"><span class="pre">plot_sphere_shell_vispy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'latitude'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hsv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transparent_side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyknotid/visualise.html#plot_sphere_shell_vispy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.visualise.plot_sphere_shell_vispy" title="Permalink to this definition"></a></dt>
+<dd><p>func must be a function of sphere angles theta, phi</p>
+</dd></dl>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="catalogue/database.html" class="btn btn-neutral float-left" title="Database module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="about.html" class="btn btn-neutral float-right" title="About pyknotid" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2018.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

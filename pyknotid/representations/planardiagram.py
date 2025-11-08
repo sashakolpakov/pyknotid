@@ -321,7 +321,7 @@ class Crossing(list):
 def shorthand_to_crossings(s):
     '''
     Takes a planar diagram shorthand string, and returns a list of
-    :class:`Crossing`s.
+    :class:`Crossing` objects.
     '''
     crossings = []
     cs = s.split(' ')

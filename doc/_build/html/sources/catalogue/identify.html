@@ -1,0 +1,251 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Identify module &mdash; pyknotid 0.5.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=c3dca1ed"></script>
+      <script src="../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Database module" href="database.html" />
+    <link rel="prev" title="Database download module" href="getdb.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            pyknotid
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spacecurves/index.html">Space curve analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html">Invariants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander"><code class="docutils literal notranslate"><span class="pre">alexander()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander_cypari"><code class="docutils literal notranslate"><span class="pre">alexander_cypari()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander_mathematica"><code class="docutils literal notranslate"><span class="pre">alexander_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander_maxima"><code class="docutils literal notranslate"><span class="pre">alexander_maxima()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.arnold_2St_2Jminus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jminus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.arnold_2St_2Jplus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jplus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.contract_points"><code class="docutils literal notranslate"><span class="pre">contract_points()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.hyperbolic_volume"><code class="docutils literal notranslate"><span class="pre">hyperbolic_volume()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.jones_mathematica"><code class="docutils literal notranslate"><span class="pre">jones_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.second_order_writhe"><code class="docutils literal notranslate"><span class="pre">second_order_writhe()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.self_linking"><code class="docutils literal notranslate"><span class="pre">self_linking()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.vassiliev_degree_2"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_2()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.virtual_vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">virtual_vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../representations/index.html">Topological representations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Knot catalogue</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#downloading-the-database">Downloading the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#lookup-by-name">Lookup by name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#lookup-by-invariants">Lookup by invariants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#exploring-properties-of-knots">Exploring properties of knots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html">Database download module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html#pyknotid.catalogue.getdb.clean_all_databases"><code class="docutils literal notranslate"><span class="pre">clean_all_databases()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html#pyknotid.catalogue.getdb.clean_old_databases"><code class="docutils literal notranslate"><span class="pre">clean_old_databases()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html#pyknotid.catalogue.getdb.download_database"><code class="docutils literal notranslate"><span class="pre">download_database()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html#pyknotid.catalogue.getdb.download_target_dir"><code class="docutils literal notranslate"><span class="pre">download_target_dir()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html#pyknotid.catalogue.getdb.find_database"><code class="docutils literal notranslate"><span class="pre">find_database()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html#pyknotid.catalogue.getdb.require_database"><code class="docutils literal notranslate"><span class="pre">require_database()</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Identify module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#api-documentation">API documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pyknotid.catalogue.identify.first_from_invariants"><code class="docutils literal notranslate"><span class="pre">first_from_invariants()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyknotid.catalogue.identify.from_invariants"><code class="docutils literal notranslate"><span class="pre">from_invariants()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyknotid.catalogue.identify.get_knot"><code class="docutils literal notranslate"><span class="pre">get_knot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html">Database module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#pyknotid.catalogue.database.Knot"><code class="docutils literal notranslate"><span class="pre">Knot</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html">Visualise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_line"><code class="docutils literal notranslate"><span class="pre">plot_line()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_projection"><code class="docutils literal notranslate"><span class="pre">plot_projection()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_lambert_sharp_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_sharp_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_lambert_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_mollweide_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_mollweide_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About pyknotid</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyknotid</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Knot catalogue</a></li>
+      <li class="breadcrumb-item active">Identify module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sources/catalogue/identify.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-pyknotid.catalogue.identify"></span><section id="identify-module">
+<h1>Identify module<a class="headerlink" href="#identify-module" title="Permalink to this heading"></a></h1>
+<p>Functions for identifying knots based on their name or invariants.</p>
+<section id="api-documentation">
+<h2>API documentation<a class="headerlink" href="#api-documentation" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyknotid.catalogue.identify.first_from_invariants">
+<span class="sig-prename descclassname"><span class="pre">pyknotid.catalogue.identify.</span></span><span class="sig-name descname"><span class="pre">first_from_invariants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/catalogue/identify.html#first_from_invariants"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.catalogue.identify.first_from_invariants" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the first Knot by crossing number (and arbitrary
+ordering within that) with the given invariant conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> – Any set of invariant conditions. The accepted arguments are
+the same as for <a class="reference internal" href="#pyknotid.catalogue.identify.from_invariants" title="pyknotid.catalogue.identify.from_invariants"><code class="xref py py-func docutils literal notranslate"><span class="pre">from_invariants()</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyknotid.catalogue.identify.from_invariants">
+<span class="sig-prename descclassname"><span class="pre">pyknotid.catalogue.identify.</span></span><span class="sig-name descname"><span class="pre">from_invariants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/catalogue/identify.html#from_invariants"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.catalogue.identify.from_invariants" title="Permalink to this definition"></a></dt>
+<dd><p>Takes invariants as kwargs, and does the appropriate conversion to
+return a list of database objects matching all the given criteria.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This only searches within the indexed database
+available.  Some invariant options return only results where the
+invariant both matches <em>and</em> is known, others return those that
+match <em>or</em> are not known. Check the source if depending on
+accurate results.</p>
+</div>
+<p>Does <em>not</em> support all available invariants. Currently, searching
+is supported by:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>identifier</em><em> or </em><em>name or</em>) – The name of the knot following knot atlas conventions, e.g. ‘3_1’</p></li>
+<li><p><strong>min_crossings</strong> (<em>int</em>) – The minimal crossing number of the knot.</p></li>
+<li><p><strong>max_crossings</strong> (<em>int</em>) – The maximal known crossing number of the knot. This may be higher
+than its actual crossing number, it serves only to prune the
+results list.</p></li>
+<li><p><strong>signature</strong> (<em>int</em>) – The signature invariant.</p></li>
+<li><p><strong>unknotting_number</strong> (<em>int</em>) – The unknotting number of the knot.</p></li>
+<li><p><strong>alex</strong> (<em>alexander or</em>) – The Alexander polynomial, provided as a sympy expression in a
+single variable (ideally ‘t’).</p></li>
+<li><p><strong>alexander_imag_2</strong> (<em>determinant or</em>) – The Alexander polynomial at -1 (== exp(Pi I))</p></li>
+<li><p><strong>alexander_imag_3</strong> (<em>int</em>) – The abs of the Alexander polynomial at exp(2 Pi I / 3)</p></li>
+<li><p><strong>alexander_imag_4</strong> (<em>int</em>) – The abs of the Alexander polynomial at exp(Pi I / 2)</p></li>
+<li><p><strong>roots</strong> (<em>iterable</em>) – The abs of the Alexander polnomial at the given roots, assumed
+to start at 2, e.g. passing (3, 2, 1) is the same as identifying
+at determinant=3, alexander_imag_3=2, alexander_imag_4=1. An
+entry of None means the value is ignored in the lookup.</p></li>
+<li><p><strong>jones</strong> (<em>sympy</em>) – The Jones polynomial, provided as a sympy expression in a single
+variable (ideally ‘q’).</p></li>
+<li><p><strong>homfly</strong> (<em>sympy</em>) – The HOMFLY-PT polynomial, provided as a sympy expression in two
+variables.</p></li>
+<li><p><strong>hypvol</strong> (<em>hyperbolic_volume</em><em> or </em><em>hyp_vol or</em>) – The hyperbolic volume of the knot complement. The lookup is a
+string comparison based on the given number of significant digits.</p></li>
+<li><p><strong>v2</strong> (<em>vassiliev_order_2</em><em> or </em><em>vassiliev_2</em><em> or </em><em>v_2 or</em>) – The Vassiliev invariant of order 2. This will not prune knots
+where this invariant is not known (specifically, those with 12 or
+more crossings).</p></li>
+<li><p><strong>v3</strong> (<em>vassiliev_order_3</em><em> or </em><em>vassiliev_3</em><em> or </em><em>v_3 or</em>) – The Vassiliev invariant of order 3. This will not prune knots
+where this invariant is not known (specifically, those with 12 or
+more crossings).</p></li>
+<li><p><strong>symmetry</strong> (<em>string</em>) – The symmetry of the knot, one of ‘reversible’,
+‘positive amphicheiral’, ‘negative amphicheiral’, ‘chiral’.</p></li>
+<li><p><strong>planar_writhe</strong> (<em>writhe or</em>) – The writhe of the knot’s minimal diagram as recorded by its dt
+code. This is not necessarily unique, only the value
+of the dt code stored is given.</p></li>
+<li><p><strong>composite</strong> (<em>bool</em>) – If True, will return only composite knots. If False, will return
+only prime knots. Defaults to None, meaning it will return any knot
+type.</p></li>
+<li><p><strong>prime</strong> (<em>bool</em>) – If True, will return only prime knots. If False, will return
+only composite knots. Defaults to None, meaning it will return any knot
+type.</p></li>
+<li><p><strong>other</strong> (<em>iterable</em>) – A list of other peewee terms that can be chained in <code class="docutils literal notranslate"><span class="pre">where()</span></code>
+calls, e.g. <code class="docutils literal notranslate"><span class="pre">database.Knot.min_crossings</span> <span class="pre">&lt;</span> <span class="pre">5</span></code>. This provides
+more flexibility than the other options.</p></li>
+<li><p><strong>return_query</strong> (<em>bool</em>) – If True, returns the database iterator for the objects, otherwise
+returns a list. Defaults to False (i.e. the list). This will
+be much slower if the list is very large, but is convenient
+for most searches.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyknotid.catalogue.identify.get_knot">
+<span class="sig-prename descclassname"><span class="pre">pyknotid.catalogue.identify.</span></span><span class="sig-name descname"><span class="pre">get_knot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/catalogue/identify.html#get_knot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.catalogue.identify.get_knot" title="Permalink to this definition"></a></dt>
+<dd><p>Returns from the database the Knot with the given identifier.</p>
+<p>For instance, <code class="code docutils literal notranslate"><span class="pre">trefoil</span> <span class="pre">=</span> <span class="pre">get_knot('3_1')</span></code>.</p>
+</dd></dl>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getdb.html" class="btn btn-neutral float-left" title="Database download module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="database.html" class="btn btn-neutral float-right" title="Database module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2018.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

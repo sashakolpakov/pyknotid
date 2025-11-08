@@ -64,7 +64,7 @@ specified points::
    :alt: A trefoil knot specified by vertex points
    :scale: 50%
 
-The :doc:`pyknotid.make module<../make/index>` provides functions for
+The :mod:`pyknotid.make` module provides functions for
 creating many types of example knots, such as torus knots or some
 specific knot types::
 

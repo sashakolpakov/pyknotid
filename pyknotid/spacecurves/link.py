@@ -35,7 +35,7 @@ class Link:
     methods for convenient manipulation and analysis.
 
     The data is stored
-    internally as multiple :class:`Knot`s.
+    internally as multiple :class:`Knot` objects.
 
     Parameters
     ----------
@@ -361,7 +361,7 @@ class Link:
                         obey_knotting=False, **kwargs):
         '''
         Simplifies the curves via the octree reduction of
-        :module:`pyknotid.simplify.octree`.
+        :mod:`pyknotid.simplify.octree`.
 
         Parameters
         ----------
@@ -377,9 +377,9 @@ class Link:
             Whether to not let the line pass through itself. Defaults to
             False - knotting of individual components will be ignored!
             This is *much* faster than the alternative.
-
-        kwargs are passed to the :class:`pyknotid.simplify.octree.OctreeCell`
-        constructor.
+        **kwargs
+            Additional keyword arguments are passed to the
+            :class:`pyknotid.simplify.octree.OctreeCell` constructor.
         '''
         from ..simplify.octree import OctreeCell, remove_nearby_points
         for line in self.lines:

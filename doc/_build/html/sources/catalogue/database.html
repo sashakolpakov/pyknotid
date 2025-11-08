@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database module &mdash; pyknotid 0.5.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=c3dca1ed"></script>
+      <script src="../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Visualise" href="../visualise.html" />
+    <link rel="prev" title="Identify module" href="identify.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            pyknotid
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spacecurves/index.html">Space curve analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html">Invariants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander"><code class="docutils literal notranslate"><span class="pre">alexander()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander_cypari"><code class="docutils literal notranslate"><span class="pre">alexander_cypari()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander_mathematica"><code class="docutils literal notranslate"><span class="pre">alexander_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander_maxima"><code class="docutils literal notranslate"><span class="pre">alexander_maxima()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.arnold_2St_2Jminus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jminus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.arnold_2St_2Jplus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jplus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.contract_points"><code class="docutils literal notranslate"><span class="pre">contract_points()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.hyperbolic_volume"><code class="docutils literal notranslate"><span class="pre">hyperbolic_volume()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.jones_mathematica"><code class="docutils literal notranslate"><span class="pre">jones_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.second_order_writhe"><code class="docutils literal notranslate"><span class="pre">second_order_writhe()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.self_linking"><code class="docutils literal notranslate"><span class="pre">self_linking()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.vassiliev_degree_2"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_2()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.virtual_vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">virtual_vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../representations/index.html">Topological representations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Knot catalogue</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#downloading-the-database">Downloading the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#lookup-by-name">Lookup by name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#lookup-by-invariants">Lookup by invariants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#exploring-properties-of-knots">Exploring properties of knots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html">Database download module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html#pyknotid.catalogue.getdb.clean_all_databases"><code class="docutils literal notranslate"><span class="pre">clean_all_databases()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html#pyknotid.catalogue.getdb.clean_old_databases"><code class="docutils literal notranslate"><span class="pre">clean_old_databases()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html#pyknotid.catalogue.getdb.download_database"><code class="docutils literal notranslate"><span class="pre">download_database()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html#pyknotid.catalogue.getdb.download_target_dir"><code class="docutils literal notranslate"><span class="pre">download_target_dir()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html#pyknotid.catalogue.getdb.find_database"><code class="docutils literal notranslate"><span class="pre">find_database()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getdb.html#pyknotid.catalogue.getdb.require_database"><code class="docutils literal notranslate"><span class="pre">require_database()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="identify.html">Identify module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identify.html#pyknotid.catalogue.identify.first_from_invariants"><code class="docutils literal notranslate"><span class="pre">first_from_invariants()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="identify.html#pyknotid.catalogue.identify.from_invariants"><code class="docutils literal notranslate"><span class="pre">from_invariants()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="identify.html#pyknotid.catalogue.identify.get_knot"><code class="docutils literal notranslate"><span class="pre">get_knot()</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Database module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#api-documentation">API documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pyknotid.catalogue.database.Knot"><code class="docutils literal notranslate"><span class="pre">Knot</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Knot.DoesNotExist</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.alexander"><code class="docutils literal notranslate"><span class="pre">Knot.alexander</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.alexander_imag_3"><code class="docutils literal notranslate"><span class="pre">Knot.alexander_imag_3</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.alexander_imag_4"><code class="docutils literal notranslate"><span class="pre">Knot.alexander_imag_4</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.components"><code class="docutils literal notranslate"><span class="pre">Knot.components</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.composite"><code class="docutils literal notranslate"><span class="pre">Knot.composite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.conway_notation"><code class="docutils literal notranslate"><span class="pre">Knot.conway_notation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.determinant"><code class="docutils literal notranslate"><span class="pre">Knot.determinant</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.dt_code"><code class="docutils literal notranslate"><span class="pre">Knot.dt_code</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.fibered"><code class="docutils literal notranslate"><span class="pre">Knot.fibered</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.gauss_code"><code class="docutils literal notranslate"><span class="pre">Knot.gauss_code</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.homfly"><code class="docutils literal notranslate"><span class="pre">Knot.homfly</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.hyperbolic_volume"><code class="docutils literal notranslate"><span class="pre">Knot.hyperbolic_volume</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.identifier"><code class="docutils literal notranslate"><span class="pre">Knot.identifier</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.jones"><code class="docutils literal notranslate"><span class="pre">Knot.jones</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.min_crossings"><code class="docutils literal notranslate"><span class="pre">Knot.min_crossings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.name"><code class="docutils literal notranslate"><span class="pre">Knot.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.planar_diagram"><code class="docutils literal notranslate"><span class="pre">Knot.planar_diagram</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.planar_writhe"><code class="docutils literal notranslate"><span class="pre">Knot.planar_writhe</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.pretty_print"><code class="docutils literal notranslate"><span class="pre">Knot.pretty_print()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.signature"><code class="docutils literal notranslate"><span class="pre">Knot.signature</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.space_curve"><code class="docutils literal notranslate"><span class="pre">Knot.space_curve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.symmetry"><code class="docutils literal notranslate"><span class="pre">Knot.symmetry</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.two_bridge"><code class="docutils literal notranslate"><span class="pre">Knot.two_bridge</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.unknotting_number"><code class="docutils literal notranslate"><span class="pre">Knot.unknotting_number</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.url"><code class="docutils literal notranslate"><span class="pre">Knot.url()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.vassiliev_2"><code class="docutils literal notranslate"><span class="pre">Knot.vassiliev_2</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.catalogue.database.Knot.vassiliev_3"><code class="docutils literal notranslate"><span class="pre">Knot.vassiliev_3</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html">Visualise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_line"><code class="docutils literal notranslate"><span class="pre">plot_line()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_projection"><code class="docutils literal notranslate"><span class="pre">plot_projection()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_lambert_sharp_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_sharp_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_lambert_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_mollweide_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_mollweide_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About pyknotid</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyknotid</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Knot catalogue</a></li>
+      <li class="breadcrumb-item active">Database module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sources/catalogue/database.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-pyknotid.catalogue.database"></span><section id="database-module">
+<h1>Database module<a class="headerlink" href="#database-module" title="Permalink to this heading"></a></h1>
+<p>pyknotid looks up knot information via a prebuilt sqlite database,
+accessed using the peewee ORM. Other ORMs are not currently supported.</p>
+<p>The model class is <a class="reference internal" href="#pyknotid.catalogue.database.Knot" title="pyknotid.catalogue.database.Knot"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyknotid.catalogue.database.Knot</span></code></a>,
+documented below. For generic documentation about using the database,
+see <a class="reference internal" href="index.html"><span class="doc">Knot catalogue</span></a>.</p>
+<p>pyknotid also includes functions for creating a database from scratch
+(using knot information from the Knot Atlas), and improving an
+existing database by calculating new invariants or pulling information
+from other sources such as the KnotInfo database. These functions can
+be found in <code class="docutils literal notranslate"><span class="pre">pyknotid.catalogue.build</span></code> and
+<code class="docutils literal notranslate"><span class="pre">pyknotid.catalogue.improve</span></code>, which are not included in the indexed
+documentation here.</p>
+<section id="api-documentation">
+<h2>API documentation<a class="headerlink" href="#api-documentation" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyknotid.catalogue.database.</span></span><span class="sig-name descname"><span class="pre">Knot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/catalogue/database.html#Knot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.catalogue.database.Knot" title="Permalink to this definition"></a></dt>
+<dd><p>Peewee model for storing a knot in a database.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.DoesNotExist">
+<span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#pyknotid.catalogue.database.Knot.DoesNotExist" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">KnotDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.alexander">
+<span class="sig-name descname"><span class="pre">alexander</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;TextField:</span> <span class="pre">Knot.alexander&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.alexander" title="Permalink to this definition"></a></dt>
+<dd><p>Alexander polynomial, stored as a json list of coefficients from
+lowest to highest index, including zeros if there are any jumps in
+index.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.alexander_imag_3">
+<span class="sig-name descname"><span class="pre">alexander_imag_3</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Knot.alexander_imag_3&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.alexander_imag_3" title="Permalink to this definition"></a></dt>
+<dd><p>The absolute value of the Alexander polynomial at
+exp(2 pi I / 3). This will always be an integer.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.alexander_imag_4">
+<span class="sig-name descname"><span class="pre">alexander_imag_4</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Knot.alexander_imag_4&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.alexander_imag_4" title="Permalink to this definition"></a></dt>
+<dd><p>The absolute value of the Alexander polynomial at
+exp(2 pi I / 4) == I. This will always be an integer.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.components">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">components</span></span><a class="headerlink" href="#pyknotid.catalogue.database.Knot.components" title="Permalink to this definition"></a></dt>
+<dd><p>A list tuples <code class="docutils literal notranslate"><span class="pre">(identifier,</span> <span class="pre">index)</span></code>, where the knot with the
+given identifier occurs <code class="docutils literal notranslate"><span class="pre">index</span></code> times.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.composite">
+<span class="sig-name descname"><span class="pre">composite</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;BooleanField:</span> <span class="pre">Knot.composite&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.composite" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the knot is composite or not.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.conway_notation">
+<span class="sig-name descname"><span class="pre">conway_notation</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Knot.conway_notation&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.conway_notation" title="Permalink to this definition"></a></dt>
+<dd><p>Conway notation, as a string.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.determinant">
+<span class="sig-name descname"><span class="pre">determinant</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Knot.determinant&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.determinant" title="Permalink to this definition"></a></dt>
+<dd><p>The knot determinant (Alexander polynomial at -1)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.dt_code">
+<span class="sig-name descname"><span class="pre">dt_code</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Knot.dt_code&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.dt_code" title="Permalink to this definition"></a></dt>
+<dd><p>Dowker-Thistlethwaite code, as a string.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.fibered">
+<span class="sig-name descname"><span class="pre">fibered</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;BooleanField:</span> <span class="pre">Knot.fibered&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.fibered" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the knot is fibered or not.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.gauss_code">
+<span class="sig-name descname"><span class="pre">gauss_code</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Knot.gauss_code&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.gauss_code" title="Permalink to this definition"></a></dt>
+<dd><p>Gauss code, as a string.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.homfly">
+<span class="sig-name descname"><span class="pre">homfly</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;TextField:</span> <span class="pre">Knot.homfly&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.homfly" title="Permalink to this definition"></a></dt>
+<dd><p>HOMFLY-PT polynomial, stored as a json list.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.hyperbolic_volume">
+<span class="sig-name descname"><span class="pre">hyperbolic_volume</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Knot.hyperbolic_volume&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.hyperbolic_volume" title="Permalink to this definition"></a></dt>
+<dd><p>Hyperbolic volume, stored as a string to avoid precision
+problems.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.identifier">
+<span class="sig-name descname"><span class="pre">identifier</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Knot.identifier&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.identifier" title="Permalink to this definition"></a></dt>
+<dd><p>The standard knot notation, e.g. 3_1 for trefoil</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.jones">
+<span class="sig-name descname"><span class="pre">jones</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;TextField:</span> <span class="pre">Knot.jones&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.jones" title="Permalink to this definition"></a></dt>
+<dd><p>Jones polynomial, stored as a json list of coefficients and indices
+for each monomial.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.min_crossings">
+<span class="sig-name descname"><span class="pre">min_crossings</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Knot.min_crossings&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.min_crossings" title="Permalink to this definition"></a></dt>
+<dd><p>Minimal crossing number for the knot, e.g. 3 for trefoil</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Knot.name&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.name" title="Permalink to this definition"></a></dt>
+<dd><p>The actual name (if any), e.g. trefoil</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.planar_diagram">
+<span class="sig-name descname"><span class="pre">planar_diagram</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Knot.planar_diagram&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.planar_diagram" title="Permalink to this definition"></a></dt>
+<dd><p>Planar diagram representation, as a string.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.planar_writhe">
+<span class="sig-name descname"><span class="pre">planar_writhe</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Knot.planar_writhe&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.planar_writhe" title="Permalink to this definition"></a></dt>
+<dd><p>The writhe of the minimal diagram described by the DT_code. This is
+not necessarily unique (see Perko pair, I think?).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.pretty_print">
+<span class="sig-name descname"><span class="pre">pretty_print</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/catalogue/database.html#Knot.pretty_print"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.catalogue.database.Knot.pretty_print" title="Permalink to this definition"></a></dt>
+<dd><p>Pretty print all information contained about self.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.signature">
+<span class="sig-name descname"><span class="pre">signature</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Knot.signature&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.signature" title="Permalink to this definition"></a></dt>
+<dd><p>The knot signature</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.space_curve">
+<span class="sig-name descname"><span class="pre">space_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/catalogue/database.html#Knot.space_curve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.catalogue.database.Knot.space_curve" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a Knot object representing this knot.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.symmetry">
+<span class="sig-name descname"><span class="pre">symmetry</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Knot.symmetry&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.symmetry" title="Permalink to this definition"></a></dt>
+<dd><p>The symmetry type of the knot; reversible,
+positive amphichiral, negative amphichiral fully
+amphichiral or chiral.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.two_bridge">
+<span class="sig-name descname"><span class="pre">two_bridge</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Knot.two_bridge&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.two_bridge" title="Permalink to this definition"></a></dt>
+<dd><p>Two-bridge notation, as a string.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.unknotting_number">
+<span class="sig-name descname"><span class="pre">unknotting_number</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Knot.unknotting_number&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.unknotting_number" title="Permalink to this definition"></a></dt>
+<dd><p>Unknotting number, stored as an integer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.url">
+<span class="sig-name descname"><span class="pre">url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/catalogue/database.html#Knot.url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.catalogue.database.Knot.url" title="Permalink to this definition"></a></dt>
+<dd><p>The guessed url of this knot in the Knot Atlas. This page may not
+actually exist or be populated.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.vassiliev_2">
+<span class="sig-name descname"><span class="pre">vassiliev_2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Knot.vassiliev_2&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.vassiliev_2" title="Permalink to this definition"></a></dt>
+<dd><p>The Vassiliev invariant of order 2.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyknotid.catalogue.database.Knot.vassiliev_3">
+<span class="sig-name descname"><span class="pre">vassiliev_3</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Knot.vassiliev_3&gt;</span></em><a class="headerlink" href="#pyknotid.catalogue.database.Knot.vassiliev_3" title="Permalink to this definition"></a></dt>
+<dd><p>The Vassiliev invariant of order 3.</p>
+</dd></dl>
+
+</dd></dl>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="identify.html" class="btn btn-neutral float-left" title="Identify module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../visualise.html" class="btn btn-neutral float-right" title="Visualise" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2018.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

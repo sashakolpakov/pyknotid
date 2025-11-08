@@ -1,8 +1,21 @@
 Pyknotid
 ========
 
-.. image:: https://travis-ci.org/SPOCKnots/pyknotid.svg?branch=master
-    :target: https://travis-ci.org/SPOCKnots/pyknotid
+.. image:: https://github.com/SPOCKnots/pyknotid/workflows/Tests/badge.svg
+    :target: https://github.com/SPOCKnots/pyknotid/actions?query=workflow%3ATests
+    :alt: Test Status
+
+.. image:: https://github.com/SPOCKnots/pyknotid/workflows/Documentation/badge.svg
+    :target: https://github.com/SPOCKnots/pyknotid/actions?query=workflow%3ADocumentation
+    :alt: Documentation Status
+
+.. image:: https://img.shields.io/pypi/v/pyknotid.svg
+    :target: https://pypi.org/project/pyknotid/
+    :alt: PyPI version
+
+.. image:: https://img.shields.io/pypi/pyversions/pyknotid.svg
+    :target: https://pypi.org/project/pyknotid/
+    :alt: Python versions
 
 Python (and optional Cython) modules for detecting and measuring
 knotting and linking. pyknotid can analyse space-curves, i.e. sets of
@@ -39,28 +52,36 @@ pyknotid is documented online at `readthedocs
 Installation
 ------------
 
-pyknotid supports both Python 2.7 and Python 3.5+, you can install it with::
+pyknotid requires Python 3.8 or later. Install it with::
 
   $ pip install pyknotid
 
 To try the latest development version, clone this repository and run::
 
-  $ python setup.py install
+  $ pip install -e .
 
 Requirements
 ~~~~~~~~~~~~
 
-If installing pyknotid without pip, the following dependencies are required:
+The following dependencies are automatically installed:
 
-- cython (not essential, but strongly recommended)
-- numpy
-- sympy
-- peewee
-- networkx
-- planarity
+- numpy >= 1.19
+- networkx >= 2.5
+- planarity >= 0.4
+- peewee >= 3.14
+- vispy >= 0.6
+- sympy >= 1.8
+- appdirs >= 1.4
+- requests >= 2.25
+- tqdm >= 4.60
 
-Most of these are not hard requirements, but some functionality will
-not be available if they are not present.
+Optional dependencies:
+
+- cython (for improved performance, automatically built if available)
+
+For development, install additional dependencies with::
+
+  $ pip install -e ".[dev]"
 
 
 Example usage

@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyknotid.catalogue.database &mdash; pyknotid 0.5.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=c3dca1ed"></script>
+      <script src="../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            pyknotid
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/spacecurves/index.html">Space curve analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html">Invariants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.alexander"><code class="docutils literal notranslate"><span class="pre">alexander()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.alexander_cypari"><code class="docutils literal notranslate"><span class="pre">alexander_cypari()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.alexander_mathematica"><code class="docutils literal notranslate"><span class="pre">alexander_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.alexander_maxima"><code class="docutils literal notranslate"><span class="pre">alexander_maxima()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.arnold_2St_2Jminus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jminus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.arnold_2St_2Jplus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jplus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.contract_points"><code class="docutils literal notranslate"><span class="pre">contract_points()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.hyperbolic_volume"><code class="docutils literal notranslate"><span class="pre">hyperbolic_volume()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.jones_mathematica"><code class="docutils literal notranslate"><span class="pre">jones_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.second_order_writhe"><code class="docutils literal notranslate"><span class="pre">second_order_writhe()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.self_linking"><code class="docutils literal notranslate"><span class="pre">self_linking()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.vassiliev_degree_2"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_2()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/invariants.html#pyknotid.invariants.virtual_vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">virtual_vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/representations/index.html">Topological representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/catalogue/index.html">Knot catalogue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html">Visualise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_line"><code class="docutils literal notranslate"><span class="pre">plot_line()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_projection"><code class="docutils literal notranslate"><span class="pre">plot_projection()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_sphere_lambert_sharp_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_sharp_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_sphere_lambert_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_sphere_mollweide_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_mollweide_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/visualise.html#pyknotid.visualise.plot_sphere_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/about.html">About pyknotid</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">pyknotid</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pyknotid.catalogue.database</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pyknotid.catalogue.database</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;Database module</span>
+<span class="sd">---------------</span>
+
+<span class="sd">pyknotid looks up knot information via a prebuilt sqlite database,</span>
+<span class="sd">accessed using the peewee ORM. Other ORMs are not currently supported.</span>
+
+<span class="sd">The model class is :class:`pyknotid.catalogue.database.Knot`,</span>
+<span class="sd">documented below. For generic documentation about using the database,</span>
+<span class="sd">see :doc:`index`.</span>
+
+<span class="sd">pyknotid also includes functions for creating a database from scratch</span>
+<span class="sd">(using knot information from the Knot Atlas), and improving an</span>
+<span class="sd">existing database by calculating new invariants or pulling information</span>
+<span class="sd">from other sources such as the KnotInfo database. These functions can</span>
+<span class="sd">be found in ``pyknotid.catalogue.build`` and</span>
+<span class="sd">``pyknotid.catalogue.improve``, which are not included in the indexed</span>
+<span class="sd">documentation here.</span>
+
+<span class="sd">API documentation</span>
+<span class="sd">~~~~~~~~~~~~~~~~~</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">peewee</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Model</span><span class="p">,</span> <span class="n">SqliteDatabase</span><span class="p">,</span> <span class="n">CharField</span><span class="p">,</span> <span class="n">IntegerField</span><span class="p">,</span>
+    <span class="n">TextField</span><span class="p">,</span> <span class="n">BooleanField</span>
+<span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">realpath</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">exists</span><span class="p">,</span> <span class="n">join</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.catalogue</span><span class="w"> </span><span class="kn">import</span> <span class="n">converters</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.catalogue.getdb</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_database</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="s1">&#39;READTHEDOCS&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;READTHEDOCS&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;True&#39;</span><span class="p">):</span>
+    <span class="n">DB_LOCATION</span> <span class="o">=</span> <span class="n">find_database</span><span class="p">()</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">SqliteDatabase</span><span class="p">(</span><span class="n">DB_LOCATION</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">DB_LOCATION</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="n">database</span> <span class="o">=</span> <span class="n">db</span>
+
+
+<span class="c1"># If updating the db structure, don&#39;t forget to update</span>
+<span class="c1"># pyknotid.catalogue.db_version!</span>
+<div class="viewcode-block" id="Knot"><a class="viewcode-back" href="../../../sources/catalogue/database.html#pyknotid.catalogue.database.Knot">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">Knot</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Peewee model for storing a knot in a database.&#39;&#39;&#39;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;The actual name (if any), e.g. trefoil&#39;&#39;&#39;</span>
+
+    <span class="n">identifier</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;The standard knot notation, e.g. 3_1 for trefoil&#39;&#39;&#39;</span>
+
+    <span class="n">min_crossings</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Minimal crossing number for the knot, e.g. 3 for trefoil&#39;&#39;&#39;</span>
+
+    <span class="n">signature</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;The knot signature&#39;&#39;&#39;</span>
+
+    <span class="n">determinant</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;The knot determinant (Alexander polynomial at -1)&#39;&#39;&#39;</span>
+
+    <span class="n">alexander_imag_3</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;The absolute value of the Alexander polynomial at</span>
+<span class="sd">    exp(2 pi I / 3). This will always be an integer.&#39;&#39;&#39;</span>
+
+    <span class="n">alexander_imag_4</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;The absolute value of the Alexander polynomial at</span>
+<span class="sd">    exp(2 pi I / 4) == I. This will always be an integer.&#39;&#39;&#39;</span>
+
+    <span class="n">alexander</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Alexander polynomial, stored as a json list of coefficients from</span>
+<span class="sd">    lowest to highest index, including zeros if there are any jumps in</span>
+<span class="sd">    index.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">jones</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Jones polynomial, stored as a json list of coefficients and indices</span>
+<span class="sd">    for each monomial.&#39;&#39;&#39;</span>
+
+    <span class="n">homfly</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;HOMFLY-PT polynomial, stored as a json list.&#39;&#39;&#39;</span>
+
+    <span class="n">unknotting_number</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Unknotting number, stored as an integer.&#39;&#39;&#39;</span>
+
+    <span class="n">hyperbolic_volume</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Hyperbolic volume, stored as a string to avoid precision</span>
+<span class="sd">    problems.&#39;&#39;&#39;</span>
+
+    <span class="n">conway_notation</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Conway notation, as a string.&#39;&#39;&#39;</span>
+
+    <span class="n">gauss_code</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Gauss code, as a string.&#39;&#39;&#39;</span>
+
+    <span class="n">planar_diagram</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Planar diagram representation, as a string.&#39;&#39;&#39;</span>
+
+    <span class="n">dt_code</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Dowker-Thistlethwaite code, as a string.&#39;&#39;&#39;</span>
+
+    <span class="n">two_bridge</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Two-bridge notation, as a string.&#39;&#39;&#39;</span>
+
+    <span class="n">fibered</span> <span class="o">=</span> <span class="n">BooleanField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Whether the knot is fibered or not.&#39;&#39;&#39;</span>
+
+    <span class="n">composite</span> <span class="o">=</span> <span class="n">BooleanField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Whether the knot is composite or not.&#39;&#39;&#39;</span>
+
+    <span class="n">vassiliev_2</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;The Vassiliev invariant of order 2.&#39;&#39;&#39;</span>
+
+    <span class="n">vassiliev_3</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;The Vassiliev invariant of order 3.&#39;&#39;&#39;</span>
+
+    <span class="n">symmetry</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;The symmetry type of the knot; reversible,</span>
+<span class="sd">    positive amphichiral, negative amphichiral fully</span>
+<span class="sd">    amphichiral or chiral.&#39;&#39;&#39;</span>
+
+    <span class="n">planar_writhe</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;The writhe of the minimal diagram described by the DT_code. This is</span>
+<span class="sd">    not necessarily unique (see Perko pair, I think?).&#39;&#39;&#39;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&lt;Knot </span><span class="si">{}</span><span class="s1"> (</span><span class="si">{}</span><span class="s1">)&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;Knot </span><span class="si">{}</span><span class="s1">&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Knot.pretty_print"><a class="viewcode-back" href="../../../sources/catalogue/database.html#pyknotid.catalogue.database.Knot.pretty_print">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">pretty_print</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Pretty print all information contained about self.&#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Name: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Identifier: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_crossings</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Min crossings: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_crossings</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fibered</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fibered: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fibered</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gauss_code</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Gauss code: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gauss_code</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">planar_diagram</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Planar diagram: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">planar_diagram</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt_code</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DT code: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_code</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">determinant</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Determinant: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">determinant</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signature</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Signature: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">signature</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">alexander</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alexander: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">converters</span><span class="o">.</span><span class="n">json_to_alexander</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alexander</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">jones</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Jones: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">converters</span><span class="o">.</span><span class="n">json_to_jones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">jones</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">homfly</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HOMFLY: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">converters</span><span class="o">.</span><span class="n">json_to_homfly</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">homfly</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hyperbolic_volume</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hyperbolic volume: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hyperbolic_volume</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vassiliev_2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vassiliev order 2: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vassiliev_2</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vassiliev_3</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vassiliev order 3: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vassiliev_3</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">symmetry</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Symmetry: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symmetry</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Knot.space_curve"><a class="viewcode-back" href="../../../sources/catalogue/database.html#pyknotid.catalogue.database.Knot.space_curve">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">space_curve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Returns a Knot object representing this knot.&#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt_code</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No DT code is known, cannot create &#39;</span>
+                             <span class="s1">&#39;space curve.&#39;</span><span class="p">)</span>
+
+        <span class="kn">from</span><span class="w"> </span><span class="nn">pyknotid.representations</span><span class="w"> </span><span class="kn">import</span> <span class="n">DTNotation</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">DTNotation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_code</span><span class="p">)</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">representation</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">space_curve</span><span class="p">(</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="n">k</span><span class="o">.</span><span class="n">points</span> <span class="o">+=</span> <span class="mf">0.0001</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">k</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">k</span></div>
+
+<div class="viewcode-block" id="Knot.url"><a class="viewcode-back" href="../../../sources/catalogue/database.html#pyknotid.catalogue.database.Knot.url">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;The guessed url of this knot in the Knot Atlas. This page may not</span>
+<span class="sd">        actually exist or be populated.</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;http://katlas.org/wiki/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span></div>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">webbrowser</span>
+        <span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve_image_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">images_folder</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span>
+            <span class="n">dirname</span><span class="p">(</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s1">&#39;diagrams_with_mirrors&#39;</span><span class="p">)</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier</span>
+
+        <span class="n">filen</span> <span class="o">=</span> <span class="n">_name_to_filen</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="n">filen</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">images_folder</span><span class="p">,</span> <span class="n">filen</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filen</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">filen</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">components</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;A list tuples ``(identifier, index)``, where the knot with the</span>
+<span class="sd">        given identifier occurs ``index`` times.&#39;&#39;&#39;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identifier</span>
+        <span class="n">components</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;^&#39;</span> <span class="ow">in</span> <span class="n">component</span><span class="p">:</span>
+                <span class="n">component</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">component</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;^&#39;</span><span class="p">)</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">components</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">component</span><span class="p">,</span> <span class="n">index</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">components</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_name_to_filen</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">name</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
+            <span class="n">digits</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">digits</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="n">filen</span> <span class="o">=</span> <span class="s1">&#39;{{}}_{{:0</span><span class="si">{}</span><span class="s1">}}.png&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="mi">3</span><span class="p">:]))</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">filen</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span>
+
+    <span class="k">return</span> <span class="n">filen</span>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2018.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Representation &mdash; pyknotid 0.5.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=c3dca1ed"></script>
+      <script src="../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Knot catalogue" href="../catalogue/index.html" />
+    <link rel="prev" title="DTNotation" href="dtnotation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            pyknotid
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spacecurves/index.html">Space curve analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html">Invariants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander"><code class="docutils literal notranslate"><span class="pre">alexander()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander_cypari"><code class="docutils literal notranslate"><span class="pre">alexander_cypari()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander_mathematica"><code class="docutils literal notranslate"><span class="pre">alexander_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander_maxima"><code class="docutils literal notranslate"><span class="pre">alexander_maxima()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.arnold_2St_2Jminus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jminus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.arnold_2St_2Jplus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jplus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.contract_points"><code class="docutils literal notranslate"><span class="pre">contract_points()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.hyperbolic_volume"><code class="docutils literal notranslate"><span class="pre">hyperbolic_volume()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.jones_mathematica"><code class="docutils literal notranslate"><span class="pre">jones_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.second_order_writhe"><code class="docutils literal notranslate"><span class="pre">second_order_writhe()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.self_linking"><code class="docutils literal notranslate"><span class="pre">self_linking()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.vassiliev_degree_2"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_2()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.virtual_vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">virtual_vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Topological representations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#creating-representations">Creating representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#calculating-invariants">Calculating invariants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gausscode.html">GaussCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gausscode.html#pyknotid.representations.gausscode.GaussCode"><code class="docutils literal notranslate"><span class="pre">GaussCode</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="planardiagram.html">PlanarDiagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="planardiagram.html#pyknotid.representations.planardiagram.Crossing"><code class="docutils literal notranslate"><span class="pre">Crossing</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="planardiagram.html#pyknotid.representations.planardiagram.PlanarDiagram"><code class="docutils literal notranslate"><span class="pre">PlanarDiagram</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="planardiagram.html#pyknotid.representations.planardiagram.index_height"><code class="docutils literal notranslate"><span class="pre">index_height()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="planardiagram.html#pyknotid.representations.planardiagram.shorthand_to_crossings"><code class="docutils literal notranslate"><span class="pre">shorthand_to_crossings()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="gaussdiagram.html">GaussDiagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gaussdiagram.html#pyknotid.representations.gaussdiagram.GaussDiagram"><code class="docutils literal notranslate"><span class="pre">GaussDiagram</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dtnotation.html">DTNotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dtnotation.html#pyknotid.representations.dtnotation.DTNotation"><code class="docutils literal notranslate"><span class="pre">DTNotation</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Representation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#api-documentation">API documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pyknotid.representations.representation.CrossingGraph"><code class="docutils literal notranslate"><span class="pre">CrossingGraph</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.representations.representation.CrossingGraph.align_nodes"><code class="docutils literal notranslate"><span class="pre">CrossingGraph.align_nodes()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pyknotid.representations.representation.Representation"><code class="docutils literal notranslate"><span class="pre">Representation</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.representations.representation.Representation.alexander_at_root"><code class="docutils literal notranslate"><span class="pre">Representation.alexander_at_root()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.representations.representation.Representation.alexander_polynomial"><code class="docutils literal notranslate"><span class="pre">Representation.alexander_polynomial()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.representations.representation.Representation.calculating_orientations"><code class="docutils literal notranslate"><span class="pre">Representation.calculating_orientations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.representations.representation.Representation.exterior_manifold"><code class="docutils literal notranslate"><span class="pre">Representation.exterior_manifold()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.representations.representation.Representation.hyperbolic_volume"><code class="docutils literal notranslate"><span class="pre">Representation.hyperbolic_volume()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.representations.representation.Representation.identify"><code class="docutils literal notranslate"><span class="pre">Representation.identify()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.representations.representation.Representation.is_virtual"><code class="docutils literal notranslate"><span class="pre">Representation.is_virtual()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.representations.representation.Representation.self_linking"><code class="docutils literal notranslate"><span class="pre">Representation.self_linking()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.representations.representation.Representation.vassiliev_degree_2"><code class="docutils literal notranslate"><span class="pre">Representation.vassiliev_degree_2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.representations.representation.Representation.vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">Representation.vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.representations.representation.Representation.virtual_vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">Representation.virtual_vassiliev_degree_3()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../catalogue/index.html">Knot catalogue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html">Visualise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_line"><code class="docutils literal notranslate"><span class="pre">plot_line()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_projection"><code class="docutils literal notranslate"><span class="pre">plot_projection()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_lambert_sharp_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_sharp_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_lambert_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_mollweide_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_mollweide_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About pyknotid</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyknotid</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Topological representations</a></li>
+      <li class="breadcrumb-item active">Representation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sources/representations/representation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-pyknotid.representations.representation"></span><section id="representation">
+<h1>Representation<a class="headerlink" href="#representation" title="Permalink to this heading"></a></h1>
+<p>An abstract representation of a Knot, providing methods for
+the calculation of topological invariants.</p>
+<section id="api-documentation">
+<h2>API documentation<a class="headerlink" href="#api-documentation" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.CrossingGraph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyknotid.representations.representation.</span></span><span class="sig-name descname"><span class="pre">CrossingGraph</span></span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#CrossingGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.CrossingGraph" title="Permalink to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.CrossingGraph.align_nodes">
+<span class="sig-name descname"><span class="pre">align_nodes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#CrossingGraph.align_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.CrossingGraph.align_nodes" title="Permalink to this definition"></a></dt>
+<dd><p>Orders the lines of each node to be in order, clockwise, depending
+on their incoming angle.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.Representation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyknotid.representations.representation.</span></span><span class="sig-name descname"><span class="pre">Representation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crossings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#Representation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.Representation" title="Permalink to this definition"></a></dt>
+<dd><p>An abstract representation of a knot or link. Internally
+this is just a Gauss code, but it exposes extra topological methods
+and may in future be refactored to work differently.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.Representation.alexander_at_root">
+<span class="sig-name descname"><span class="pre">alexander_at_root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">round</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#Representation.alexander_at_root"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.Representation.alexander_at_root" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the Alexander polynomial at the given root of unity,
+i.e. evaluated at exp(2 pi I / root).</p>
+<p>The result returned is the absolute value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> (<em>int</em>) – The root of unity to use, i.e. evaluating at exp(2 pi I / root).
+If this is iterable, this method returns a list of the results
+at every value of that iterable.</p></li>
+<li><p><strong>round</strong> (<em>bool</em>) – If True and n in (1, 2, 3, 4), the result will be rounded
+to the nearest integer for convenience, and returned as an
+integer type.</p></li>
+<li><p><strong>**kwargs</strong> – These are passed directly to <a class="reference internal" href="#pyknotid.representations.representation.Representation.alexander_polynomial" title="pyknotid.representations.representation.Representation.alexander_polynomial"><code class="xref py py-meth docutils literal notranslate"><span class="pre">alexander_polynomial()</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.Representation.alexander_polynomial">
+<span class="sig-name descname"><span class="pre">alexander_polynomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quadrant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lr'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'python'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_no_simplify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#Representation.alexander_polynomial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.Representation.alexander_polynomial" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the Alexander polynomial at the given point,
+as calculated by <a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander" title="pyknotid.invariants.alexander"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyknotid.invariants.alexander()</span></code></a>.</p>
+<p>See <a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander" title="pyknotid.invariants.alexander"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyknotid.invariants.alexander()</span></code></a> for the meanings
+of the named arguments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.Representation.calculating_orientations">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculating_orientations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#Representation.calculating_orientations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.Representation.calculating_orientations" title="Permalink to this definition"></a></dt>
+<dd><p>Takes a Gauss code without crossing orientations and returns an
+equivalent Gauss code (though not necessarily of the same length).</p>
+<p>This works by generating a space curve and finding its
+self-intersections on projection. This is overkill for the
+problem, but works.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.Representation.exterior_manifold">
+<span class="sig-name descname"><span class="pre">exterior_manifold</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#Representation.exterior_manifold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.Representation.exterior_manifold" title="Permalink to this definition"></a></dt>
+<dd><p>The knot complement manifold of self as a SnapPy class
+giving access to all of SnapPy’s tools.</p>
+<p>This method requires that Spherogram, and possibly SnapPy,
+are installed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.Representation.hyperbolic_volume">
+<span class="sig-name descname"><span class="pre">hyperbolic_volume</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#Representation.hyperbolic_volume"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.Representation.hyperbolic_volume" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the hyperbolic volume at the given point, via
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">pyknotid.representations.PlanarDiagram.as_spherogram()</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.Representation.identify">
+<span class="sig-name descname"><span class="pre">identify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">determinant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vassiliev_2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vassiliev_3</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alexander</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(2,</span> <span class="pre">3,</span> <span class="pre">4)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_crossings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#Representation.identify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.Representation.identify" title="Permalink to this definition"></a></dt>
+<dd><p>Provides a simple interface to
+<a class="reference internal" href="../catalogue/identify.html#pyknotid.catalogue.identify.from_invariants" title="pyknotid.catalogue.identify.from_invariants"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyknotid.catalogue.identify.from_invariants()</span></code></a>, by passing
+the given invariants. This does <em>not</em> support all invariants
+available, or more sophisticated identification methods,
+so don’t be afraid to use the catalogue functions directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>determinant</strong> (<em>bool</em>) – If True, uses the knot determinant in the identification.
+Defaults to True.</p></li>
+<li><p><strong>alexander</strong> (<em>bool</em>) – If True-like, uses the full alexander polynomial in the
+identification. If the input is a dictionary of kwargs,
+these are passed straight to self.alexander_polynomial.</p></li>
+<li><p><strong>roots</strong> (<em>iterable</em>) – A list of roots of unity at which to evaluate. Defaults
+to (2, 3, 4), the first of which is redundant with the
+determinant. Note that higher roots can be calculated, but
+aren’t available in the database.</p></li>
+<li><p><strong>min_crossings</strong> (<em>bool</em>) – If True, the output is restricted to knots with fewer crossings
+than the current projection of this one. Defaults to True. The
+only reason to turn this off is to see what other knots have
+the same invariants, it is never not useful for direct
+identification.</p></li>
+<li><p><strong>vassiliev_2</strong> (<em>bool</em>) – If True, uses the Vassiliev invariant of order 2. Defaults to True.</p></li>
+<li><p><strong>vassiliev_3</strong> (<em>bool</em>) – If True, uses the Vassiliev invariant of order 3. Defaults to None,
+which means the invariant is used only if the representation has
+less than 30 crossings.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.Representation.is_virtual">
+<span class="sig-name descname"><span class="pre">is_virtual</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#Representation.is_virtual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.Representation.is_virtual" title="Permalink to this definition"></a></dt>
+<dd><p>Takes an open curve and checks (for the default projection) if its
+Gauss code corresponds to a virtual knot or not. Returns a Boolean of
+this information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>virtual</strong> – True if the Gauss code corresponds to a virtual knot. False
+otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.Representation.self_linking">
+<span class="sig-name descname"><span class="pre">self_linking</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#Representation.self_linking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.Representation.self_linking" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the self linking number J(K) of the Gauss code, an
+invariant of virtual knots. See Kauffman 2004 for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>slink_counter</strong> – The self linking number of the open curve</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.Representation.vassiliev_degree_2">
+<span class="sig-name descname"><span class="pre">vassiliev_degree_2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simplify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#Representation.vassiliev_degree_2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.Representation.vassiliev_degree_2" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the Vassiliev invariant of degree 2 for the Knot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>simplify</strong> (<em>bool</em>) – If True, simplifies the Gauss code of self before
+calculating the invariant. Defaults to True, but
+will work fine if you set it to False (and might even
+be faster).</p></li>
+<li><p><strong>**kwargs</strong> – These are passed directly to <code class="xref py py-meth docutils literal notranslate"><span class="pre">gauss_code()</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.Representation.vassiliev_degree_3">
+<span class="sig-name descname"><span class="pre">vassiliev_degree_3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simplify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">try_cython</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#Representation.vassiliev_degree_3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.Representation.vassiliev_degree_3" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the Vassiliev invariant of degree 3 for the Knot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>simplify</strong> (<em>bool</em>) – If True, simplifies the Gauss code of self before
+calculating the invariant. Defaults to True, but
+will work fine if you set it to False (and might even
+be faster).</p></li>
+<li><p><strong>try_cython</strong> (<em>bool</em>) – Whether to try and use an optimised cython version of the
+routine (takes about 1/3 of the time for complex
+representations).  Defaults to True, but the python
+fallback will be <em>slower</em> than setting it to False if the
+cython function is not available.</p></li>
+<li><p><strong>**kwargs</strong> – These are passed directly to <code class="xref py py-meth docutils literal notranslate"><span class="pre">gauss_code()</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.representations.representation.Representation.virtual_vassiliev_degree_3">
+<span class="sig-name descname"><span class="pre">virtual_vassiliev_degree_3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/representations/representation.html#Representation.virtual_vassiliev_degree_3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.representations.representation.Representation.virtual_vassiliev_degree_3" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the virtual Vassiliev invariant of degree 3 for the
+representation.</p>
+</dd></dl>
+
+</dd></dl>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dtnotation.html" class="btn btn-neutral float-left" title="DTNotation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../catalogue/index.html" class="btn btn-neutral float-right" title="Knot catalogue" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2018.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Link &mdash; pyknotid 0.5.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=c3dca1ed"></script>
+      <script src="../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="PeriodicCell" href="periodiccell.html" />
+    <link rel="prev" title="OpenKnot" href="openknot.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            pyknotid
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Space curve analysis</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#different-knot-classes">Different knot classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#creating-space-curves">Creating space curves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spacecurve.html">SpaceCurve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve"><code class="docutils literal notranslate"><span class="pre">SpaceCurve</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="knot.html">Knot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knot.html#pyknotid.spacecurves.knot.Knot"><code class="docutils literal notranslate"><span class="pre">Knot</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="openknot.html">OpenKnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openknot.html#pyknotid.spacecurves.openknot.OpenKnot"><code class="docutils literal notranslate"><span class="pre">OpenKnot</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="openknot.html#pyknotid.spacecurves.openknot.gall_peters"><code class="docutils literal notranslate"><span class="pre">gall_peters()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="openknot.html#pyknotid.spacecurves.openknot.knot_db_to_string"><code class="docutils literal notranslate"><span class="pre">knot_db_to_string()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="openknot.html#pyknotid.spacecurves.openknot.mollweide"><code class="docutils literal notranslate"><span class="pre">mollweide()</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Link</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#api-documentation">API documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pyknotid.spacecurves.link.Link"><code class="docutils literal notranslate"><span class="pre">Link</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.spacecurves.link.Link.arclength"><code class="docutils literal notranslate"><span class="pre">Link.arclength()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.spacecurves.link.Link.from_periodic_lines"><code class="docutils literal notranslate"><span class="pre">Link.from_periodic_lines()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.spacecurves.link.Link.gauss_code"><code class="docutils literal notranslate"><span class="pre">Link.gauss_code()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.spacecurves.link.Link.linking_number"><code class="docutils literal notranslate"><span class="pre">Link.linking_number()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.spacecurves.link.Link.octree_simplify"><code class="docutils literal notranslate"><span class="pre">Link.octree_simplify()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.spacecurves.link.Link.plot"><code class="docutils literal notranslate"><span class="pre">Link.plot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.spacecurves.link.Link.raw_crossings"><code class="docutils literal notranslate"><span class="pre">Link.raw_crossings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.spacecurves.link.Link.rotate"><code class="docutils literal notranslate"><span class="pre">Link.rotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.spacecurves.link.Link.smooth"><code class="docutils literal notranslate"><span class="pre">Link.smooth()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyknotid.spacecurves.link.Link.translate"><code class="docutils literal notranslate"><span class="pre">Link.translate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="periodiccell.html">PeriodicCell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="periodiccell.html#pyknotid.spacecurves.periodiccell.Cell"><code class="docutils literal notranslate"><span class="pre">Cell</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html">Invariants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander"><code class="docutils literal notranslate"><span class="pre">alexander()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander_cypari"><code class="docutils literal notranslate"><span class="pre">alexander_cypari()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander_mathematica"><code class="docutils literal notranslate"><span class="pre">alexander_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.alexander_maxima"><code class="docutils literal notranslate"><span class="pre">alexander_maxima()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.arnold_2St_2Jminus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jminus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.arnold_2St_2Jplus"><code class="docutils literal notranslate"><span class="pre">arnold_2St_2Jplus()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.contract_points"><code class="docutils literal notranslate"><span class="pre">contract_points()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.hyperbolic_volume"><code class="docutils literal notranslate"><span class="pre">hyperbolic_volume()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.jones_mathematica"><code class="docutils literal notranslate"><span class="pre">jones_mathematica()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.second_order_writhe"><code class="docutils literal notranslate"><span class="pre">second_order_writhe()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.self_linking"><code class="docutils literal notranslate"><span class="pre">self_linking()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.vassiliev_degree_2"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_2()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../invariants.html#pyknotid.invariants.virtual_vassiliev_degree_3"><code class="docutils literal notranslate"><span class="pre">virtual_vassiliev_degree_3()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../representations/index.html">Topological representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catalogue/index.html">Knot catalogue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html">Visualise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_line"><code class="docutils literal notranslate"><span class="pre">plot_line()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_projection"><code class="docutils literal notranslate"><span class="pre">plot_projection()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_lambert_sharp_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_sharp_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_lambert_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_lambert_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_mollweide_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_mollweide_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_sphere_shell_vispy"><code class="docutils literal notranslate"><span class="pre">plot_sphere_shell_vispy()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About pyknotid</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyknotid</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Space curve analysis</a></li>
+      <li class="breadcrumb-item active">Link</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/sources/spacecurves/link.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-pyknotid.spacecurves.link"></span><section id="link">
+<h1>Link<a class="headerlink" href="#link" title="Permalink to this heading"></a></h1>
+<a class="reference internal image-reference" href="../../_images/torus_hopf_link.png"><img alt="A hopf link visualised by pyknotid" class="align-center" src="../../_images/torus_hopf_link.png" style="width: 261.5px; height: 199.0px;" /></a>
+<p>Class for dealing with multiple curves as a link. <a class="reference internal" href="#pyknotid.spacecurves.link.Link" title="pyknotid.spacecurves.link.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a>
+provides methods for topological manipulation and calculations on
+multiple curves.</p>
+<section id="api-documentation">
+<h2>API documentation<a class="headerlink" href="#api-documentation" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyknotid.spacecurves.link.Link">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyknotid.spacecurves.link.</span></span><span class="sig-name descname"><span class="pre">Link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/spacecurves/link.html#Link"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.spacecurves.link.Link" title="Permalink to this definition"></a></dt>
+<dd><p>Class for holding the vertices of multiple lines, providing helper
+methods for convenient manipulation and analysis.</p>
+<p>The data is stored
+internally as multiple <code class="xref py py-class docutils literal notranslate"><span class="pre">Knot</span></code> objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lines</strong> (<em>list</em><em> of </em><em>nx3 array-like</em><em> or </em><em>Knots</em>) – List with the points of each line.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Whether to print information during processing. Defaults
+to True.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.spacecurves.link.Link.arclength">
+<span class="sig-name descname"><span class="pre">arclength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_closures</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/spacecurves/link.html#Link.arclength"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.spacecurves.link.Link.arclength" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the sum of arclengths of the lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>include_closures</strong> (<em>bool</em>) – Whether to include the distance between the final and
+first points of each line. Defaults to True.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.spacecurves.link.Link.from_periodic_lines">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_periodic_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perturb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/spacecurves/link.html#Link.from_periodic_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.spacecurves.link.Link.from_periodic_lines" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a <a class="reference internal" href="#pyknotid.spacecurves.link.Link" title="pyknotid.spacecurves.link.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a> instance in which the lines have
+been unwrapped through the periodic boundaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line</strong> (<em>list</em>) – A list of the Nx3 vectors of points in the lines</p></li>
+<li><p><strong>shape</strong> (<em>array-like</em>) – The x, y, z distances of the periodic boundary</p></li>
+<li><p><strong>perturb</strong> (<em>bool</em>) – If True, translates and rotates the knot to avoid any lattice
+problems.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.spacecurves.link.Link.gauss_code">
+<span class="sig-name descname"><span class="pre">gauss_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/spacecurves/link.html#Link.gauss_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.spacecurves.link.Link.gauss_code" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a <a class="reference internal" href="../representations/gausscode.html#pyknotid.representations.gausscode.GaussCode" title="pyknotid.representations.gausscode.GaussCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">GaussCode</span></code></a>
+instance representing the crossings of the knot.</p>
+<p>The GaussCode instance is cached internally. If you want to
+recalculate it (e.g. to get an unsimplified version if you
+have simplified it), you should pass <cite>recalculate=True</cite>.</p>
+<p>This method passes kwargs directly to <a class="reference internal" href="#pyknotid.spacecurves.link.Link.raw_crossings" title="pyknotid.spacecurves.link.Link.raw_crossings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">raw_crossings()</span></code></a>,
+see the documentation of that function for all options.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.spacecurves.link.Link.linking_number">
+<span class="sig-name descname"><span class="pre">linking_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/spacecurves/link.html#Link.linking_number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.spacecurves.link.Link.linking_number" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the linking number of the lines in the Link, the
+sum of signed crossings between them, ignoring crossings of
+a line with itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.spacecurves.link.Link.octree_simplify">
+<span class="sig-name descname"><span class="pre">octree_simplify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">runs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obey_knotting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/spacecurves/link.html#Link.octree_simplify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.spacecurves.link.Link.octree_simplify" title="Permalink to this definition"></a></dt>
+<dd><p>Simplifies the curves via the octree reduction of
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">pyknotid.simplify.octree</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>runs</strong> (<em>int</em>) – The number of times to run the octree simplification.
+Defaults to 1.</p></li>
+<li><p><strong>plot</strong> (<em>bool</em>) – Whether to plot the curve after each run. Defaults to False.</p></li>
+<li><p><strong>rotate</strong> (<em>bool</em>) – Whether to rotate the space curve before each run. Defaults
+to True as this can make things much faster.</p></li>
+<li><p><strong>obey_knotting</strong> (<em>bool</em>) – Whether to not let the line pass through itself. Defaults to
+False - knotting of individual components will be ignored!
+This is <em>much</em> faster than the alternative.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments are passed to the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">pyknotid.simplify.octree.OctreeCell</span></code> constructor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.spacecurves.link.Link.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vispy'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colours</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/spacecurves/link.html#Link.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.spacecurves.link.Link.plot" title="Permalink to this definition"></a></dt>
+<dd><p>Plots all the lines. See <a class="reference internal" href="../visualise.html#pyknotid.visualise.plot_line" title="pyknotid.visualise.plot_line"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyknotid.visualise.plot_line()</span></code></a> for
+full documentation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.spacecurves.link.Link.raw_crossings">
+<span class="sig-name descname"><span class="pre">raw_crossings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'use_max_jump'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_with_other_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_closures</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recalculate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">try_cython</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/spacecurves/link.html#Link.raw_crossings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.spacecurves.link.Link.raw_crossings" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the crossings in the diagram of the projection of the
+space curve into its z=0 plane.</p>
+<p>The crossings will be calculated the first time this function
+is called, then cached until an operation that would change
+the list (e.g. rotation, or changing <code class="docutils literal notranslate"><span class="pre">self.points</span></code>).</p>
+<p>Multiple modes are available (see parameters) - you should be
+aware of this because different modes may be vastly slower or
+faster depending on the type of line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – One of <code class="docutils literal notranslate"><span class="pre">'count_every_jump'</span></code> and <code class="docutils literal notranslate"><span class="pre">'use_max_jump'</span></code>. In the former
+case,
+walking along the line uses information about the length of
+every step. In the latter, it guesses that all steps have the
+same length as the maximum step length. The optimal choice
+depends on the data, but is usually <code class="docutils literal notranslate"><span class="pre">'use_max_jump'</span></code>, which
+is the default.</p></li>
+<li><p><strong>only_with_other_lines</strong> (<em>bool</em>) – If True, ignores self-crossings (i.e. the knot type of the loops)
+and returns only a list of crossings between the loops. Defaults
+to True</p></li>
+<li><p><strong>include_closures</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include crossings with the
+lines joining their start and end points. Defaults to True.</p></li>
+<li><p><strong>recalculate</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to force a recalculation of the crossing positions.
+Defaults to False.</p></li>
+<li><p><strong>try_cython</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to try to use a cython implementation of crossing
+finding. This will make no difference if the cython could not
+be loaded, in which case python is already
+used automatically. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The raw array of floats representing crossings, of the
+form [[line_index, other_index, +-1, +-1], …], where the
+line_index and other_index are in arclength parameterised
+by integers for each vertex and linearly interpolated,
+and the +-1 represent over/under and clockwise/anticlockwise
+respectively.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.spacecurves.link.Link.rotate">
+<span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/spacecurves/link.html#Link.rotate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.spacecurves.link.Link.rotate" title="Permalink to this definition"></a></dt>
+<dd><p>Rotates all the points of each line of self by the given angle
+in each axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>angles</strong> (<em>array-like</em>) – Rotation angles about x, y and z axes. If None, random angles
+are used. Defaults to None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.spacecurves.link.Link.smooth">
+<span class="sig-name descname"><span class="pre">smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/spacecurves/link.html#Link.smooth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.spacecurves.link.Link.smooth" title="Permalink to this definition"></a></dt>
+<dd><p>Smooths each of the x, y and z components of each of self.lines
+by convolving with a window of the given type and size.</p>
+<p>kwargs are passed straight to
+<a class="reference internal" href="spacecurve.html#pyknotid.spacecurves.spacecurve.SpaceCurve.smooth" title="pyknotid.spacecurves.spacecurve.SpaceCurve.smooth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pyknotid.spacecurves.spacecurve.SpaceCurve.smooth()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyknotid.spacecurves.link.Link.translate">
+<span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyknotid/spacecurves/link.html#Link.translate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyknotid.spacecurves.link.Link.translate" title="Permalink to this definition"></a></dt>
+<dd><p>Translate all points in some or all lines of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vector</strong> (<em>array-like</em>) – The x, y, z translation distances</p></li>
+<li><p><strong>lines</strong> (<em>list</em><em> or </em><em>int</em>) – The list of line indices to which the translation should
+be applied. Defaults to None, which applies the translation
+to all the lines of self. If an integer is supplied, only
+the line with this index is translated.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="openknot.html" class="btn btn-neutral float-left" title="OpenKnot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="periodiccell.html" class="btn btn-neutral float-right" title="PeriodicCell" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2018.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
