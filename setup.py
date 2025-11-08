@@ -20,32 +20,25 @@ def recursively_include(results, directory, patterns):
             results[directory].append(join(*filename.split(sep)[1:]))
 
 recursively_include(package_data, 'pyknotid',
-                    ['*.tmpl', '*.pov', '*.pyx', '*.pxd',
-                     '*.py',
+                    ['*.tmpl', '*.pov', '*.pyx', '*.pxd', '*.py',
                      ])
 
-# Build cython components if possible
+# Switched to Numba for most performance-critical code
+# Still keeping chelpers and coctree in Cython (too complex to convert easily)
 try:
     from Cython.Build import cythonize
     import numpy
 except ImportError:
-    print('Cython or numpy could not be imported, so cythonised calculation '
-          'functions will not be built. pyknotid will use Python-only '
-          'routines instead. These are slower, but will return the '
-          'same result.')
-    print('To build the cython components, install cython and numpy and rebuild '
-          'pyknotid.')
+    print('Cython or numpy could not be imported. Some optional Cython extensions '
+          '(chelpers, coctree) will not be built. pyknotid will use Python/Numba '
+          'routines instead.')
     ext_modules = []
     include_dirs = []
 else:
     ext_modules = [
             Extension("pyknotid.spacecurves.chelpers", ["pyknotid/spacecurves/chelpers.pyx"],
                     libraries=["m"]),
-            Extension("pyknotid.spacecurves.ccomplexity", ["pyknotid/spacecurves/ccomplexity.pyx"],
-                    libraries=["m"]),
             Extension("pyknotid.simplify.coctree", ["pyknotid/simplify/coctree.pyx"],
-                    libraries=["m"]),
-            Extension("pyknotid.cinvariants", ["pyknotid/cinvariants.pyx"],
                     libraries=["m"]),
             ]
     ext_modules = cythonize(ext_modules)
@@ -71,19 +64,20 @@ if version is None:
 
 if 'READTHEDOCS' in environ and environ['READTHEDOCS'] == 'True':
     print('Installing for doc only')
-    install_requires=['numpy', 'peewee', 'vispy', 'sympy']
+    install_requires=['numpy', 'peewee', 'vispy', 'sympy', 'numba']
 else:
     install_requires=['numpy', 'networkx', 'planarity',
                       'peewee', 'vispy', 'sympy', 'appdirs',
-                      'requests', 'tqdm']
+                      'requests', 'tqdm', 'numba']
 
 long_description = '''
 Pyknotid
 ========
 
-Python (and optional Cython) modules for detecting and measuring
-knotting and linking. pyknotid can analyse space-curves, i.e. sets of
-points in three-dimensions, or can parse standard topological
+Python modules for detecting and measuring knotting and linking.
+pyknotid uses Numba for high-performance numerical computations.
+pyknotid can analyse space-curves, i.e. sets of points in
+three-dimensions, or can parse standard topological
 representations of knot diagrams.
 
 A graphical interface to some of these tools is available online at

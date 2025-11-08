@@ -1241,11 +1241,11 @@ def _vassiliev_degree_3_numpy(representation):
         gc, representation.crossing_numbers)
 
     try:
-        from pyknotid import cinvariants
+        from pyknotid import ninvariants
     except ImportError:
-        logger.info('Cython extension cinvariants not available, using Python/NumPy implementation (slower performance)')
+        logger.info('Numba extension ninvariants not available, using Python/NumPy implementation (slower performance)')
     else:
-        return int(round(cinvariants.vassiliev_degree_3(arrows)))
+        return int(round(ninvariants.vassiliev_degree_3(arrows)))
 
     num_crossings = len(arrows) * 2
     

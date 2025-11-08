@@ -239,11 +239,11 @@ def higher_order_writhe_integral(points, order=(1, 3, 2, 4), try_cython=True):
 
     if try_cython:
         try:
-            from pyknotid.spacecurves.ccomplexity import cython_higher_order_writhe 
+            from pyknotid.spacecurves.ncomplexity import cython_higher_order_writhe
             order = np.array(order)
             how_func = cython_higher_order_writhe
         except ImportError:
-            print('Failed to import ccomplexity, using pure python instead')
+            print('Failed to import ncomplexity (numba), using pure python instead')
     
     writhe = how_func(points, contributions, order)
 
@@ -437,9 +437,9 @@ def second_order_writhes(points, try_cython=True, basepoint=True):
 
 
     if basepoint:
-        from pyknotid.spacecurves.ccomplexity import cython_second_order_writhes
+        from pyknotid.spacecurves.ncomplexity import cython_second_order_writhes
     else:
-        from pyknotid.spacecurves.ccomplexity import cython_second_order_writhes_no_basepoint as cython_second_order_writhes
+        from pyknotid.spacecurves.ncomplexity import cython_second_order_writhes_no_basepoint as cython_second_order_writhes
 
     return cython_second_order_writhes(points, contributions)
 
