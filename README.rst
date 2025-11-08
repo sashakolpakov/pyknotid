@@ -1,21 +1,17 @@
 Pyknotid
 ========
 
-.. image:: https://github.com/SPOCKnots/pyknotid/workflows/Tests/badge.svg
-    :target: https://github.com/SPOCKnots/pyknotid/actions?query=workflow%3ATests
+.. image:: https://github.com/sashakolpakov/pyknotid/workflows/Tests/badge.svg
+    :target: https://github.com/sashakolpakov/pyknotid/actions?query=workflow%3ATests
     :alt: Test Status
 
-.. image:: https://github.com/SPOCKnots/pyknotid/workflows/Documentation/badge.svg
-    :target: https://github.com/SPOCKnots/pyknotid/actions?query=workflow%3ADocumentation
+.. image:: https://github.com/sashakolpakov/pyknotid/workflows/Documentation/badge.svg
+    :target: https://github.com/sashakolpakov/pyknotid/actions?query=workflow%3ADocumentation
     :alt: Documentation Status
 
 .. image:: https://img.shields.io/pypi/v/pyknotid.svg
     :target: https://pypi.org/project/pyknotid/
     :alt: PyPI version
-
-.. image:: https://img.shields.io/pypi/pyversions/pyknotid.svg
-    :target: https://pypi.org/project/pyknotid/
-    :alt: Python versions
 
 Python (and optional Cython) modules for detecting and measuring
 knotting and linking. pyknotid can analyse space-curves, i.e. sets of
