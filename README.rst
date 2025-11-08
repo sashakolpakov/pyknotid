@@ -18,21 +18,11 @@ pyknotid can analyse space-curves, i.e. sets of points in
 three-dimensions, or can parse standard topological
 representations of knot diagrams.
 
-pyknotid is released under the `MIT license <LICENSE.txt>`__.
-
-A graphical interface to some of these tools is available online at
-`Knot ID <http://inclem.net/knotidentifier>`__.
-
 pyknotid was originally developed as part of the Leverhulme Trust
 Research Programme Grant RP2013-K-009: Scientific Properties of
 Complex Knots (SPOCK), a collaboration between the University of
 Bristol and Durham University in the UK. For more information, see the
 `SPOCK homepage <http://www.maths.dur.ac.uk/spock/index.html/>`__.
-
-If you use pyknotid in your research, please `cite us
-<http://pyknotid.readthedocs.io/en/latest/sources/about.html#cite-us>`__.
-
-Questions or comments are welcome, please email alexander.taylor@bristol.ac.uk.
 
 .. image:: doc/k10_92_ideal_small.png
    :align: center
