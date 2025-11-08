@@ -113,10 +113,6 @@ pyknotid was originally developed as part of the Leverhulme Trust Research Progr
 
 For more information, see the [SPOCK homepage](http://www.maths.dur.ac.uk/spock/index.html/).
 
-### Related Tools
-
-A graphical interface to some of these tools is available online at [Knot ID](http://inclem.net/knotidentifier).
-
 ## Citation
 
 If you use pyknotid in your research, please cite it. See [CITATION.cff](CITATION.cff) for citation information, or use:
@@ -146,7 +142,7 @@ Contributions are welcome! Please feel free to:
 
 ## Contact
 
-Questions or comments are welcome. Please email alexander.taylor@bristol.ac.uk or open an issue on GitHub.
+Questions or comments are welcome. Please do not hesitate to open an issue or pull request on GitHub.
 
 ## Links
 
