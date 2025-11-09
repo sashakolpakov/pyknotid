@@ -1,3 +1,0 @@
-
-.. automodule:: pyknotid.invariants
-   :members:
