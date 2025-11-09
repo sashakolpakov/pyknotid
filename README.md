@@ -1,6 +1,7 @@
 # Pyknotid
 
 [![PyPI version](https://img.shields.io/pypi/v/pyknotid.svg)](https://pypi.org/project/pyknotid/)
+[![Documentation Status](https://readthedocs.org/projects/pyknotid/badge/?version=latest)](https://pyknotid.readthedocs.io/en/latest/?badge=latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Python modules for detecting and measuring knotting and linking. pyknotid can analyse space-curves (sets of points in three dimensions) or parse standard topological representations of knot diagrams.
